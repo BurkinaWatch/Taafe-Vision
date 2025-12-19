@@ -20,9 +20,10 @@ export default function Home() {
           <img 
             src="/images/hero-background.png" 
             alt="Cinema Hero" 
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 via-primary/50 to-primary/40" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         <div className="container-wide relative z-10 text-center text-white space-y-8">
