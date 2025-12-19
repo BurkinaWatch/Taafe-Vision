@@ -31,7 +31,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-display font-bold leading-tight"
+            className="text-5xl md:text-7xl font-display font-bold leading-tight text-white"
           >
             Défendre les droits des femmes par le <span className="text-secondary">Cinéma</span>
           </motion.h1>
