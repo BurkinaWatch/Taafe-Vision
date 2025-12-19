@@ -31,7 +31,7 @@ export default function Films() {
                       src={film.imageUrl} 
                       alt={film.title} 
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                      onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1533928298208-27ff66555d0d?q=80&w=400&auto=format&fit=crop"; }}
+                      onError={(e) => { e.currentTarget.src = "/images/partners-1.jpg"; }}
                     />
                     {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">

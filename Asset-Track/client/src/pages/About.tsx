@@ -21,7 +21,7 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <img 
-              src="https://images.unsplash.com/photo-1485095329183-d0ddc3500664?q=80&w=1000&auto=format&fit=crop" 
+              src="/images/community-engagement-1.jpg" 
               alt="Woman Filmmaker" 
               className="rounded-2xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
             />

@@ -23,7 +23,7 @@ export default function Projects() {
                 <div key={project.id} className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 flex flex-col">
                   <div className="h-64 overflow-hidden relative bg-gray-800">
                     <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                      onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485095329183-d0ddc3500664?q=80&w=600&auto=format&fit=crop"; }}
+                      onError={(e) => { e.currentTarget.src = "/images/community-screening.jpg"; }}
                     />
                     <div className="absolute top-4 left-4 bg-secondary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-sm">
                       <Calendar className="w-3 h-3" /> {project.date || "Ongoing"}
