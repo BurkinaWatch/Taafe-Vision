@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Deep Violet/Bordeaux */
+  --primary: 276 69% 18%; 
+  --primary-foreground: 40 30% 96%;
+
+  /* Orange/Ochre */
+  --secondary: 32 90% 43%;
+  --secondary-foreground: 40 30% 96%;
+
+  /* Warm Earthy Backgrounds */
+  --background: 40 30% 98%;
+  --foreground: 276 69% 10%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 276 69% 10%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 276 69% 10%;
+
+  --muted: 40 20% 92%;
+  --muted-foreground: 276 20% 40%;
+
+  --accent: 32 90% 96%;
+  --accent-foreground: 32 90% 35%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 40 10% 85%;
+  --input: 40 10% 85%;
+  --ring: 32 90% 43%;
+
+  --radius: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-secondary/30;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-primary;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .nav-link {
+    @apply text-foreground/80 hover:text-secondary transition-colors duration-300 font-medium tracking-wide relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 ease-out;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
