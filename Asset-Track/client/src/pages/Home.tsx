@@ -18,7 +18,7 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1485095329183-d0ddc3500664?q=80&w=2000&auto=format&fit=crop" 
+            src="/images/hero-background.png" 
             alt="Cinema Hero" 
             className="w-full h-full object-cover opacity-40"
           />
