@@ -1,9 +1,11 @@
 import { db } from "./db";
 import { 
-  users, projects, films, articles, partners, contacts,
+  users, projects, films, articles, partners, contacts
+} from "@shared/schema";
+import { 
   type User, type Project, type Film, type Article, type Partner, type Contact,
   type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertPartner, type InsertContact
-} from "@shared/schema";
+} from "@shared/routes";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {

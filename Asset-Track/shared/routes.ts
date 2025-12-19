@@ -6,8 +6,19 @@ import {
   insertArticleSchema, 
   insertPartnerSchema, 
   insertContactSchema,
-  users, projects, films, articles, partners, contacts
+  users, projects, films, articles, partners, contacts,
+  User, Project, Film, Article, Partner, Contact
 } from './schema';
+
+// Export types for client usage
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type InsertProject = z.infer<typeof insertProjectSchema>;
+export type InsertFilm = z.infer<typeof insertFilmSchema>;
+export type InsertArticle = z.infer<typeof insertArticleSchema>;
+export type InsertPartner = z.infer<typeof insertPartnerSchema>;
+export type InsertContact = z.infer<typeof insertContactSchema>;
+
+export type { User, Project, Film, Article, Partner, Contact };
 
 export const errorSchemas = {
   validation: z.object({

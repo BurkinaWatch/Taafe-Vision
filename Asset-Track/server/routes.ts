@@ -36,7 +36,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   // Auth Middleware
   const requireAuth = (req: any, res: any, next: any) => {
-    if (req.session.userId) {
+    if ((req.session as any).userId) {
       next();
     } else {
       res.status(401).json({ message: "Unauthorized" });
@@ -50,7 +50,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     if (!user || !(await comparePassword(password, user.password))) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    req.session.userId = user.id;
+    (req.session as any).userId = user.id;
     res.json(user);
   });
 
@@ -61,8 +61,8 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   });
 
   app.get(api.auth.me.path, async (req, res) => {
-    if (!req.session.userId) return res.status(401).send(null);
-    const user = await storage.getUser(req.session.userId);
+    if (!(req.session as any).userId) return res.status(401).send(null);
+    const user = await storage.getUser((req.session as any).userId);
     res.json(user);
   });
 
