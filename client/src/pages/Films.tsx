@@ -28,10 +28,16 @@ export default function Films() {
                 <div key={film.id} className="group relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl hover:shadow-secondary/20 transition-all duration-300 border border-gray-800 flex flex-col">
                   <div className="aspect-[3/4] relative overflow-hidden bg-gray-800">
                     <img 
-                      src={film.imageUrl} 
+                      src={film.imageUrl.startsWith('@assets') ? film.imageUrl.replace('@assets', '/attached_assets') : film.imageUrl} 
                       alt={film.title} 
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                      onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"; }}
+                      onError={(e) => { 
+                        const target = e.currentTarget;
+                        if (!target.dataset.triedBackup) {
+                          target.dataset.triedBackup = "true";
+                          target.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80";
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
                     {/* Play Button Overlay */}
