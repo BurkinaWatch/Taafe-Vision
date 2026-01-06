@@ -43,7 +43,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8"
             >
-              <span className="text-[#f146ad]">TAAFÉ</span> <span className="text-[#39cd15]">VISION</span>
+              <span className="text-[#f146ad]">TAAFÉ</span> <span className="text-[#39cd15]">V</span><span className="text-[#f146ad]">ISION</span>
             </motion.h1>
             
             <motion.p 
