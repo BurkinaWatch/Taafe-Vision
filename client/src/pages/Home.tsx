@@ -41,9 +41,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-display font-bold leading-[0.9] text-secondary mb-8"
+              className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8"
             >
-              TAAFE VISION
+              <span className="text-[#f146ad]">TAAFÉ</span> <span className="text-[#39cd15]">VISION</span>
             </motion.h1>
             
             <motion.p 
