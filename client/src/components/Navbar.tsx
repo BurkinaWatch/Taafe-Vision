@@ -41,28 +41,28 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
-          <div className="flex items-center gap-6 border-r border-slate-200 pr-8">
+          <div className="flex items-center gap-8 border-r border-slate-200 pr-8">
             {links.map((link) => (
               <Link key={link.href} href={link.href} className={cn(
-                "text-[10px] uppercase tracking-[0.2em] font-bold transition-all hover:text-secondary",
-                location === link.href ? "text-secondary" : "text-slate-600"
+                "text-xs uppercase tracking-[0.15em] font-bold transition-all hover:text-secondary",
+                location === link.href ? "text-secondary underline underline-offset-8" : "text-slate-700"
               )}>
                 {link.label}
               </Link>
             ))}
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             {socialLinks.map((social) => (
               <a 
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-secondary transition-colors p-1"
+                className="text-slate-500 hover:text-secondary transition-colors p-1"
                 aria-label={social.label}
               >
-                <social.icon className="w-4 h-4" />
+                <social.icon className="w-5 h-5" />
               </a>
             ))}
           </div>
