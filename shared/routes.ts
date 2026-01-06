@@ -84,6 +84,14 @@ export const api = {
       path: '/api/films',
       responses: { 200: z.array(z.custom<typeof films.$inferSelect>()) },
     },
+    get: {
+      method: 'GET' as const,
+      path: '/api/films/:id',
+      responses: { 
+        200: z.custom<typeof films.$inferSelect>(),
+        404: errorSchemas.notFound,
+      },
+    },
     create: {
       method: 'POST' as const,
       path: '/api/films',
