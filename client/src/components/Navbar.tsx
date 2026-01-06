@@ -19,19 +19,24 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border shadow-sm">
-      <div className="container-wide py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold font-display text-primary flex items-center gap-2">
-          <img src="/images/logo.jpg" alt="Taafé Vision Logo" className="w-10 h-10 rounded-full object-cover" />
-          <span>Taafé Vision</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+      <div className="container-wide py-5 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-bold font-display text-slate-900 flex items-center gap-3 group">
+          <div className="relative">
+            <img src="/images/logo.jpg" alt="Taafé Vision Logo" className="w-12 h-12 rounded-full object-cover border-2 border-slate-100 group-hover:border-secondary transition-colors" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="tracking-tighter">Taafé Vision</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-body mt-1">Cinéma & Droits</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {links.map((link) => (
             <Link key={link.href} href={link.href} className={cn(
-              "nav-link text-sm uppercase tracking-widest",
-              location === link.href && "text-secondary font-bold"
+              "text-xs uppercase tracking-[0.2em] font-medium transition-all hover:text-secondary",
+              location === link.href ? "text-secondary font-bold" : "text-slate-600"
             )}>
               {link.label}
             </Link>

@@ -8,38 +8,38 @@
   --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 
-  /* Deep Violet/Bordeaux */
-  --primary: 276 69% 18%; 
-  --primary-foreground: 40 30% 96%;
+  /* Slate 950 - Institutionnel et Sobre */
+  --primary: 222 47% 11%; 
+  --primary-foreground: 210 40% 98%;
 
-  /* Orange/Ochre */
-  --secondary: 32 90% 43%;
-  --secondary-foreground: 40 30% 96%;
+  /* Red/Deep Orange - Accent dynamique */
+  --secondary: 10 80% 50%;
+  --secondary-foreground: 210 40% 98%;
 
-  /* Warm Earthy Backgrounds */
-  --background: 40 30% 98%;
-  --foreground: 276 69% 10%;
+  /* Clean White Background */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
 
   --card: 0 0% 100%;
-  --card-foreground: 276 69% 10%;
+  --card-foreground: 222 47% 11%;
   
   --popover: 0 0% 100%;
-  --popover-foreground: 276 69% 10%;
+  --popover-foreground: 222 47% 11%;
 
-  --muted: 40 20% 92%;
-  --muted-foreground: 276 20% 40%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
 
-  --accent: 32 90% 96%;
-  --accent-foreground: 32 90% 35%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
 
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
 
-  --border: 40 10% 85%;
-  --input: 40 10% 85%;
-  --ring: 32 90% 43%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 47.4% 11.2%;
 
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 }
 
 @layer base {

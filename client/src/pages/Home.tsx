@@ -14,50 +14,98 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-primary">
+      <section className="relative h-screen flex items-center overflow-hidden bg-slate-950">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/hero-background.png" 
             alt="Cinema Hero" 
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 via-primary/50 to-primary/40" />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
         </div>
 
-        <div className="container-wide relative z-10 text-center text-white space-y-8">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-display font-bold leading-tight text-white"
-          >
-            Défendre les droits des femmes par le <span className="text-secondary">Cinéma</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl md:text-2xl font-light max-w-3xl mx-auto text-gray-200"
-          >
-            Histoires authentiques, sans stéréotypes, pour sensibiliser à l'égalité des femmes et combattre les violences basées sur le genre.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
-          >
-            <Link href="/projects" className="px-8 py-4 bg-secondary text-white rounded-full font-bold uppercase tracking-widest hover:bg-secondary/90 transition-all hover:scale-105 flex items-center justify-center gap-2">
-              Nos Projets <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link href="/about" className="px-8 py-4 border-2 border-white/30 text-white rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all flex items-center justify-center">
-              À Propos
-            </Link>
-          </motion.div>
+        <div className="container-wide relative z-10 text-white space-y-10">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-4 mb-6"
+            >
+              <span className="h-px w-12 bg-secondary" />
+              <span className="text-secondary uppercase tracking-[0.3em] text-sm font-bold">Depuis 2017</span>
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-8xl font-display font-bold leading-[0.9] text-white mb-8"
+            >
+              RACONTER <br /> 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">L'AUTRE</span> <br />
+              HISTOIRE.
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-xl md:text-2xl font-light max-w-2xl text-slate-300 leading-relaxed"
+            >
+              Taafé Vision utilise le septième art comme un levier puissant pour la défense des droits des femmes et l'égalité des genres au Burkina Faso.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-6 pt-10"
+            >
+              <Link href="/projects" className="px-10 py-5 bg-white text-slate-950 rounded-sm font-bold uppercase tracking-widest hover:bg-secondary hover:text-white transition-all flex items-center justify-center gap-3 group">
+                Découvrir nos actions <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link href="/about" className="px-10 py-5 border border-white/20 text-white rounded-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center">
+                Notre Vision
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
+          <span className="text-[10px] uppercase tracking-widest">Scroll</span>
+          <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent" />
+        </div>
+      </section>
+
+      {/* Impact Section */}
+      <section className="py-32 bg-white border-y border-slate-100">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-4 gap-16">
+            <div className="lg:col-span-1">
+              <h2 className="text-4xl font-display font-bold text-slate-950 leading-tight">Notre impact en chiffres.</h2>
+              <div className="h-1 w-12 bg-secondary mt-6" />
+            </div>
+            <div className="lg:col-span-3 grid md:grid-cols-3 gap-12">
+              <div className="space-y-2">
+                <div className="text-6xl font-display font-bold text-slate-950">50+</div>
+                <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Femmes cinéastes formées</p>
+                <p className="text-sm text-slate-400">Accompagnement technique et artistique complet.</p>
+              </div>
+              <div className="space-y-2">
+                <div className="text-6xl font-display font-bold text-slate-950">15+</div>
+                <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Productions réalisées</p>
+                <p className="text-sm text-slate-400">Documentaires et fictions engagés pour le changement.</p>
+              </div>
+              <div className="space-y-2">
+                <div className="text-6xl font-display font-bold text-slate-950">10k+</div>
+                <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Personnes sensibilisées</p>
+                <p className="text-sm text-slate-400">À travers nos projections et débats communautaires.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
