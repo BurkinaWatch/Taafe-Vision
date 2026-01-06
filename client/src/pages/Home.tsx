@@ -22,7 +22,7 @@ export default function Home() {
             alt="Cinema Hero" 
             className="w-full h-full object-cover opacity-50 transition-all duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 via-transparent to-transparent" />
         </div>
 
         <div className="container-wide relative z-10 text-white space-y-10">
