@@ -27,42 +27,47 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
-      <div className="container-wide py-5 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold font-display text-slate-900 flex items-center gap-3 group">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50 shadow-sm transition-all duration-300">
+      <div className="container-wide py-4 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-bold font-display text-slate-900 flex items-center gap-4 group transition-transform hover:scale-[1.02]">
           <div className="relative">
-            <img src="/images/logo.jpg" alt="Taafé Vision Logo" className="w-12 h-12 rounded-full object-cover border-2 border-slate-100 group-hover:border-secondary transition-colors" />
+            <div className="absolute -inset-1 bg-gradient-to-tr from-[#f146ad] to-[#39cd15] rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity" />
+            <img src="/images/logo.jpg" alt="Taafé Vision Logo" className="relative w-11 h-11 rounded-full object-cover border-2 border-white shadow-sm transition-all group-hover:border-[#f146ad]" />
           </div>
-          <div className="flex flex-col leading-none">
-            <span className="tracking-tighter">Taafé Vision</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-body mt-1">Cinéma & Droits</span>
+          <div className="flex flex-col leading-tight">
+            <span className="tracking-tight font-extrabold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">Taafé Vision</span>
+            <span className="text-[9px] uppercase tracking-[0.25em] text-slate-500 font-bold mt-0.5">Cinéma & Droits Humains</span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center flex-1 justify-end gap-8">
-          <div className="flex items-center gap-8 border-r border-slate-200 pr-8">
+        <div className="hidden lg:flex items-center flex-1 justify-end gap-10">
+          <div className="flex items-center gap-8 border-r border-slate-200/60 pr-10">
             {links.map((link) => (
               <Link key={link.href} href={link.href} className={cn(
-                "text-xs uppercase tracking-[0.15em] font-bold transition-all hover:text-secondary",
-                location === link.href ? "text-secondary underline underline-offset-8" : "text-slate-700"
+                "text-[11px] uppercase tracking-[0.2em] font-bold transition-all relative group/link",
+                location === link.href ? "text-[#f146ad]" : "text-slate-600 hover:text-slate-900"
               )}>
                 {link.label}
+                <span className={cn(
+                  "absolute -bottom-1.5 left-0 h-0.5 bg-[#f146ad] transition-all duration-300",
+                  location === link.href ? "w-full" : "w-0 group-hover/link:w-full"
+                )} />
               </Link>
             ))}
           </div>
           
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <a 
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-secondary transition-colors p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full text-slate-500 hover:text-white hover:bg-slate-900 transition-all duration-300 transform hover:-translate-y-1"
                 aria-label={social.label}
               >
-                <social.icon className="w-5 h-5" />
+                <social.icon className="w-4 h-4" />
               </a>
             ))}
           </div>
