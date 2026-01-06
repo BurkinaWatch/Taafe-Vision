@@ -171,19 +171,19 @@ async function seed() {
     await storage.createProject({
       title: "Elles se réalisent",
       description: "Formation de femmes réalisatrices aboutissant à la production de courts-métrages porteurs de messages sociaux et de sensibilisation aux droits des femmes.",
-      imageUrl: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80",
+      imageUrl: "/images/community-engagement-1.jpg",
       date: "2023-2024"
     });
     await storage.createProject({
       title: "De l'idée au court métrage",
       description: "Incubation complète de projets filmiques féminins : écriture, production et diffusion de films sans stéréotypes abordant les violences basées sur le genre.",
-      imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+      imageUrl: "/images/community-screening.jpg",
       date: "2024"
     });
     await storage.createProject({
       title: "Projections communautaires",
       description: "Projections suivies de débats dans les villages, quartiers et écoles pour sensibiliser aux droits des femmes et engager les communautés.",
-      imageUrl: "https://images.unsplash.com/photo-1595521624629-13d14a85e51d?auto=format&fit=crop&q=80",
+      imageUrl: "/images/partners-1.jpg",
       date: "2024"
     });
   }
@@ -196,7 +196,7 @@ async function seed() {
       director: "Collective Taafé Vision",
       synopsis: "Un documentaire poignant sur la résilience féminine et la place des femmes dans le cinéma burkinabè. Une méditation sur le pouvoir transformateur du cinéma.",
       year: 2023,
-      imageUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80",
+      imageUrl: "/images/film-poster-1.jpg",
       videoUrl: "#"
     });
     await storage.createFilm({
@@ -204,7 +204,7 @@ async function seed() {
       director: "Réalisatrices Taafé Vision",
       synopsis: "Court-métrage abordant les violences basées sur le genre et le chemin vers l'autonomisation. Une histoire de courage et de transformation.",
       year: 2023,
-      imageUrl: "https://images.unsplash.com/photo-1595521622529-d54ddd4d12b5?auto=format&fit=crop&q=80",
+      imageUrl: "/images/azaratou.png",
       videoUrl: "#"
     });
   }
@@ -214,7 +214,7 @@ async function seed() {
     console.log("Seeding partners...");
     await storage.createPartner({
       name: "FESPACO",
-      logoUrl: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&fit=crop&q=80",
+      logoUrl: "/images/logo.jpg",
       website: "https://fespaco.org"
     });
     await storage.createPartner({
