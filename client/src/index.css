@@ -8,36 +8,36 @@
   --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 
-  /* Slate 950 - Institutionnel et Sobre */
-  --primary: 222 47% 11%; 
-  --primary-foreground: 210 40% 98%;
+  /* Jaune Lumineux (Fond) */
+  --background: 55 100% 93%;
+  --foreground: 330 80% 30%;
 
-  /* Red/Deep Orange - Accent dynamique */
-  --secondary: 10 80% 50%;
-  --secondary-foreground: 210 40% 98%;
+  /* Rose Taafé (Accent Primaire) */
+  --primary: 330 81% 60%; 
+  --primary-foreground: 0 0% 100%;
 
-  /* Clean White Background */
-  --background: 0 0% 100%;
-  --foreground: 222 47% 11%;
+  /* Vert Vision (Accent Secondaire) */
+  --secondary: 95 100% 45%;
+  --secondary-foreground: 0 0% 100%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card: 55 100% 95%;
+  --card-foreground: 330 80% 30%;
   
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --popover: 55 100% 95%;
+  --popover-foreground: 330 80% 30%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 55 50% 85%;
+  --muted-foreground: 330 30% 45%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent: 95 80% 90%;
+  --accent-foreground: 95 100% 25%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 47.4% 11.2%;
+  --border: 55 50% 80%;
+  --input: 55 50% 80%;
+  --ring: 330 81% 60%;
 
   --radius: 0.5rem;
 }
