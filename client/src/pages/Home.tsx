@@ -148,21 +148,21 @@ export default function Home() {
               <Play className="w-8 h-8 fill-current" />
             </div>
             <h3 className="text-2xl font-display mb-4">Production</h3>
-            <p className="text-muted-foreground leading-relaxed">Producing high-quality films and documentaries that amplify women's voices and perspectives.</p>
+            <p className="text-muted-foreground leading-relaxed">Production de films et documentaires de haute qualité qui amplifient les voix et les perspectives des femmes.</p>
           </div>
           <div className="p-8 rounded-2xl bg-white shadow-lg border border-border/50 hover:-translate-y-2 transition-transform duration-300">
             <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-secondary">
               <Award className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-display mb-4">Training</h3>
-            <p className="text-muted-foreground leading-relaxed">Providing professional training and mentorship programs for aspiring female filmmakers.</p>
+            <h3 className="text-2xl font-display mb-4">Formation</h3>
+            <p className="text-muted-foreground leading-relaxed">Programmes de formation professionnelle et de mentorat pour les futures cinéastes.</p>
           </div>
           <div className="p-8 rounded-2xl bg-white shadow-lg border border-border/50 hover:-translate-y-2 transition-transform duration-300">
             <div className="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
               <Users className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-display mb-4">Community</h3>
-            <p className="text-muted-foreground leading-relaxed">Building a strong network of women in cinema across Burkina Faso and beyond.</p>
+            <h3 className="text-2xl font-display mb-4">Communauté</h3>
+            <p className="text-muted-foreground leading-relaxed">Construction d'un réseau solide de femmes dans le cinéma au Burkina Faso et au-delà.</p>
           </div>
         </div>
       </section>
@@ -188,7 +188,7 @@ export default function Home() {
                   <p className="text-white/80 text-sm font-medium mb-2">{film.director} • {film.year}</p>
                   <p className="text-white/60 text-sm line-clamp-2 mb-4">{film.synopsis}</p>
                   <Link href="/films" className="inline-flex items-center text-secondary font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
-                    View Details <ArrowRight className="w-4 h-4 ml-2" />
+                    Voir détails <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </div>
               </div>
