@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useFilms } from "@/hooks/use-films";
 import { PlayCircle } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Films() {
   const { films, isLoading } = useFilms();
@@ -25,38 +26,27 @@ export default function Films() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {films?.map((film) => (
-                <div key={film.id} className="group relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl hover:shadow-secondary/20 transition-all duration-300 border border-gray-800 flex flex-col">
-                  <div className="aspect-[3/4] relative overflow-hidden bg-gray-800">
-                    <img 
-                      src={film.imageUrl.startsWith('@assets') ? film.imageUrl.replace('@assets', '/attached_assets') : film.imageUrl} 
-                      alt={film.title} 
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                      onError={(e) => { 
-                        const target = e.currentTarget;
-                        if (!target.dataset.triedBackup) {
-                          target.dataset.triedBackup = "true";
-                          target.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80";
-                        }
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
-                      <a href={film.videoUrl || "#"} className="transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                        <PlayCircle className="w-16 h-16 text-white drop-shadow-lg" />
-                      </a>
+                <Link key={film.id} href={`/films/${film.id}`}>
+                  <div className="group relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl hover:shadow-secondary/20 transition-all duration-300 border border-gray-800 flex flex-col h-full cursor-pointer">
+                    <div className="aspect-[3/4] relative overflow-hidden bg-gray-800">
+                      <img 
+                        src={film.imageUrl} 
+                        alt={film.title} 
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
+                    </div>
+                    
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start gap-2 mb-2">
+                        <h3 className="text-lg font-display font-bold text-white leading-tight">{film.title}</h3>
+                        <span className="text-xs font-mono text-secondary border border-secondary/30 px-1.5 py-0.5 rounded whitespace-nowrap">{film.year}</span>
+                      </div>
+                      <p className="text-xs text-gray-400 mb-4 font-medium uppercase tracking-wider">Réal. {film.director}</p>
+                      <p className="text-gray-500 text-sm leading-relaxed line-clamp-4">{film.synopsis}</p>
                     </div>
                   </div>
-                  
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex justify-between items-start gap-2 mb-2">
-                      <h3 className="text-lg font-display font-bold text-white leading-tight">{film.title}</h3>
-                      <span className="text-xs font-mono text-secondary border border-secondary/30 px-1.5 py-0.5 rounded whitespace-nowrap">{film.year}</span>
-                    </div>
-                    <p className="text-xs text-gray-400 mb-4 font-medium uppercase tracking-wider">Réal. {film.director}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-4">{film.synopsis}</p>
-                  </div>
-                </div>
+                </Link>
               ))}
 
               {!films?.length && (

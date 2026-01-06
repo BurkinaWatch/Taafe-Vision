@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Films from "./pages/Films";
+import FilmDetail from "./pages/FilmDetail";
 import Trainings from "./pages/Trainings";
 import News from "./pages/News";
 import Partners from "./pages/Partners";
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/projects" component={Projects} />
       <Route path="/films" component={Films} />
+      <Route path="/films/:id" component={FilmDetail} />
       <Route path="/trainings" component={Trainings} />
       <Route path="/news" component={News} />
       <Route path="/partners" component={Partners} />
