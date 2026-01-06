@@ -23,16 +23,17 @@ export default function Films() {
           {isLoading ? (
              <div className="text-center py-20 text-gray-500">Chargement de la filmographie...</div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {films?.map((film) => (
-                <div key={film.id} className="group relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl hover:shadow-secondary/20 transition-all duration-300 border border-gray-800">
-                  <div className="aspect-[2/3] relative overflow-hidden bg-gray-800">
+                <div key={film.id} className="group relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl hover:shadow-secondary/20 transition-all duration-300 border border-gray-800 flex flex-col">
+                  <div className="aspect-[3/4] relative overflow-hidden bg-gray-800">
                     <img 
                       src={film.imageUrl} 
                       alt={film.title} 
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                      onError={(e) => { e.currentTarget.src = "/images/film-poster-1.jpg"; }}
+                      onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"; }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
                     {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
                       <a href={film.videoUrl || "#"} className="transform scale-90 group-hover:scale-100 transition-transform duration-300">
@@ -41,13 +42,13 @@ export default function Films() {
                     </div>
                   </div>
                   
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-display font-bold text-white">{film.title}</h3>
-                      <span className="text-sm font-mono text-secondary border border-secondary/30 px-2 py-0.5 rounded">{film.year}</span>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex justify-between items-start gap-2 mb-2">
+                      <h3 className="text-lg font-display font-bold text-white leading-tight">{film.title}</h3>
+                      <span className="text-xs font-mono text-secondary border border-secondary/30 px-1.5 py-0.5 rounded whitespace-nowrap">{film.year}</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 font-medium uppercase tracking-wider">Dir. {film.director}</p>
-                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">{film.synopsis}</p>
+                    <p className="text-xs text-gray-400 mb-4 font-medium uppercase tracking-wider">Réal. {film.director}</p>
+                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-4">{film.synopsis}</p>
                   </div>
                 </div>
               ))}
