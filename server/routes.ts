@@ -320,6 +320,10 @@ async function seed() {
       name: "Foundation for a Just Society (FJS)",
       logoUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
     });
+    await storage.createPartner({
+      name: "Agence Burkinabe de la Cinematographie et de l'Audioviseul (ABCA)",
+      logoUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"
+    });
   }
 
   const articles = await storage.getArticles();
