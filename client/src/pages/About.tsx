@@ -8,10 +8,14 @@ export default function About() {
       <Navbar />
       
       {/* Header */}
-      <div className="bg-primary py-24 text-white text-center">
+      <div className="bg-slate-950 py-32 text-white">
         <div className="container-wide">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-4">Notre Histoire</h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">Depuis 2017, une association apolitique et laïque engagée pour les droits des femmes dans le cinéma.</p>
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8">ASSOCIATION <br /> TAAFE VISION</h1>
+            <p className="text-xl text-slate-400 leading-relaxed">
+              Une organisation féministe, apolitique et laïque qui milite pour une représentativité plus significative de la femme dans l’industrie cinématographique.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -19,67 +23,58 @@ export default function About() {
         
         {/* Mission Section */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
+          <div className="relative">
             <img 
               src="/images/community-engagement-1.jpg" 
               alt="Woman Filmmaker" 
-              className="rounded-2xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
+              className="rounded-lg shadow-2xl relative z-10"
             />
+            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-secondary/10 rounded-lg -z-0" />
           </div>
-          <div className="space-y-6">
-            <SectionHeader title="Notre Mission" />
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Taafé Vision milite pour une représentativité plus significative des femmes dans l'industrie cinématographique et audiovisuelle. 
-              Notre objectif est de défendre les droits des femmes à travers la création de films sans stéréotypes.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Nous abordons des sujets écrits par des femmes pour sensibiliser à des thèmes essentiels comme les violences basées sur le genre. 
-              Le cinéma est notre outil de promotion et de diffusion des droits de la femme dans nos sociétés.
-            </p>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-secondary mb-4">Notre Histoire</h2>
+              <p className="text-lg text-slate-700 leading-relaxed">
+                En 2016, un groupe de femmes professionnelles du cinéma et de l’audiovisuel font un constat alarmant : insuffisance de femmes sur les plateaux, persistance des stéréotypes et manque de rôles valorisants. C’est ainsi qu’est née « Taafé Vision », qui signifie en langue bambara « Vision de femmes ».
+              </p>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold text-slate-900">Une Mission Claire</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Produire et diffuser des films exempts de stéréotypes de genre qui soutiennent l’abandon de toutes sortes de violences basées sur le genre.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold text-slate-900">Une Vision Ambitieuse</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  D'ici 2030, être une association leader dans la lutte pour un monde plus égalitaire et juste au moyen du film.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Leadership Section */}
-        <div className="bg-muted/30 rounded-3xl p-12 md:p-20 border border-border/50">
-          <SectionHeader title="Leadership & Fondation" centered />
-          
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-16">
-             <div className="w-64 h-64 shrink-0 relative">
-               <div className="absolute inset-0 bg-secondary rounded-full transform translate-x-2 translate-y-2" />
-               <img 
-                 src="/images/azaratou.png" 
-                 alt="Azaratou Bancé" 
-                 className="w-full h-full object-cover rounded-full relative z-10 border-4 border-white shadow-xl"
-               />
-             </div>
-             <div className="text-center md:text-left space-y-4">
-               <h3 className="text-3xl font-display font-bold text-primary">Azaratou Bancé</h3>
-               <p className="text-secondary font-bold uppercase tracking-widest text-sm">Présidente & Fondatrice</p>
-               <p className="text-muted-foreground italic text-lg">
-                 "Le cinéma est un outil puissant de changement. Quand les femmes tiennent la caméra, elles racontent des histoires qui guérissent, inspirent et transforment nos sociétés."
-               </p>
-               <div className="pt-4 space-y-2 text-sm text-muted-foreground">
-                 <p><strong>Association fondée:</strong> 2017</p>
-                 <p><strong>Statut:</strong> Association à but non lucratif, apolitique et laïque</p>
-                 <p><strong>Localisation:</strong> Ouagadougou, Burkina Faso</p>
-               </div>
-             </div>
+        {/* Values Section */}
+        <div className="py-24 border-y border-slate-100">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-display font-bold text-slate-900 mb-4">Nos Valeurs nous distinguent</h2>
+            <p className="text-slate-500 uppercase tracking-widest text-xs font-bold">Principes fondamentaux de notre combat féministe</p>
           </div>
-
-          {/* Values Section */}
-          <div className="grid md:grid-cols-3 gap-8 mt-12 pt-12 border-t border-border">
-            <div className="text-center space-y-3">
-              <h4 className="text-xl font-display font-bold text-primary">Apolitique & Laïque</h4>
-              <p className="text-muted-foreground text-sm">Notre action transcende les clivages politiques et religieux pour servir l'égalité.</p>
-            </div>
-            <div className="text-center space-y-3">
-              <h4 className="text-xl font-display font-bold text-primary">Sans Stéréotypes</h4>
-              <p className="text-muted-foreground text-sm">Nous créons des films authentiques qui déconstruisent les idées reçues sur les femmes.</p>
-            </div>
-            <div className="text-center space-y-3">
-              <h4 className="text-xl font-display font-bold text-primary">Transformateur</h4>
-              <p className="text-muted-foreground text-sm">Chaque film est un acte de sensibilisation pour changer les mentalités et sociétés.</p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+            {[
+              { title: "Dignité", desc: "Respect de la personne humaine." },
+              { title: "Responsabilité", desc: "Engagement envers nos actions." },
+              { title: "Intersectionnalité", desc: "Prise en compte des identités." },
+              { title: "Autonomie", desc: "Indépendance et liberté d'action." },
+              { title: "Egalité", desc: "Justice sociale pour toutes." }
+            ].map((value) => (
+              <div key={value.title} className="text-center group p-6 rounded-xl hover:bg-slate-50 transition-colors">
+                <h4 className="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-secondary transition-colors">{value.title}</h4>
+                <p className="text-slate-500 text-xs leading-relaxed">{value.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
