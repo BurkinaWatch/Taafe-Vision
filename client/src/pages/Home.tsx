@@ -20,7 +20,7 @@ export default function Home() {
           <img 
             src="/images/hero-background.png" 
             alt="Cinema Hero" 
-            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
+            className="w-full h-full object-cover opacity-50 transition-all duration-1000"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
         </div>
