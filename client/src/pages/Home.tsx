@@ -41,11 +41,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-display font-bold leading-[0.9] text-white mb-8"
+              className="text-6xl md:text-8xl font-display font-bold leading-[0.9] text-secondary mb-8"
             >
-              RACONTER <br /> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">L'AUTRE</span> <br />
-              HISTOIRE.
+              TAAFE VISION
             </motion.h1>
             
             <motion.p 
