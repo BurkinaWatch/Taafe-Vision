@@ -21,6 +21,7 @@ export interface IStorage {
 
   // Films
   getFilms(): Promise<Film[]>;
+  getFilm(id: number): Promise<Film | undefined>;
   createFilm(film: InsertFilm): Promise<Film>;
   deleteFilm(id: number): Promise<void>;
 
@@ -68,6 +69,10 @@ export class DatabaseStorage implements IStorage {
   // Films
   async getFilms(): Promise<Film[]> {
     return await db.select().from(films);
+  }
+  async getFilm(id: number): Promise<Film | undefined> {
+    const [film] = await db.select().from(films).where(eq(films.id, id));
+    return film;
   }
   async createFilm(insertFilm: InsertFilm): Promise<Film> {
     const [film] = await db.insert(films).values(insertFilm).returning();

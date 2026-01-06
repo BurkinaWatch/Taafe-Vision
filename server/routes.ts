@@ -89,6 +89,11 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     const films = await storage.getFilms();
     res.json(films);
   });
+  app.get(api.films.get.path, async (req, res) => {
+    const film = await storage.getFilm(parseInt(req.params.id));
+    if (!film) return res.status(404).json({ message: "Film not found" });
+    res.json(film);
+  });
   app.post(api.films.create.path, requireAuth, async (req, res) => {
     try {
       const film = await storage.createFilm(req.body);
