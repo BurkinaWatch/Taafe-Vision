@@ -44,7 +44,7 @@ export function Navbar() {
           <div className="flex items-center gap-6 border-r border-slate-200 pr-8">
             {links.map((link) => (
               <Link key={link.href} href={link.href} className={cn(
-                "text-[17px] uppercase tracking-[0.2em] font-bold transition-all hover:text-secondary",
+                "text-[10px] uppercase tracking-[0.2em] font-bold transition-all hover:text-secondary",
                 location === link.href ? "text-secondary" : "text-slate-600"
               )}>
                 {link.label}
