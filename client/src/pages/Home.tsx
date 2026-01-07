@@ -1,11 +1,14 @@
 import { Link } from "wouter";
-import { ArrowRight, Play, Award, Users } from "lucide-react";
+import { ArrowRight, Play, Award, Users, Star, Film, Sparkles } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useFilms } from "@/hooks/use-films";
 import { motion } from "framer-motion";
 import { Marquee } from "@/components/Marquee";
+import { Counter } from "@/components/Counter";
+
+// ... partners import ...
 
 // Import partner logos
 import abcaLogo from "@/assets/partners/abca.png";
@@ -99,14 +102,18 @@ export default function Home() {
 
       {/* Impact Section */}
       <section className="py-32 relative overflow-hidden bg-[#fdf8e6]">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#f146ad]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#39cd15]/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
         {/* Afro-style Background Pattern */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ 
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ 
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat'
         }} />
         
         <div className="container-wide relative z-10">
-          <div className="grid lg:grid-cols-4 gap-16">
+          <div className="grid lg:grid-cols-4 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -114,45 +121,70 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-1"
             >
-              <h2 className="text-4xl font-display font-bold text-slate-950 leading-tight">Notre impact en chiffres.</h2>
-              <div className="h-1.5 w-16 bg-[#39cd15] mt-6" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f146ad]/10 text-[#f146ad] text-xs font-bold uppercase tracking-widest mb-6">
+                <Sparkles className="w-3 h-3" /> Chiffres Clés
+              </div>
+              <h2 className="text-5xl font-display font-bold text-slate-950 leading-tight mb-6">Notre impact en chiffres.</h2>
+              <p className="text-slate-600 leading-relaxed mb-8">Chaque chiffre raconte une histoire de changement, d'engagement et de passion pour le cinéma burkinabè.</p>
+              <div className="h-1.5 w-16 bg-[#39cd15]" />
             </motion.div>
             
-            <div className="lg:col-span-3 grid md:grid-cols-3 gap-12">
+            <div className="lg:col-span-3 grid md:grid-cols-3 gap-8">
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-3 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-[#f146ad]/10 hover:shadow-xl transition-all group"
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(241,70,173,0.05)] border border-[#f146ad]/5 hover:border-[#f146ad]/20 transition-all group overflow-hidden"
               >
-                <div className="text-6xl font-display font-bold text-[#f146ad] group-hover:scale-110 transition-transform duration-300 origin-left">50+</div>
-                <p className="text-slate-700 uppercase tracking-widest text-xs font-bold">Femmes cinéastes formées</p>
-                <p className="text-sm text-slate-500 leading-relaxed">Accompagnement technique et artistique complet.</p>
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Users className="w-24 h-24 text-[#f146ad]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
+                    <Counter value={50} suffix="+" />
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">Femmes formées</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">Accompagnement technique et artistique complet pour les futures cinéastes.</p>
+                </div>
               </motion.div>
 
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="space-y-3 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-[#39cd15]/10 hover:shadow-xl transition-all group"
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(57,205,21,0.05)] border border-[#39cd15]/5 hover:border-[#39cd15]/20 transition-all group overflow-hidden"
               >
-                <div className="text-6xl font-display font-bold text-[#39cd15] group-hover:scale-110 transition-transform duration-300 origin-left">15+</div>
-                <p className="text-slate-700 uppercase tracking-widest text-xs font-bold">Productions réalisées</p>
-                <p className="text-sm text-slate-500 leading-relaxed">Documentaires et fictions engagés pour le changement.</p>
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Film className="w-24 h-24 text-[#39cd15]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#39cd15] mb-4 tracking-tighter">
+                    <Counter value={15} suffix="+" />
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">Productions</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">Documentaires et fictions engagés pour le changement social et l'égalité.</p>
+                </div>
               </motion.div>
 
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="space-y-3 p-6 rounded-xl bg-white/50 backdrop-blur-sm border border-[#f146ad]/10 hover:shadow-xl transition-all group"
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(241,70,173,0.05)] border border-[#f146ad]/5 hover:border-[#f146ad]/20 transition-all group overflow-hidden"
               >
-                <div className="text-6xl font-display font-bold text-[#f146ad] group-hover:scale-110 transition-transform duration-300 origin-left">10k+</div>
-                <p className="text-slate-700 uppercase tracking-widest text-xs font-bold">Personnes sensibilisées</p>
-                <p className="text-sm text-slate-500 leading-relaxed">À travers nos projections et débats communautaires.</p>
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Star className="w-24 h-24 text-[#f146ad]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
+                    <Counter value={10} suffix="k+" />
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">Sensibilisées</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">Personnes touchées par nos projections et débats communautaires.</p>
+                </div>
               </motion.div>
             </div>
           </div>
