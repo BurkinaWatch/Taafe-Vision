@@ -177,7 +177,7 @@ export default function Home() {
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {films?.slice(0, 3).map((film) => (
+            {films?.filter(f => f.imageUrl.startsWith('/images/')).slice(0, 3).map((film) => (
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
                   <img src={film.imageUrl} alt={film.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
