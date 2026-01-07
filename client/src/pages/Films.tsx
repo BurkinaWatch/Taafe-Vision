@@ -12,23 +12,7 @@ export default function Films() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <div className="relative min-h-screen pb-24 pt-32 overflow-hidden">
-        {/* Artistic Background */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url("/images/films-bg.jpg")',
-            backgroundSize: '80%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-            backgroundColor: 'black'
-          }}
-        >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black/90" />
-        </div>
-
+      <div className="relative min-h-[50vh] pb-24 pt-32 overflow-hidden bg-black">
         <div className="container-wide relative z-10">
           <div className="mb-16 text-center">
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">Films Produits</h1>
@@ -48,8 +32,12 @@ export default function Films() {
                       <img 
                         src={film.imageUrl} 
                         alt={film.title} 
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                        onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"; }}
+                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
+                        onError={(e) => { 
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80";
+                          target.onerror = null; // Prevent infinite loop
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
                     </div>
