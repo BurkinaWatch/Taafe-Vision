@@ -57,6 +57,23 @@ export const contacts = pgTable("contacts", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// Admin Settings
+export const adminSettings = pgTable("admin_settings", {
+  id: serial("id").primaryKey(),
+  key: text("key").notNull().unique(),
+  value: text("value").notNull(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Admin Logs
+export const adminLogs = pgTable("admin_logs", {
+  id: serial("id").primaryKey(),
+  adminId: integer("admin_id").references(() => users.id),
+  action: text("action").notNull(),
+  details: text("details"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // Schemas
 export const insertUserSchema = createInsertSchema(users);
 export const insertProjectSchema = createInsertSchema(projects).omit({ id: true });
@@ -64,6 +81,18 @@ export const insertFilmSchema = createInsertSchema(films).omit({ id: true });
 export const insertArticleSchema = createInsertSchema(articles).omit({ id: true, createdAt: true });
 export const insertPartnerSchema = createInsertSchema(partners).omit({ id: true });
 export const insertContactSchema = createInsertSchema(contacts).omit({ id: true, createdAt: true });
+export const insertAdminSettingSchema = createInsertSchema(adminSettings).omit({ id: true, updatedAt: true });
+export const insertAdminLogSchema = createInsertSchema(adminLogs).omit({ id: true, createdAt: true });
+
+// Insert Types
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type InsertProject = z.infer<typeof insertProjectSchema>;
+export type InsertFilm = z.infer<typeof insertFilmSchema>;
+export type InsertArticle = z.infer<typeof insertArticleSchema>;
+export type InsertPartner = z.infer<typeof insertPartnerSchema>;
+export type InsertContact = z.infer<typeof insertContactSchema>;
+export type InsertAdminSetting = z.infer<typeof insertAdminSettingSchema>;
+export type InsertAdminLog = z.infer<typeof insertAdminLogSchema>;
 
 // Types
 export type User = typeof users.$inferSelect;
@@ -72,3 +101,5 @@ export type Film = typeof films.$inferSelect;
 export type Article = typeof articles.$inferSelect;
 export type Partner = typeof partners.$inferSelect;
 export type Contact = typeof contacts.$inferSelect;
+export type AdminSetting = typeof adminSettings.$inferSelect;
+export type AdminLog = typeof adminLogs.$inferSelect;

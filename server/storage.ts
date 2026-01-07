@@ -1,11 +1,9 @@
 import { db } from "./db";
 import { 
-  users, projects, films, articles, partners, contacts
+  users, projects, films, articles, partners, contacts, adminSettings, adminLogs,
+  type User, type Project, type Film, type Article, type Partner, type Contact, type AdminSetting, type AdminLog,
+  type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertPartner, type InsertContact, type InsertAdminSetting, type InsertAdminLog
 } from "@shared/schema";
-import { 
-  type User, type Project, type Film, type Article, type Partner, type Contact,
-  type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertPartner, type InsertContact
-} from "@shared/routes";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {
@@ -37,6 +35,14 @@ export interface IStorage {
 
   // Contacts
   createContact(contact: InsertContact): Promise<Contact>;
+
+  // Admin Settings
+  getAdminSettings(): Promise<AdminSetting[]>;
+  updateAdminSetting(key: string, value: string): Promise<AdminSetting>;
+
+  // Admin Logs
+  getAdminLogs(): Promise<AdminLog[]>;
+  createAdminLog(log: InsertAdminLog): Promise<AdminLog>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -110,6 +116,28 @@ export class DatabaseStorage implements IStorage {
   async createContact(insertContact: InsertContact): Promise<Contact> {
     const [contact] = await db.insert(contacts).values(insertContact).returning();
     return contact;
+  }
+
+  // Admin Settings
+  async getAdminSettings(): Promise<AdminSetting[]> {
+    return await db.select().from(adminSettings);
+  }
+  async updateAdminSetting(key: string, value: string): Promise<AdminSetting> {
+    const [setting] = await db
+      .insert(adminSettings)
+      .values({ key, value })
+      .onConflictDoUpdate({ target: adminSettings.key, set: { value, updatedAt: new Date() } })
+      .returning();
+    return setting;
+  }
+
+  // Admin Logs
+  async getAdminLogs(): Promise<AdminLog[]> {
+    return await db.select().from(adminLogs);
+  }
+  async createAdminLog(insertLog: InsertAdminLog): Promise<AdminLog> {
+    const [log] = await db.insert(adminLogs).values(insertLog).returning();
+    return log;
   }
 }
 
