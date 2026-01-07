@@ -274,7 +274,7 @@ async function seed() {
         director: "Edith Martine TRAORE",
         synopsis: "Maya, une jeune dame s’installe nouvellement dans un quartier de Ouagadougou avec son mari Marcus et leur fille Maelys. Ses voisins, chefs d’ateliers, ont la fâcheuse habitude de bruler les ordures, ce qui fragilise considérablement l’état de santé de sa fille qui souffre d’asthme. Inquiète après la première interpellation inféconde de Marcus, Maya tente de trouver une solution pacifique pour préserver la santé de sa fille et le vivre ensemble.",
         year: 2024,
-        imageUrl: "@assets/WhatsApp_Image_2026-01-07_at_07.04.32_1767819001748.jpeg",
+        imageUrl: "/images/mes-voisins.jpg",
         videoUrl: "#"
       },
       {
@@ -290,7 +290,7 @@ async function seed() {
         director: "LAGUEMPEDO Barkima Nafissatou",
         synopsis: "Juge T. Blanche, une femme trentenaire se rend coupable du meurtre du Général Juste TAMALEBO, son père. Tenue par un pacte de silence scellé entre sa défunte mère Aline et elle, Blanche est contrainte de garder secrètes les faits de viols incestueux dont elle a été victime durant son enfance. Un film poignant sur le silence, le traumatisme et la justice.",
         year: 2024,
-        imageUrl: "@assets/1767710337808_1767738441350.jpg",
+        imageUrl: "/images/juge-blanche.jpg",
         videoUrl: "#"
       }
     ];
