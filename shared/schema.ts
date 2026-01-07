@@ -17,6 +17,7 @@ export const projects = pgTable("projects", {
   description: text("description").notNull(),
   imageUrl: text("image_url").notNull(),
   date: text("date"), // e.g., "2023-2024"
+  isHidden: boolean("is_hidden").default(false).notNull(),
 });
 
 // Films
@@ -28,6 +29,7 @@ export const films = pgTable("films", {
   year: integer("year").notNull(),
   imageUrl: text("image_url").notNull(),
   videoUrl: text("video_url"),
+  isHidden: boolean("is_hidden").default(false).notNull(),
 });
 
 // Articles (News & Events)
@@ -38,6 +40,7 @@ export const articles = pgTable("articles", {
   imageUrl: text("image_url"),
   category: text("category").notNull(), // 'news', 'event', 'training'
   createdAt: timestamp("created_at").defaultNow(),
+  isHidden: boolean("is_hidden").default(false).notNull(),
 });
 
 // Partners

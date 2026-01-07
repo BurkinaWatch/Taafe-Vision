@@ -79,6 +79,14 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       res.status(400).json({ message: "Invalid input" });
     }
   });
+  app.patch("/api/projects/:id", requireAuth, async (req, res) => {
+    try {
+      const project = await storage.updateProject(parseInt(req.params.id), req.body);
+      res.json(project);
+    } catch (e) {
+      res.status(400).json({ message: "Invalid input" });
+    }
+  });
   app.delete(api.projects.delete.path, requireAuth, async (req, res) => {
     await storage.deleteProject(parseInt(req.params.id));
     res.sendStatus(204);
@@ -102,6 +110,14 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       res.status(400).json({ message: "Invalid input" });
     }
   });
+  app.patch("/api/films/:id", requireAuth, async (req, res) => {
+    try {
+      const film = await storage.updateFilm(parseInt(req.params.id), req.body);
+      res.json(film);
+    } catch (e) {
+      res.status(400).json({ message: "Invalid input" });
+    }
+  });
   app.delete(api.films.delete.path, requireAuth, async (req, res) => {
     await storage.deleteFilm(parseInt(req.params.id));
     res.sendStatus(204);
@@ -116,6 +132,14 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     try {
       const article = await storage.createArticle(req.body);
       res.status(201).json(article);
+    } catch (e) {
+      res.status(400).json({ message: "Invalid input" });
+    }
+  });
+  app.patch("/api/articles/:id", requireAuth, async (req, res) => {
+    try {
+      const article = await storage.updateArticle(parseInt(req.params.id), req.body);
+      res.json(article);
     } catch (e) {
       res.status(400).json({ message: "Invalid input" });
     }

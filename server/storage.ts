@@ -14,18 +14,23 @@ export interface IStorage {
 
   // Projects
   getProjects(): Promise<Project[]>;
+  getProject(id: number): Promise<Project | undefined>;
   createProject(project: InsertProject): Promise<Project>;
+  updateProject(id: number, project: Partial<InsertProject>): Promise<Project>;
   deleteProject(id: number): Promise<void>;
 
   // Films
   getFilms(): Promise<Film[]>;
   getFilm(id: number): Promise<Film | undefined>;
   createFilm(film: InsertFilm): Promise<Film>;
+  updateFilm(id: number, film: Partial<InsertFilm>): Promise<Film>;
   deleteFilm(id: number): Promise<void>;
 
   // Articles
   getArticles(): Promise<Article[]>;
+  getArticle(id: number): Promise<Article | undefined>;
   createArticle(article: InsertArticle): Promise<Article>;
+  updateArticle(id: number, article: Partial<InsertArticle>): Promise<Article>;
   deleteArticle(id: number): Promise<void>;
 
   // Partners
@@ -65,9 +70,17 @@ export class DatabaseStorage implements IStorage {
   async getProjects(): Promise<Project[]> {
     return await db.select().from(projects);
   }
+  async getProject(id: number): Promise<Project | undefined> {
+    const [project] = await db.select().from(projects).where(eq(projects.id, id));
+    return project;
+  }
   async createProject(insertProject: InsertProject): Promise<Project> {
     const [project] = await db.insert(projects).values(insertProject).returning();
     return project;
+  }
+  async updateProject(id: number, project: Partial<InsertProject>): Promise<Project> {
+    const [updated] = await db.update(projects).set(project).where(eq(projects.id, id)).returning();
+    return updated;
   }
   async deleteProject(id: number): Promise<void> {
     await db.delete(projects).where(eq(projects.id, id));
@@ -85,6 +98,10 @@ export class DatabaseStorage implements IStorage {
     const [film] = await db.insert(films).values(insertFilm).returning();
     return film;
   }
+  async updateFilm(id: number, film: Partial<InsertFilm>): Promise<Film> {
+    const [updated] = await db.update(films).set(film).where(eq(films.id, id)).returning();
+    return updated;
+  }
   async deleteFilm(id: number): Promise<void> {
     await db.delete(films).where(eq(films.id, id));
   }
@@ -93,9 +110,17 @@ export class DatabaseStorage implements IStorage {
   async getArticles(): Promise<Article[]> {
     return await db.select().from(articles);
   }
+  async getArticle(id: number): Promise<Article | undefined> {
+    const [article] = await db.select().from(articles).where(eq(articles.id, id));
+    return article;
+  }
   async createArticle(insertArticle: InsertArticle): Promise<Article> {
     const [article] = await db.insert(articles).values(insertArticle).returning();
     return article;
+  }
+  async updateArticle(id: number, article: Partial<InsertArticle>): Promise<Article> {
+    const [updated] = await db.update(articles).set(article).where(eq(articles.id, id)).returning();
+    return updated;
   }
   async deleteArticle(id: number): Promise<void> {
     await db.delete(articles).where(eq(articles.id, id));
