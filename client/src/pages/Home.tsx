@@ -4,10 +4,16 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useFilms } from "@/hooks/use-films";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
+import { Marquee } from "@/components/Marquee";
+import { Partner } from "@shared/schema";
 
 export default function Home() {
   const { films } = useFilms();
+  const { data: partners } = useQuery<Partner[]>({ 
+    queryKey: ["/api/partners"]
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -210,7 +216,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="py-24 bg-white">
+        <div className="container-wide">
+          <SectionHeader 
+            title="Nos Partenaires" 
+            subtitle="Nous collaborons avec des organisations locales et internationales pour amplifier notre impact"
+            centered
+          />
+
+          <div className="mt-16 relative">
+            {/* Gradient Masking */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+            
+            <Marquee speed={30}>
+              {partners?.map((partner) => (
+                <div 
+                  key={partner.id} 
+                  className="flex items-center justify-center px-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                >
+                  <img 
+                    src={partner.logoUrl} 
+                    alt={partner.name} 
+                    className="h-12 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </Marquee>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
 }
+
