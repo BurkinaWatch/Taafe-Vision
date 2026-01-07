@@ -210,7 +210,7 @@ async function seed() {
         director: "Naima Maguilatou TRAORE",
         synopsis: "Après son mariage, Dia, âgée de 23 ans et déléguée des étudiants.tes de son Université est encore sous contraceptif, situation qui déplait à Maman, sa belle-mère. Elle ambitionne bâtir une carrière avant d’envisager d’avoir des enfants. La matriarche, offusquée par le choix de Dia exige d’elle une grossesse avant les 15 jours de confinement traditionnel de la nouvelle mariée. Dia restera-t-elle sur sa position ou cédera-t-elle à la pression de sa belle-mère ?",
         year: 2024,
-        imageUrl: "@assets/WhatsApp_Image_2026-01-06_at_14.41.00_(2)_1767738441353.jpeg",
+        imageUrl: "/images/affranchie.jpg",
         videoUrl: "#"
       },
       {
@@ -218,7 +218,7 @@ async function seed() {
         director: "Salimata OUEDRAOGO",
         synopsis: "Aicha, une adolescente vit dans une zone à haut défi sécuritaire. Pour s’assurer une bonne couverture sociale, son père lui impose un mariage auquel elle s’oppose farouchement. Elle migre en ville où elle trouve un emploi d’aide-ménagère. Cependant son calvaire est sans fin car le mari de sa patronne la harcèle et tente de la violer. Va-t-elle céder ou être contrainte de fuir à nouveau ?",
         year: 2024,
-        imageUrl: "@assets/WhatsApp_Image_2026-01-06_at_14.41.00_(1)_1767738441353.jpeg",
+        imageUrl: "/images/terminus.jpg",
         videoUrl: "#"
       },
       {
@@ -242,7 +242,7 @@ async function seed() {
         director: "Délia E. Y. IDO",
         synopsis: "Marietou est une jeune fille de 17 ans, qui vient d’obtenir une bourse d’étude étrangère. Mais ses rêves tombent à l’eau car son père a décidé de la donner en mariage à son riche ami. Marietou se retrouve face à un dilemme : obéir à son père ou poursuivre ses rêves. Elle décide de s’enfuir. Parviendra-t-elle à échapper à ce destin tracé pour elle ?",
         year: 2024,
-        imageUrl: "@assets/FB_IMG_1767709939584_1767738441352.jpg",
+        imageUrl: "/images/au-pied-du-mur.jpg",
         videoUrl: "#"
       },
       {
@@ -250,7 +250,7 @@ async function seed() {
         director: "Cathérine GOLO",
         synopsis: "Fatim, une jeune fille victime de viol et enceinte est contrainte d’épouser son bourreau en guise de réparation du déshonneur faite à sa famille. Dans son foyer, elle subit beaucoup de violences psychologique et physique. Avec le soutien de sa cousine, Fatim décide de se prendre en main.",
         year: 2024,
-        imageUrl: "@assets/WhatsApp_Image_2026-01-06_at_16.19.53_1767738441353.jpeg",
+        imageUrl: "/images/incomprise.jpg",
         videoUrl: "#"
       },
       {
@@ -258,7 +258,7 @@ async function seed() {
         director: "Assita SOMA",
         synopsis: "Kadi, jeune femme d’une trentaine d’années, titulaire d’un master II en Droit, vit avec son mari Abdoul et ses deux enfants. L’homme de sa vie se montre attentionné et très amoureux de son épouse si bien qu’il la convainc de limiter ses sorties et se propose de lui faire toutes ses courses. Kady est tellement reconnaissante de cet amour et de cette bienveillance qu’elle implique son mari dans tout ce qu’elle fait. Mais derrière cet amour se cache une manipulation pernicieuse. Kadi saura-t-elle se libérer ?",
         year: 2024,
-        imageUrl: "@assets/WhatsApp_Image_2026-01-06_at_14.41.00_1767738441353.jpeg",
+        imageUrl: "/images/manipulations.jpg",
         videoUrl: "#"
       },
       {
@@ -266,7 +266,7 @@ async function seed() {
         director: "Ekua Zinogo BANCE",
         synopsis: "Fatigué et révolté de l’humiliation que son père lui inflige au quotidien du fait de sa condition de sans emploi, Madi se saisit de la première opportunité de travail qui lui tombe sous la main sans réfléchir. Au fil du temps, sa mère, qui ne reconnait plus son fils, exprime ses inquiétudes à son mari qui fait la sourde oreille. Quand la mère de Madi découvre enfin ce qu’il fait réellement, elle décide d’agir pour sauver son fils.",
         year: 2024,
-        imageUrl: "@assets/png_20220502_125658_0000_1767738441352.png",
+        imageUrl: "/images/au-dela-de-lamour.jpg",
         videoUrl: "#"
       },
       {
