@@ -56,7 +56,7 @@ export default function Dashboard({ children }: { children?: React.ReactNode }) 
           <SidebarLink href="/admin/dashboard" icon={LayoutDashboard} label="Overview" active={location === "/admin/dashboard"} />
           <SidebarLink href="/admin/projects" icon={FolderKanban} label="Projects" active={location.includes("projects")} />
           <SidebarLink href="/admin/films" icon={Film} label="Films" active={location.includes("films")} />
-          <SidebarLink href="/admin/articles" icon={Newspaper} label="News & Articles" active={location.includes("articles")} />
+          <SidebarLink href="/admin/articles" icon={Newspaper} label="Actualités & Événements" active={location.includes("articles")} />
           <SidebarLink href="/admin/partners" icon={Users} label="Partners" active={location.includes("partners")} />
           <SidebarLink href="/admin/contacts" icon={Mail} label="Messages" active={location.includes("contacts")} />
         </nav>
