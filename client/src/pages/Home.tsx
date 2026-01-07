@@ -28,7 +28,8 @@ const PARTNERS = [
 ];
 
 export default function Home() {
-  const { films } = useFilms();
+  const filmsResult = useFilms();
+  const films = filmsResult?.films;
 
   return (
     <div className="min-h-screen flex flex-col">
