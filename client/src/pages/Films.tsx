@@ -23,8 +23,8 @@ export default function Films() {
             backgroundAttachment: 'fixed'
           }}
         >
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black/90" />
         </div>
 
         <div className="container-wide relative z-10">
