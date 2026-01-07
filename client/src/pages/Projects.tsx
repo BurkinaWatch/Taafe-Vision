@@ -39,10 +39,10 @@ export default function Projects() {
                 icon: "03"
               }
             ].map((axe) => (
-              <div key={axe.icon} className="group p-10 bg-slate-50 rounded-lg hover:bg-slate-950 transition-all duration-500">
-                <span className="text-6xl font-display font-bold text-slate-200 group-hover:text-secondary/20 transition-colors">{axe.icon}</span>
-                <h3 className="text-2xl font-display font-bold mt-6 mb-4 text-slate-900 group-hover:text-white transition-colors">{axe.title}</h3>
-                <p className="text-slate-600 group-hover:text-slate-400 transition-colors leading-relaxed">{axe.desc}</p>
+              <div key={axe.icon} className="group p-10 bg-slate-950 rounded-lg transition-all duration-500">
+                <span className="text-6xl font-display font-bold text-slate-800 transition-colors">{axe.icon}</span>
+                <h3 className="text-2xl font-display font-bold mt-6 mb-4 text-white group-hover:text-secondary active:text-secondary transition-colors">{axe.title}</h3>
+                <p className="text-slate-400 transition-colors leading-relaxed">{axe.desc}</p>
               </div>
             ))}
           </div>
