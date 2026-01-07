@@ -4,20 +4,33 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useFilms } from "@/hooks/use-films";
-import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Marquee } from "@/components/Marquee";
-import { Partner } from "@shared/schema";
+
+// Import partner logos
+import abcaLogo from "@/assets/partners/abca.png";
+import equiPopLogo from "@/assets/partners/equi_pop.png";
+import fdctLogo from "@/assets/partners/fdct.jpg";
+import fespacoLogo from "@/assets/partners/fespaco.jpg";
+import fjsLogo from "@/assets/partners/fjs.png";
+import ueLogo from "@/assets/partners/ue.png";
+
+const PARTNERS = [
+  { name: "ABCA", logo: abcaLogo },
+  { name: "EquiPop", logo: equiPopLogo },
+  { name: "FDCT", logo: fdctLogo },
+  { name: "FESPACO", logo: fespacoLogo },
+  { name: "Foundation for a Just Society", logo: fjsLogo },
+  { name: "Union Européenne", logo: ueLogo },
+];
 
 export default function Home() {
   const { films } = useFilms();
-  const { data: partners } = useQuery<Partner[]>({ 
-    queryKey: ["/api/partners"]
-  });
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      {/* ... previous sections remain the same ... */}
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden bg-slate-950">
@@ -230,16 +243,16 @@ export default function Home() {
             <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
             
-            <Marquee speed={30}>
-              {partners?.map((partner) => (
+            <Marquee speed={60}>
+              {PARTNERS.map((partner, index) => (
                 <div 
-                  key={partner.id} 
-                  className="flex items-center justify-center px-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  key={index} 
+                  className="flex items-center justify-center px-12 opacity-80 hover:opacity-100 transition-all duration-300"
                 >
                   <img 
-                    src={partner.logoUrl} 
+                    src={partner.logo} 
                     alt={partner.name} 
-                    className="h-12 w-auto object-contain"
+                    className="h-16 w-auto object-contain"
                   />
                 </div>
               ))}
