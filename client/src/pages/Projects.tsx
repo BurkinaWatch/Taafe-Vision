@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useProjects } from "@/hooks/use-projects";
 import { Calendar } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Projects() {
   const { projects, isLoading } = useProjects();
@@ -38,12 +39,20 @@ export default function Projects() {
                 desc: "Renforcer les compétences organisationnelles et techniques de Taafé Vision.",
                 icon: "03"
               }
-            ].map((axe) => (
-              <div key={axe.icon} className="group p-10 bg-slate-950 rounded-lg transition-all duration-500">
-                <span className="text-6xl font-display font-bold text-slate-800 transition-colors">{axe.icon}</span>
+            ].map((axe, index) => (
+              <motion.div 
+                key={axe.icon}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="group p-10 bg-slate-950 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 border border-white/5 hover:border-secondary/30"
+              >
+                <span className="text-6xl font-display font-bold text-secondary transition-colors block mb-2">{axe.icon}</span>
                 <h3 className="text-2xl font-display font-bold mt-6 mb-4 text-white group-hover:text-secondary active:text-secondary transition-colors">{axe.title}</h3>
                 <p className="text-slate-400 transition-colors leading-relaxed">{axe.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
