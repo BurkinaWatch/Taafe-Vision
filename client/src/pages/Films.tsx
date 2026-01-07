@@ -49,6 +49,7 @@ export default function Films() {
                         src={film.imageUrl} 
                         alt={film.title} 
                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
+                        onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"; }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
                     </div>
