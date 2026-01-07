@@ -229,17 +229,19 @@ export default function Home() {
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {films?.filter(f => f.imageUrl.startsWith('/images/')).slice(0, 3).map((film) => (
+            {(films || []).slice(0, 3).map((film) => (
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
-                  <img src={film.imageUrl} alt={film.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={film.imageUrl} alt={film.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"; }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform">
                   <h3 className="text-2xl font-display font-bold mb-1">{film.title}</h3>
                   <p className="text-white/80 text-sm font-medium mb-2">{film.director} • {film.year}</p>
                   <p className="text-white/60 text-sm line-clamp-2 mb-4">{film.synopsis}</p>
-                  <Link href="/films" className="inline-flex items-center text-secondary font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
+                  <Link href={`/films/${film.id}`} className="inline-flex items-center text-secondary font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
                     Voir détails <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </div>
@@ -247,7 +249,7 @@ export default function Home() {
             ))}
             
             {/* Fallback if no films */}
-            {!films?.length && (
+            {(!films || films.length === 0) && (
               <div className="col-span-full text-center py-12 text-muted-foreground bg-white rounded-xl border border-dashed border-border">
                 <p>Pas de films ajoutés pour le moment. À bientôt!</p>
               </div>
