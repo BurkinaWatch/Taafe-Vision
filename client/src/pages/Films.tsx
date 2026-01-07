@@ -18,9 +18,11 @@ export default function Films() {
           className="absolute inset-0 z-0"
           style={{
             backgroundImage: 'url("/images/films-bg.jpg")',
-            backgroundSize: 'cover',
+            backgroundSize: '80%',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+            backgroundColor: 'black'
           }}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
