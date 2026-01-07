@@ -234,7 +234,7 @@ export default function Home() {
         <div className="container-wide">
           <SectionHeader 
             title="Nos Partenaires" 
-            subtitle="Nous collaborons avec des organisations locales et internationales pour amplifier notre impact"
+            subtitle="Ensemble, nous unissons nos forces pour promouvoir le cinéma comme levier d'émancipation et de défense des droits des femmes au Burkina Faso."
             centered
           />
 
