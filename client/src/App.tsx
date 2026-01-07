@@ -20,6 +20,9 @@ import NotFound from "./pages/not-found";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
 import FilmsManager from "./pages/admin/FilmsManager";
+import ProjectsManager from "./pages/admin/ProjectsManager";
+import ArticlesManager from "./pages/admin/ArticlesManager";
+import PartnersManager from "./pages/admin/PartnersManager";
 
 function Router() {
   return (
@@ -43,11 +46,11 @@ function Router() {
       {/* @ts-ignore wouter Route type compatibility */}
       <Route path="/admin/films" component={FilmsManager} />
       {/* @ts-ignore wouter Route type compatibility */}
-      <Route path="/admin/projects" component={Dashboard} />
+      <Route path="/admin/projects" component={ProjectsManager} />
       {/* @ts-ignore wouter Route type compatibility */}
-      <Route path="/admin/articles" component={Dashboard} />
+      <Route path="/admin/articles" component={ArticlesManager} />
       {/* @ts-ignore wouter Route type compatibility */}
-      <Route path="/admin/partners" component={Dashboard} />
+      <Route path="/admin/partners" component={PartnersManager} />
 
       {/* 404 */}
       <Route component={NotFound} />
