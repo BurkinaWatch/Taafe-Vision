@@ -12,8 +12,22 @@ export default function Films() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <div className="bg-black text-white min-h-screen pb-24 pt-32">
-        <div className="container-wide">
+      <div className="relative min-h-screen pb-24 pt-32 overflow-hidden">
+        {/* Artistic Background */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url("/images/films-bg.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        >
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+        </div>
+
+        <div className="container-wide relative z-10">
           <div className="mb-16 text-center">
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">Films Produits</h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
