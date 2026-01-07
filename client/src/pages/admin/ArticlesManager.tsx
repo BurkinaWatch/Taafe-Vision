@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Article, insertArticleSchema } from "@shared/schema";
-import { Dashboard } from "./Dashboard";
+import Dashboard from "./Dashboard";
 import { Button } from "@/components/ui/button";
 import { Plus, Trash2 } from "lucide-react";
 import { apiRequest, queryClient } from "@/lib/queryClient";
