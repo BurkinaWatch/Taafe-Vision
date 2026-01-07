@@ -144,6 +144,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   });
 
   // Contact
+  app.get(api.contact.submit.path, requireAuth, async (_req, res) => {
+    const contacts = await storage.getContacts();
+    res.json(contacts);
+  });
   app.post(api.contact.submit.path, async (req, res) => {
     try {
       const contact = await storage.createContact(req.body);

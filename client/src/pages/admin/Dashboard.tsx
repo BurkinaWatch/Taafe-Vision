@@ -1,12 +1,16 @@
 import { useAuth } from "@/hooks/use-auth";
 import { useLocation, Link } from "wouter";
-import { LayoutDashboard, Film, FolderKanban, Users, Newspaper, LogOut } from "lucide-react";
+import { 
+  LayoutDashboard, 
+  Film, 
+  FolderKanban, 
+  Users, 
+  Newspaper, 
+  LogOut,
+  Mail
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-// Sub-pages could be implemented here or as separate files
-// For simplicity in this generation, I'll keep the layout structure here
-// and you would conditionally render content based on route
 
 interface SidebarLinkProps {
   href: string;
@@ -54,6 +58,7 @@ export default function Dashboard({ children }: { children?: React.ReactNode }) 
           <SidebarLink href="/admin/films" icon={Film} label="Films" active={location.includes("films")} />
           <SidebarLink href="/admin/articles" icon={Newspaper} label="News & Articles" active={location.includes("articles")} />
           <SidebarLink href="/admin/partners" icon={Users} label="Partners" active={location.includes("partners")} />
+          <SidebarLink href="/admin/contacts" icon={Mail} label="Messages" active={location.includes("contacts")} />
         </nav>
 
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border">

@@ -23,6 +23,7 @@ import FilmsManager from "./pages/admin/FilmsManager";
 import ProjectsManager from "./pages/admin/ProjectsManager";
 import ArticlesManager from "./pages/admin/ArticlesManager";
 import PartnersManager from "./pages/admin/PartnersManager";
+import ContactsManager from "./pages/admin/ContactsManager";
 
 function Router() {
   return (
@@ -51,6 +52,8 @@ function Router() {
       <Route path="/admin/articles" component={ArticlesManager} />
       {/* @ts-ignore wouter Route type compatibility */}
       <Route path="/admin/partners" component={PartnersManager} />
+      {/* @ts-ignore wouter Route type compatibility */}
+      <Route path="/admin/contacts" component={ContactsManager} />
 
       {/* 404 */}
       <Route component={NotFound} />
