@@ -29,7 +29,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#e5e7eb] border-b border-slate-300 shadow-sm">
       <div className="container-wide py-2 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group ml-8">
+        <Link href="/" className="flex items-center gap-3 group">
           <img 
             src="/images/logo.jpg" 
             alt="Taafé Vision Logo" 
