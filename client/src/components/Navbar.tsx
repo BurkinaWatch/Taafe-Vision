@@ -42,11 +42,11 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8 ml-auto">
-          <div className="flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-4 ml-auto">
+          <div className="flex items-center">
             {links.map((link) => (
               <Link key={link.href} href={link.href} className={cn(
-                "px-3 py-2 text-[11px] uppercase tracking-[0.15em] font-bold transition-all",
+                "px-2 py-2 text-[10px] uppercase tracking-wider font-bold transition-all whitespace-nowrap",
                 location === link.href ? "text-[#86efac]" : "text-slate-500 hover:text-slate-900"
               )}>
                 {link.label}
@@ -54,7 +54,7 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3 pl-8 border-l border-slate-300">
+          <div className="flex items-center gap-2 pl-4 border-l border-slate-300">
             {socialLinks.map((social) => (
               <a 
                 key={social.label}
