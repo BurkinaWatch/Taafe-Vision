@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Menu, X, Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { SiTiktok } from "react-icons/si";
@@ -22,7 +22,7 @@ export function Navbar() {
   const socialLinks = [
     { icon: Facebook, href: "https://facebook.com/taafevision", label: "Facebook" },
     { icon: Instagram, href: "https://instagram.com/taafevision", label: "Instagram" },
-    { icon: MessageCircle, href: "https://wa.me/22600000000", label: "WhatsApp" },
+    { icon: Youtube, href: "https://youtube.com/@taafevision", label: "Youtube" },
     { icon: SiTiktok, href: "https://tiktok.com/@taafevision", label: "Tiktok" },
   ];
 
