@@ -27,7 +27,7 @@ export default function Projects() {
                       onError={(e) => { e.currentTarget.src = "/images/community-screening.jpg"; }}
                     />
                     <div className="absolute top-4 left-4 bg-secondary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-sm">
-                      <Calendar className="w-3 h-3" /> {project.date || "Ongoing"}
+                      <Calendar className="w-3 h-3" /> {project.date || "2024"}
                     </div>
                   </div>
                   <div className="p-8 flex-1 flex flex-col">

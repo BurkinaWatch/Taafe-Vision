@@ -39,6 +39,7 @@ export default function News() {
   const categories = [
     { id: "all", label: "Tous" },
     { id: "news", label: "Actualités" },
+    { id: "Projets", label: "Projets" },
     { id: "event", label: "Événements" },
     { id: "training", label: "Formations" },
   ];
