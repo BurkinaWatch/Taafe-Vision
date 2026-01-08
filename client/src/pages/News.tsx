@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 // Assets
 import ellesSeRealiseImg from "@assets/elles_se_realise_1767876839232.jpg";
 import fespacoImg from "@assets/fespaco_1767877158579.jpg";
-import projectionImg from "@assets/projection_debat_1767876924702.jpg";
+import projectionImg from "@assets/Projection-débat_1767878554199.jpg";
 import awardImg from "@assets/prix_1767877554431.jpg";
 
 export default function News() {
