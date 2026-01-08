@@ -10,7 +10,7 @@ export function Footer() {
         <div className="md:col-span-5 space-y-8">
           <div className="flex flex-col">
             <h3 className="text-3xl font-display font-bold text-white tracking-tighter">Taafé Vision</h3>
-            <span className="text-secondary text-xs uppercase tracking-[0.3em] font-bold mt-2">Cinéma & Droits Humains</span>
+            <span className="text-secondary text-xs uppercase tracking-[0.3em] font-bold mt-2">Cinéma & Droits des Femmes</span>
           </div>
           <p className="text-slate-400 leading-relaxed text-lg max-w-md">
             Une organisation féministe utilisant le cinéma comme outil de transformation sociale et de plaidoyer pour l'égalité des genres depuis 2017.

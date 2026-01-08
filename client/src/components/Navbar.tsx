@@ -37,7 +37,7 @@ export function Navbar() {
           />
           <div className="flex flex-col leading-tight">
             <span className="text-2xl font-serif font-bold text-slate-900 tracking-tight">Taafé Vision</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">CINÉMA & DROITS</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">CINÉMA & DROITS DES FEMMES</span>
           </div>
         </Link>
 
