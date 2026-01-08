@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import schoolGirlsImg from "@assets/image_1767875684811.png";
 
 export default function News() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -106,7 +107,7 @@ export default function News() {
                       initial={{ scale: 1.2 }}
                       whileInView={{ scale: 1 }}
                       transition={{ duration: 1.5 }}
-                      src={article.imageUrl || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop"} 
+                      src={article.imageUrl || schoolGirlsImg} 
                       alt={article.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
