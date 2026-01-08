@@ -90,38 +90,52 @@ export default function News() {
               {filteredArticles?.map((article, index) => (
                 <motion.article
                   key={article.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group cursor-pointer"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    ease: [0.21, 0.47, 0.32, 0.98]
+                  }}
+                  whileHover={{ y: -10 }}
+                  className="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-6 shadow-md transition-shadow group-hover:shadow-xl">
-                    <img 
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <motion.img 
+                      initial={{ scale: 1.2 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 1.5 }}
                       src={article.imageUrl || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop"} 
                       alt={article.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-[#86efac] text-slate-900 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="bg-[#86efac] text-slate-900 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg">
                         {article.category}
                       </span>
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    <div className="text-slate-400 text-sm font-medium">
-                      Par Taafé Vision, {article.createdAt ? format(new Date(article.createdAt), "d MMMM yyyy", { locale: fr }) : ""}
+                  <div className="p-8 space-y-4">
+                    <div className="flex items-center gap-3 text-slate-400 text-xs font-bold uppercase tracking-widest">
+                      <span className="w-8 h-[1px] bg-slate-200" />
+                      {article.createdAt ? format(new Date(article.createdAt), "d MMMM yyyy", { locale: fr }) : ""}
                     </div>
                     <h2 className="text-2xl font-display font-bold text-slate-900 group-hover:text-secondary transition-colors line-clamp-2 leading-tight">
                       {article.title}
                     </h2>
-                    <p className="text-slate-600 line-clamp-3 leading-relaxed">
+                    <p className="text-slate-600 line-clamp-3 leading-relaxed text-sm">
                       {article.content}
                     </p>
-                    <div className="pt-2">
+                    <div className="pt-4 flex items-center justify-between">
                       <span className="text-secondary font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Lire la suite <span className="text-xl">→</span>
+                        Lire l'article <span className="text-xl">→</span>
                       </span>
+                      <div className="flex -space-x-2">
+                         <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-100" />
+                         <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />
+                      </div>
                     </div>
                   </div>
                 </motion.article>
