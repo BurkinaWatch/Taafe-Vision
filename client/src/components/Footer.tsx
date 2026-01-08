@@ -52,7 +52,7 @@ export function Footer() {
               </div>
               <div className="flex items-start gap-3 text-slate-300">
                 <Mail className="w-5 h-5 text-secondary shrink-0 mt-1" />
-                <span>contact@taafevision.org</span>
+                <span>infotaafe@gmail.com</span>
               </div>
               <div className="flex items-start gap-3 text-slate-300">
                 <Phone className="w-5 h-5 text-secondary shrink-0 mt-1" />
