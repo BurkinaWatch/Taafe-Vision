@@ -29,17 +29,15 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/50 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]">
       <div className="container-wide py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold font-display text-slate-900 flex items-center gap-4 group">
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-tr from-secondary/40 to-primary/40 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
-            <img src="/images/logo.jpg" alt="Taafé Vision Logo" className="relative w-14 h-14 rounded-full object-cover border-2 border-white shadow-md group-hover:scale-105 transition-transform" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="tracking-tighter text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-primary to-slate-900 group-hover:from-primary group-hover:to-secondary transition-all">TAAFÉ VISION</span>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="h-[1px] w-4 bg-secondary/60" />
-              <span className="text-[9px] uppercase tracking-[0.3em] text-slate-500 font-black">Cinéma & Droits Humains</span>
-            </div>
+        <Link href="/" className="flex items-center gap-3 group">
+          <img 
+            src="/images/logo.jpg" 
+            alt="Taafé Vision Logo" 
+            className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm transition-transform group-hover:scale-105" 
+          />
+          <div className="flex flex-col leading-tight">
+            <span className="text-2xl font-serif font-bold text-slate-900 tracking-tight">Taafé Vision</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium">CINÉMA & DROITS</span>
           </div>
         </Link>
 
