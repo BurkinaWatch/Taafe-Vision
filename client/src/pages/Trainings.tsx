@@ -36,10 +36,18 @@ export default function Trainings() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       <Navbar />
 
-      <div className="bg-primary/5 py-24 pt-32">
+      {/* Background Pattern Elements */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-20 left-[5%] w-12 h-12 bg-primary/5 rounded-lg rotate-12 animate-pulse" />
+        <div className="absolute top-40 right-[10%] w-24 h-24 bg-secondary/5 rounded-full -rotate-12" />
+        <div className="absolute bottom-1/3 left-[8%] w-16 h-16 bg-primary/10 rounded-xl rotate-45" />
+        <div className="absolute top-1/2 right-[5%] w-20 h-20 bg-secondary/10 rounded-lg -rotate-45 animate-bounce [animation-duration:8s]" />
+      </div>
+
+      <div className="bg-primary/5 py-24 pt-32 relative z-10">
         <div className="container-wide">
           <SectionHeader 
             title="Formations & Accompagnement" 
