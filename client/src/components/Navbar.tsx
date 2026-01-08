@@ -13,7 +13,7 @@ export function Navbar() {
 
   const links = [
     { href: "/", label: "Accueil" },
-    { href: "/news", label: "Actualités" },
+    { href: "/news", label: "Blog" },
     { href: "/about", label: "À propos" },
     { href: "/projects", label: "Projets" },
     { href: "/films", label: "Films" },
