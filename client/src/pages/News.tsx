@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import ellesSeRealiseImg from "@assets/elles_se_realise_1767876839232.jpg";
 import fespacoImg from "@assets/fespaco_1767877158579.jpg";
 import projectionImg from "@assets/projection_debat_1767876924702.jpg";
+import awardImg from "@assets/prix_1767877554431.jpg";
 
 export default function News() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -30,6 +31,7 @@ export default function News() {
     if (title.includes("elles se réalisent")) return ellesSeRealiseImg;
     if (title.includes("fespaco")) return fespacoImg;
     if (title.includes("projection")) return projectionImg;
+    if (title.includes("primés") || title.includes("prix")) return awardImg;
     
     return projectionImg; // Default fallback
   };
