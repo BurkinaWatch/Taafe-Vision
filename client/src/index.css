@@ -13,12 +13,16 @@
   --foreground: 330 80% 30%;
 
   /* Rose Taafé (Accent Primaire) */
-  --primary: 330 81% 60%; 
+  --primary: 330 100% 64%; 
   --primary-foreground: 0 0% 100%;
 
   /* Vert Vision (Accent Secondaire) */
-  --secondary: 95 100% 45%;
+  --secondary: 104 100% 45%;
   --secondary-foreground: 0 0% 100%;
+
+  /* Violet Taafé (Barre de navigation) */
+  --purple-taafe: 317 55% 23%;
+  --purple-taafe-accent: 317 55% 31%;
 
   --card: 55 100% 95%;
   --card-foreground: 330 80% 30%;

@@ -81,7 +81,7 @@ export function Navbar() {
                 <img 
                   src="/images/logo.jpg" 
                   alt="Taafé Vision Logo" 
-                  className="w-12 h-12 lg:w-24 lg:h-24 rounded-full object-cover border-2 lg:border-4 border-[#86efac] shadow-md transition-transform group-hover:scale-105" 
+                  className="w-12 h-12 lg:w-24 lg:h-24 rounded-full object-cover border-2 lg:border-4 border-[#32cd32] shadow-md transition-transform group-hover:scale-105" 
                 />
                 <span className="text-3xl lg:text-7xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
              </div>
@@ -106,7 +106,7 @@ export function Navbar() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#5a1a4a] text-white w-8 h-8 flex items-center justify-center rounded-sm hover:bg-[#86efac] hover:text-[#5a1a4a] transition-all shadow-sm"
+                  className="bg-[#561a44] text-white w-8 h-8 flex items-center justify-center rounded-sm hover:bg-[#32cd32] hover:text-[#561a44] transition-all shadow-sm"
                   aria-label={social.label}
                 >
                   <social.icon className="w-3.5 h-3.5" />
@@ -123,7 +123,7 @@ export function Navbar() {
       </div>
 
       {/* Bottom Bar: Navigation Menu */}
-      <div className="bg-[#5a1a4a] hidden lg:block border-t border-white/5">
+      <div className="bg-[#561a44] hidden lg:block border-t border-white/5">
         <div className="container-wide flex items-center justify-between h-14">
           <div className="flex items-center h-full">
             {links.map((link) => (
@@ -133,7 +133,7 @@ export function Navbar() {
                 className={cn(
                   "px-6 h-full flex items-center text-[10px] font-black uppercase tracking-[0.2em] transition-all relative group",
                   location === link.href 
-                    ? "bg-[#7d2466] text-white" 
+                    ? "bg-[#7a2561] text-white" 
                     : "text-white/80 hover:text-white"
                 )}
               >
@@ -144,7 +144,7 @@ export function Navbar() {
           
           <Link 
             href="/contact" 
-            className="border border-white/30 px-6 py-2 rounded-sm text-white text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#5a1a4a] transition-all flex items-center gap-2"
+            className="border border-white/30 px-6 py-2 rounded-sm text-white text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#561a44] transition-all flex items-center gap-2"
           >
             <Mail className="w-3.5 h-3.5" />
             RÉSERVEZ VOTRE PLACE
@@ -177,7 +177,7 @@ export function Navbar() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#5a1a4a] text-white w-12 h-12 flex items-center justify-center rounded-sm shadow-md"
+                    className="bg-[#561a44] text-white w-12 h-12 flex items-center justify-center rounded-sm shadow-md"
                   >
                     <social.icon className="w-6 h-6" />
                   </a>
