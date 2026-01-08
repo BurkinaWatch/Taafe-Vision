@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
 
 export default function About() {
   return (
@@ -7,10 +8,24 @@ export default function About() {
       <Navbar />
       
       {/* Header */}
-      <div className="bg-slate-950 py-32 text-white">
-        <div className="container-wide">
+      <div className="bg-slate-950 py-32 text-white relative overflow-hidden">
+        {/* Artistic Logo Background */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-10 pointer-events-none">
+          <img 
+            src={logoImg} 
+            alt="" 
+            className="w-full h-full object-contain grayscale invert"
+          />
+        </div>
+
+        <div className="container-wide relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8">À PROPOS DE <br /> TAAFE VISION</h1>
+            <div className="flex items-center gap-6 mb-8">
+              <div className="w-20 h-20 bg-white/5 rounded-2xl p-4 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                <img src={logoImg} alt="Taafé Vision Logo" className="w-full h-full object-contain" />
+              </div>
+              <h1 className="text-5xl md:text-7xl font-display font-bold">À PROPOS DE <br /> TAAFE VISION</h1>
+            </div>
             <p className="text-xl text-slate-400 leading-relaxed">
               Une organisation féministe, apolitique et laïque qui milite pour une représentativité plus significative de la femme dans l’industrie cinématographique.
             </p>
