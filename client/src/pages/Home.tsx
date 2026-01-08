@@ -235,15 +235,26 @@ export default function Home() {
                   <img src={film.imageUrl} alt={film.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                     onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  {/* Glassmorphism overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                  
+                  {/* Backdrop blur effect on hover for extra "creative" touch */}
+                  <div className="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                  <h3 className="text-2xl font-display font-bold mb-1">{film.title}</h3>
-                  <p className="text-white/80 text-sm font-medium mb-2">{film.director} • {film.year}</p>
-                  <p className="text-white/60 text-sm line-clamp-2 mb-4">{film.synopsis}</p>
-                  <Link href={`/films/${film.id}`} className="inline-flex items-center text-secondary font-bold text-sm uppercase tracking-wider hover:text-white transition-colors">
-                    Voir détails <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out z-20">
+                  <div className="bg-black/20 backdrop-blur-md p-4 rounded-lg border border-white/10 shadow-2xl">
+                    <h3 className="text-2xl font-display font-bold mb-1 text-white drop-shadow-md">{film.title}</h3>
+                    <p className="text-secondary font-bold text-sm mb-2">{film.director} • {film.year}</p>
+                    <p className="text-white/90 text-sm line-clamp-2 mb-4 leading-relaxed">{film.synopsis}</p>
+                    <Link href={`/films/${film.id}`} className="inline-flex items-center text-white font-bold text-sm uppercase tracking-wider hover:text-secondary transition-colors group/link">
+                      <span className="relative">
+                        Voir détails
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover/link:w-full"></span>
+                      </span>
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
