@@ -2,9 +2,25 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { usePartners } from "@/hooks/use-partners";
+import { motion } from "framer-motion";
 
 export default function Partners() {
   const { partners } = usePartners();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -19,11 +35,22 @@ export default function Partners() {
           />
 
           {partners && partners.length > 0 ? (
-            <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-center justify-items-center">
+            <motion.div 
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-center justify-items-center"
+            >
               {partners.map((partner) => (
-                <div 
+                <motion.div 
                   key={partner.id}
-                  className="w-full h-40 bg-white rounded-2xl shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 flex items-center justify-center p-8 group hover:-translate-y-2"
+                  variants={item}
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -10,
+                    transition: { duration: 0.2 }
+                  }}
+                  className="w-full h-40 bg-white rounded-2xl shadow-lg border border-border/50 flex items-center justify-center p-8 group transition-all hover:shadow-2xl"
                 >
                   <div className="text-center">
                     <img 
@@ -43,9 +70,9 @@ export default function Partners() {
                       </a>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
             <div className="mt-16 py-20 text-center bg-white rounded-xl border border-dashed border-border">
               <p className="text-muted-foreground text-lg">Partenaires en cours d'ajout...</p>

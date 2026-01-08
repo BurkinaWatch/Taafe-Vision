@@ -61,7 +61,7 @@ export default function Trainings() {
               return (
                 <div 
                   key={training.id}
-                  className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 flex flex-col"
+                  className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-2"
                 >
                   <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 text-secondary">
                     <Icon className="w-8 h-8" />
