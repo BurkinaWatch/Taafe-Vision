@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import schoolGirlsImg from "@assets/image_1767875684811.png";
+import schoolGirlsImg from "@assets/elles_se_realise_1767875920382.jpg";
 
 export default function News() {
   const [activeCategory, setActiveCategory] = useState("all");
