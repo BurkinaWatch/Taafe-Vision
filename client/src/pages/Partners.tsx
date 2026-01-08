@@ -54,7 +54,7 @@ export default function Partners() {
                 >
                   <div className="text-center">
                     <img 
-                      src={partner.logoUrl.startsWith('http') ? partner.logoUrl : (partner.logoUrl.startsWith('/') ? partner.logoUrl : `/${partner.logoUrl}`)} 
+                      src={partner.logoUrl} 
                       alt={partner.name}
                       className="h-20 object-contain mx-auto mb-3 opacity-80 group-hover:opacity-100 transition-opacity"
                     />
