@@ -13,6 +13,7 @@ import ellesSeRealiseImg from "@assets/elles_se_realise_1767876839232.jpg";
 import fespacoImg from "@assets/fespaco_1767877158579.jpg";
 import projectionImg from "@assets/Projection-débat_1767878554199.jpg";
 import awardImg from "@assets/prix_1767877554431.jpg";
+import productionsImg from "@assets/Productions_de_court_métrage_1767878670665.png";
 
 export default function News() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -32,6 +33,7 @@ export default function News() {
     if (title.includes("fespaco")) return fespacoImg;
     if (title.includes("projection")) return projectionImg;
     if (title.includes("primés") || title.includes("prix")) return awardImg;
+    if (title.includes("productions")) return productionsImg;
     
     return projectionImg; // Default fallback
   };
