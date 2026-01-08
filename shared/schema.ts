@@ -39,6 +39,7 @@ export const articles = pgTable("articles", {
   content: text("content").notNull(),
   imageUrl: text("image_url"),
   category: text("category").notNull(), // 'news', 'event', 'training'
+  sourceUrl: text("source_url"),
   createdAt: timestamp("created_at").defaultNow(),
   isHidden: boolean("is_hidden").default(false).notNull(),
 });

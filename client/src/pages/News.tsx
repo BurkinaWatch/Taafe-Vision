@@ -129,9 +129,20 @@ export default function News() {
                       {article.content}
                     </p>
                     <div className="pt-4 flex items-center justify-between">
-                      <span className="text-secondary font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Lire l'article <span className="text-xl">→</span>
-                      </span>
+                      {article.sourceUrl ? (
+                        <a 
+                          href={article.sourceUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-secondary font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all"
+                        >
+                          Lire l'article <span className="text-xl">→</span>
+                        </a>
+                      ) : (
+                        <span className="text-secondary font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                          Lire l'article <span className="text-xl">→</span>
+                        </span>
+                      )}
                       <div className="flex -space-x-2">
                          <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-100" />
                          <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />
