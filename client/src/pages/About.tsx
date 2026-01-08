@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
@@ -108,39 +109,65 @@ export default function About() {
         </div>
 
         {/* Axes Stratégiques Section */}
-        <div className="bg-slate-50 rounded-3xl p-12 md:p-20">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-display font-bold text-slate-900 mb-6">Axes Stratégiques</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-slate-50 rounded-3xl p-12 md:p-20 relative overflow-hidden"
+        >
+          {/* Decorative element */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-full -mr-32 -mt-32 blur-3xl" />
+          
+          <div className="max-w-3xl mb-12 relative z-10">
+            <h2 className="text-3xl font-display font-bold text-slate-900 mb-6 flex items-center gap-4">
+              <span className="w-12 h-1 bg-secondary rounded-full" />
+              Axes Stratégiques
+            </h2>
             <p className="text-slate-600 text-lg">
               La réalisation de notre vision passe par trois enjeux majeurs de développement :
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 relative z-10">
             {[
               { 
                 axe: "Axe 1", 
                 title: "Production & Diffusion", 
-                desc: "Renforcement de la production et de la diffusion de films réalisés par les femmes." 
+                desc: "Renforcement de la production et de la diffusion de films réalisés par les femmes.",
+                icon: "🎬"
               },
               { 
                 axe: "Axe 2", 
                 title: "Promotion de la femme", 
-                desc: "Promotion de la femme au travers du cinéma." 
+                desc: "Promotion de la femme au travers du cinéma.",
+                icon: "🤝"
               },
               { 
                 axe: "Axe 3", 
                 title: "Capacités techniques", 
-                desc: "Renforcement des capacités techniques et organisationnelles de Taafé Vision." 
+                desc: "Renforcement des capacités techniques et organisationnelles de Taafé Vision.",
+                icon: "⚙️"
               }
-            ].map((axe) => (
-              <div key={axe.axe} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <span className="text-secondary font-bold text-sm tracking-widest uppercase">{axe.axe}</span>
-                <h4 className="text-xl font-bold text-slate-900">{axe.title}</h4>
+            ].map((axe, index) => (
+              <motion.div 
+                key={axe.axe}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                whileHover={{ y: -10 }}
+                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4 hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="flex justify-between items-start">
+                  <span className="text-secondary font-bold text-sm tracking-widest uppercase">{axe.axe}</span>
+                  <span className="text-2xl opacity-50 group-hover:opacity-100 transition-opacity">{axe.icon}</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 group-hover:text-secondary transition-colors">{axe.title}</h4>
                 <p className="text-slate-600 leading-relaxed">{axe.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
       </div>
 
