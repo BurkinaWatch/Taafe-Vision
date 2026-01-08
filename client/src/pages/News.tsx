@@ -7,7 +7,11 @@ import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import defaultBlogImg from "@assets/projection_debat_1767876924702.jpg";
+
+// Assets
+import ellesSeRealiseImg from "@assets/elles_se_realise_1767876839232.jpg";
+import fespacoImg from "@assets/fespaco_1767877158579.jpg";
+import projectionImg from "@assets/projection_debat_1767876924702.jpg";
 
 export default function News() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -15,6 +19,20 @@ export default function News() {
   const { data: articles, isLoading } = useQuery<Article[]>({
     queryKey: ["/api/articles"],
   });
+
+  const getArticleImage = (article: Article) => {
+    if (article.imageUrl && article.imageUrl.startsWith("http")) {
+      return article.imageUrl;
+    }
+    
+    // Map local assets to articles based on title or category if image_url is a local path
+    const title = article.title.toLowerCase();
+    if (title.includes("elles se réalisent")) return ellesSeRealiseImg;
+    if (title.includes("fespaco")) return fespacoImg;
+    if (title.includes("projection")) return projectionImg;
+    
+    return projectionImg; // Default fallback
+  };
 
   const categories = [
     { id: "all", label: "Tous" },
@@ -107,7 +125,7 @@ export default function News() {
                       initial={{ scale: 1.2 }}
                       whileInView={{ scale: 1 }}
                       transition={{ duration: 1.5 }}
-                      src={article.imageUrl && article.imageUrl.startsWith("http") ? article.imageUrl : (article.imageUrl && !article.imageUrl.startsWith("http") ? `/${article.imageUrl}` : defaultBlogImg)} 
+                      src={getArticleImage(article)} 
                       alt={article.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
