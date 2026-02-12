@@ -25,12 +25,19 @@ async function comparePassword(supplied: string, stored: string) {
 }
 
 export async function registerRoutes(httpServer: Server, app: Express): Promise<Server> {
-  // Session middleware
+  if (process.env.NODE_ENV === 'production' && !process.env.SESSION_SECRET) {
+    throw new Error("SESSION_SECRET must be set in production environment");
+  }
+
   app.use(session({
     secret: process.env.SESSION_SECRET || 'taafe_vision_secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: app.get('env') === 'production' },
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' as const : 'lax' as const,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
     store: new SessionStore({ checkPeriod: 86400000 })
   }));
 

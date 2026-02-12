@@ -1,0 +1,8 @@
+node_modules
+.git
+.replit
+replit.nix
+.local
+attached_assets
+.gitignore
+.railwayignore
