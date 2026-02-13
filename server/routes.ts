@@ -25,17 +25,18 @@ async function comparePassword(supplied: string, stored: string) {
 }
 
 export async function registerRoutes(httpServer: Server, app: Express): Promise<Server> {
-  if (process.env.NODE_ENV === 'production' && !process.env.SESSION_SECRET) {
-    throw new Error("SESSION_SECRET must be set in production environment");
+  const sessionSecret = process.env.SESSION_SECRET || require("crypto").randomBytes(32).toString("hex");
+  if (!process.env.SESSION_SECRET) {
+    console.warn("WARNING: SESSION_SECRET not set. Using a random secret (sessions won't persist across restarts).");
   }
 
   app.use(session({
-    secret: process.env.SESSION_SECRET || 'taafe_vision_secret',
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' as const : 'lax' as const,
+      secure: process.env.NODE_ENV === 'production' && !!process.env.SESSION_SECRET,
+      sameSite: 'lax' as const,
       maxAge: 24 * 60 * 60 * 1000,
     },
     store: new SessionStore({ checkPeriod: 86400000 })
