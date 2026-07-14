@@ -58,7 +58,7 @@ export function Navbar() {
       </div>
 
       {/* Middle Bar: Menu Toggle + Logo + Search + Social */}
-      <div className="bg-white py-4 lg:py-8">
+      <div className="bg-white py-2 lg:py-3">
         <div className="container-wide flex items-center justify-between gap-4 lg:gap-8">
           {/* Left: Mobile Menu Toggle */}
           <button 
@@ -70,22 +70,22 @@ export function Navbar() {
           
           <div className="hidden lg:block w-20">
              <button className="text-slate-400 hover:text-slate-900 transition-colors">
-                <Menu className="w-8 h-8" />
+                <Menu className="w-6 h-6" />
              </button>
           </div>
 
           {/* Center: Logo */}
-          <Link href="/" className="flex flex-col items-center gap-1 flex-1 group">
-             <div className="flex items-center gap-2 lg:gap-6">
-                <span className="text-3xl lg:text-7xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
+          <Link href="/" className="flex flex-col items-center gap-0.5 flex-1 group">
+             <div className="flex items-center gap-2 lg:gap-4">
+                <span className="text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
                 <img 
                   src="/images/logo.jpg" 
                   alt="Taafé Vision Logo" 
-                  className="w-12 h-12 lg:w-24 lg:h-24 rounded-full object-cover border-2 lg:border-4 border-[#32cd32] shadow-md transition-transform group-hover:scale-105" 
+                  className="w-10 h-10 lg:w-14 lg:h-14 rounded-full object-cover border-2 border-[#32cd32] shadow-md transition-transform group-hover:scale-105" 
                 />
-                <span className="text-3xl lg:text-7xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
+                <span className="text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
              </div>
-             <span className="text-[7px] lg:text-xs font-black uppercase tracking-[0.3em] lg:tracking-[0.5em] text-slate-400 mt-1 lg:mt-2">CINÉMA & DROITS DES FEMMES</span>
+             <span className="text-[7px] lg:text-[10px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-slate-400 mt-0.5">CINÉMA & DROITS DES FEMMES</span>
           </Link>
 
           {/* Right: Search + Social Icons */}
