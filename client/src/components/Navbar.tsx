@@ -14,10 +14,10 @@ export function Navbar() {
   const links = [
     { href: "/", label: "Accueil" },
     { href: "/news", label: "Blog" },
-    { href: "/about", label: "À propos" },
     { href: "/projects", label: "Projets" },
     { href: "/films", label: "Films" },
     { href: "/trainings", label: "Formations" },
+    { href: "/about", label: "À propos" },
     { href: "/contact", label: "Contact" },
   ];
 
