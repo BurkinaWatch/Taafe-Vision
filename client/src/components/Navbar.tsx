@@ -57,34 +57,34 @@ export function Navbar() {
       </div>
 
       {/* Middle Bar: Menu Toggle + Logo + Search + Social */}
-      <div className="bg-white py-2 lg:py-3">
-        <div className="container-wide flex items-center justify-between gap-4 lg:gap-8">
+      <div className="bg-white py-1.5 lg:py-2">
+        <div className="container-wide flex items-center justify-between gap-4 lg:gap-6">
           {/* Left: Mobile Menu Toggle */}
           <button 
             className="p-2 text-slate-600 lg:hidden" 
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
           
-          <div className="hidden lg:block w-20">
+          <div className="hidden lg:block w-16">
              <button className="text-slate-400 hover:text-slate-900 transition-colors">
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5" />
              </button>
           </div>
 
           {/* Center: Logo */}
-          <Link href="/" className="flex flex-col items-center gap-0.5 flex-1 group">
-             <div className="flex items-center gap-2 lg:gap-4">
-                <span className="text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
+          <Link href="/" className="flex flex-col items-center flex-1 group">
+             <div className="flex items-center gap-2 lg:gap-3">
+                <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
                 <img 
                   src="/images/logo.jpg" 
                   alt="Taafé Vision Logo" 
-                  className="w-10 h-10 lg:w-14 lg:h-14 rounded-full object-cover border-2 border-[#32cd32] shadow-md transition-transform group-hover:scale-105" 
+                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105" 
                 />
-                <span className="text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
+                <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
              </div>
-             <span className="text-[7px] lg:text-[10px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-slate-400 mt-0.5">CINÉMA & DROITS DES FEMMES</span>
+             <span className="text-[6px] lg:text-[9px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-slate-400">CINÉMA & DROITS DES FEMMES</span>
           </Link>
 
           {/* Right: Search + Social Icons */}
