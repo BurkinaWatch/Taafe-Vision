@@ -1,30 +1,24 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, Facebook, Instagram, Youtube, Search, Moon, Sun, Mail, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Facebook, Instagram, Youtube, Search, Moon, Sun, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { SiTiktok } from "react-icons/si";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 
-type NavLink = { href: string; label: string; children?: { href: string; label: string }[] };
-
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
   const [isDark, setIsDark] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
 
-  const links: NavLink[] = [
+  const links = [
     { href: "/", label: "Accueil" },
     { href: "/news", label: "Blog" },
-    {
-      href: "/about",
-      label: "À propos",
-      children: [{ href: "/partners", label: "Partenaires" }],
-    },
+    { href: "/about", label: "À propos" },
     { href: "/projects", label: "Projets" },
     { href: "/films", label: "Films" },
     { href: "/trainings", label: "Formations" },
+    { href: "/partners", label: "Partenaires" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -132,60 +126,20 @@ export function Navbar() {
       <div className="bg-[#561a44] hidden lg:block border-t border-white/5">
         <div className="container-wide flex items-center justify-between h-14">
           <div className="flex items-center h-full">
-            {links.map((link) =>
-              link.children ? (
-                <div
-                  key={link.href}
-                  className="relative h-full flex items-center group"
-                  onMouseEnter={() => setAboutOpen(true)}
-                  onMouseLeave={() => setAboutOpen(false)}
-                >
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "px-6 h-full flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] transition-all",
-                      location === link.href || location.startsWith("/partners")
-                        ? "bg-[#7a2561] text-white"
-                        : "text-white/80 hover:text-white"
-                    )}
-                  >
-                    {link.label}
-                    <ChevronDown className="w-3 h-3 opacity-70" />
-                  </Link>
-                  {aboutOpen && (
-                    <div className="absolute top-full left-0 bg-white shadow-lg min-w-[160px] z-50 py-1">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className={cn(
-                            "block px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] transition-colors",
-                            location === child.href
-                              ? "text-[#561a44] bg-slate-50"
-                              : "text-slate-700 hover:text-[#561a44] hover:bg-slate-50"
-                          )}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "px-6 h-full flex items-center text-[10px] font-black uppercase tracking-[0.2em] transition-all relative group",
-                    location === link.href
-                      ? "bg-[#7a2561] text-white"
-                      : "text-white/80 hover:text-white"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {links.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={cn(
+                  "px-6 h-full flex items-center text-[10px] font-black uppercase tracking-[0.2em] transition-all relative group",
+                  location === link.href 
+                    ? "bg-[#7a2561] text-white" 
+                    : "text-white/80 hover:text-white"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           
           <Link 
@@ -203,35 +157,17 @@ export function Navbar() {
         <div className="lg:hidden fixed inset-0 top-[70px] lg:top-[80px] z-[60] bg-white animate-in slide-in-from-top-2 overflow-y-auto">
           <div className="flex flex-col p-8 space-y-6">
             {links.map((link) => (
-              <div key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "text-xl font-display font-black uppercase tracking-widest border-b border-slate-100 pb-4 block",
-                    location === link.href ? "text-secondary" : "text-slate-900"
-                  )}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </Link>
-                {link.children && (
-                  <div className="pl-4 mt-3 flex flex-col gap-3">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={cn(
-                          "text-base font-black uppercase tracking-widest",
-                          location === child.href ? "text-[#561a44]" : "text-slate-500"
-                        )}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        — {child.label}
-                      </Link>
-                    ))}
-                  </div>
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={cn(
+                  "text-xl font-display font-black uppercase tracking-widest border-b border-slate-100 pb-4",
+                  location === link.href ? "text-secondary" : "text-slate-900"
                 )}
-              </div>
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
             ))}
             <div className="pt-8 flex flex-col gap-6 items-center">
               <div className="flex items-center gap-4">
