@@ -18,7 +18,6 @@ export function Navbar() {
     { href: "/projects", label: "Projets" },
     { href: "/films", label: "Films" },
     { href: "/trainings", label: "Formations" },
-    { href: "/partners", label: "Partenaires" },
     { href: "/contact", label: "Contact" },
   ];
 
