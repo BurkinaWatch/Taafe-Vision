@@ -189,6 +189,22 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     }
   });
 
+  // Public organization knowledge
+  app.get(api.knowledge.profile.path, async (_req, res) => {
+    const profile = await storage.getOrganizationProfile();
+    if (!profile) return res.status(404).json({ message: "Organization profile not found" });
+    res.json(profile);
+  });
+  app.get(api.knowledge.metrics.path, async (_req, res) => {
+    res.json(await storage.getImpactMetrics());
+  });
+  app.get(api.knowledge.sources.path, async (_req, res) => {
+    res.json(await storage.getResearchSources());
+  });
+  app.get(api.knowledge.socials.path, async (_req, res) => {
+    res.json(await storage.getSocialLinks());
+  });
+
   await seed();
 
   return httpServer;
@@ -394,5 +410,111 @@ async function seed() {
       category: "news",
       imageUrl: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&q=80"
     });
+  }
+
+  await seedOrganizationKnowledge();
+}
+
+async function seedOrganizationKnowledge() {
+  const profile = await storage.getOrganizationProfile();
+  if (!profile) {
+    await storage.createOrganizationProfile({
+      slug: "taafe-vision",
+      name: "Taafé Vision",
+      tagline: "Cinéma et droits des femmes au Burkina Faso",
+      foundedYear: 2017,
+      city: "Ouagadougou",
+      country: "Burkina Faso",
+      story: "Taafé Vision est née de la volonté de professionnelles et de passionné·es du cinéma de formaliser un engagement commun pour une meilleure représentativité des femmes dans l'industrie cinématographique. L'association agit par la production, la formation, la diffusion et le débat communautaire.",
+      mission: "Produire et diffuser des films exempts de stéréotypes de genre, soutenir l'abandon des violences basées sur le genre et contribuer à la promotion des femmes dans un monde plus juste et égalitaire.",
+      vision: "À l'horizon 2030, devenir une association leader de la lutte pour un monde plus égalitaire, juste et exempt de violences envers les femmes, au moyen du film.",
+      meaning: "« Taafé » signifie pagne en bambara. Le pagne symbolisant la femme au Burkina Faso, Taafé Vision signifie littéralement « vision de femmes ».",
+      website: "https://taafevision.org/",
+      email: "info@taafevision.org",
+    });
+  }
+
+  if ((await storage.getImpactMetrics()).length === 0) {
+    const metrics = [
+      {
+        label: "Femmes formées", value: 33, suffix: "+",
+        description: "Accompagnement technique et artistique de futures cinéastes.",
+        sourceName: "Taafé Vision — site officiel", sourceUrl: "https://taafevision.org/", sourceDate: "2026", displayOrder: 1,
+      },
+      {
+        label: "Productions", value: 10, suffix: "+",
+        description: "Documentaires et fictions engagés pour le changement social et l'égalité.",
+        sourceName: "Taafé Vision — site officiel", sourceUrl: "https://taafevision.org/", sourceDate: "2026", displayOrder: 2,
+      },
+      {
+        label: "Personnes sensibilisées", value: 6000, suffix: "+",
+        description: "Public touché par les projections et débats communautaires.",
+        sourceName: "Taafé Vision — site officiel", sourceUrl: "https://taafevision.org/", sourceDate: "2026", displayOrder: 3,
+      },
+      {
+        label: "Projets de films incubés", value: 10, suffix: "",
+        description: "Projets présentés par la sixième promotion lors des pitchs de mai 2026.",
+        sourceName: "Burkina24",
+        sourceUrl: "https://burkina24.com/2026/05/30/cinema-au-feminin-avec-taafe-vision-10-projets-de-films-pour-briser-les-silences/",
+        sourceDate: "30 mai 2026", displayOrder: 4,
+      },
+    ];
+    for (const metric of metrics) await storage.createImpactMetric(metric);
+  }
+
+  if ((await storage.getResearchSources()).length === 0) {
+    const sources = [
+      {
+        title: "Taafé Vision — présentation et productions",
+        summary: "Le site officiel présente l'association, ses axes d'action, ses chiffres clés, ses productions et ses partenaires.",
+        sourceName: "Taafé Vision", sourceUrl: "https://taafevision.org/", sourceType: "Site officiel", publishedAt: "2026", topic: "Présentation",
+      },
+      {
+        title: "Taafé Vision — annuaire des organisations féministes",
+        summary: "Fiche institutionnelle indiquant une création le 9 janvier 2017, une implantation à Ouagadougou et une intervention régionale et internationale.",
+        sourceName: "Feminaction", sourceUrl: "https://feminaction.fr/osc/taafe-vision/", sourceType: "Fiche institutionnelle", publishedAt: "2026", topic: "Historique",
+      },
+      {
+        title: "De l'idée au court métrage",
+        summary: "Féministes en Action documente le programme de Taafé Vision consacré à l'accompagnement de femmes dans l'écriture, la production et la diffusion de courts métrages.",
+        sourceName: "Equipop", sourceUrl: "https://equipop.org/de-lidee-au-court-metrage/", sourceType: "Partenaire", publishedAt: "4 mai 2023", topic: "Formation et production",
+      },
+      {
+        title: "Elles se réalisent : donner la parole aux femmes",
+        summary: "Burkina24 décrit une série d'ateliers de renforcement de capacités pour dix femmes autour de la réécriture de scénarios de courts métrages.",
+        sourceName: "Burkina24", sourceUrl: "https://burkina24.com/2024/02/16/cinema-lassociation-taafe-vision-donne-la-parole-aux-femmes-a-travers-le-projet-elles-se-realisent/", sourceType: "Presse", publishedAt: "16 février 2024", topic: "Elles se réalisent",
+      },
+      {
+        title: "Le genre s'invite au FESPACO 2025",
+        summary: "Taafé Vision a organisé des activités autour de la représentation des femmes dans le cinéma africain : panels, échanges et mise en lumière de talents féminins.",
+        sourceName: "Mousso News", sourceUrl: "https://www.moussonews.com/cinema-le-genre-sinvite-au-fespaco-avec-taafe-vision/", sourceType: "Presse", publishedAt: "2025", topic: "FESPACO",
+      },
+      {
+        title: "Dix projets de films pour briser les silences",
+        summary: "La sixième promotion a présenté dix projets de courts métrages de fiction après des formations techniques et une résidence d'écriture ; trois projets doivent être sélectionnés pour la production.",
+        sourceName: "Burkina24", sourceUrl: "https://burkina24.com/2026/05/30/cinema-au-feminin-avec-taafe-vision-10-projets-de-films-pour-briser-les-silences/", sourceType: "Presse", publishedAt: "30 mai 2026", topic: "Incubation",
+      },
+      {
+        title: "16 jours d'activisme : projection-débat autour de À tout prix",
+        summary: "Un reportage documente l'utilisation d'une projection-débat du film À tout prix pour sensibiliser aux violences faites aux femmes.",
+        sourceName: "Burkina24", sourceUrl: "https://burkina24.com/2025/12/10/16-jours-dactivisme-taafe-vision-utilise-le-cinema-pour-sensibiliser-aux-violences-faites-aux-femmes/", sourceType: "Presse", publishedAt: "10 décembre 2025", topic: "Sensibilisation",
+      },
+      {
+        title: "Le genre s'invite au FESPACO — programme 2025",
+        summary: "ArtistesBF revient sur la présence de Taafé Vision au FESPACO et sur son programme consacré à la représentativité des femmes dans le septième art.",
+        sourceName: "ArtistesBF", sourceUrl: "https://www.artistesbf.org/fespaco-2025-le-genre-sinvite-un-projet-de-lassociation-taafe-vision/", sourceType: "Presse culturelle", publishedAt: "2025", topic: "FESPACO",
+      },
+    ];
+    for (const source of sources) await storage.createResearchSource(source);
+  }
+
+  if ((await storage.getSocialLinks()).length === 0) {
+    const socials = [
+      { platform: "facebook", label: "Facebook", url: "https://facebook.com/taafevision", sourceUrl: "https://taafevision.org/", verificationNote: "Lien public référencé dans la navigation du projet.", displayOrder: 1, isVisible: true },
+      { platform: "instagram", label: "Instagram", url: "https://instagram.com/taafevision", sourceUrl: "https://taafevision.org/", verificationNote: "Lien public référencé dans la navigation du projet.", displayOrder: 2, isVisible: true },
+      { platform: "youtube", label: "YouTube", url: "https://youtube.com/@taafevision", sourceUrl: "https://taafevision.org/", verificationNote: "Lien public référencé dans la navigation du projet.", displayOrder: 3, isVisible: true },
+      { platform: "tiktok", label: "TikTok", url: "https://tiktok.com/@taafevision", sourceUrl: "https://taafevision.org/", verificationNote: "Lien public référencé dans la navigation du projet.", displayOrder: 4, isVisible: true },
+    ];
+    for (const social of socials) await storage.createSocialLink(social);
   }
 }

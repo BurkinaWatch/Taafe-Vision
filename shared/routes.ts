@@ -6,8 +6,8 @@ import {
   insertArticleSchema, 
   insertPartnerSchema, 
   insertContactSchema,
-  users, projects, films, articles, partners, contacts,
-  User, Project, Film, Article, Partner, Contact
+  users, projects, films, articles, partners, contacts, organizationProfiles, impactMetrics, researchSources, socialLinks,
+  User, Project, Film, Article, Partner, Contact, OrganizationProfile, ImpactMetric, ResearchSource, SocialLink
 } from './schema';
 
 // Export types for client usage
@@ -18,7 +18,7 @@ export type InsertArticle = z.infer<typeof insertArticleSchema>;
 export type InsertPartner = z.infer<typeof insertPartnerSchema>;
 export type InsertContact = z.infer<typeof insertContactSchema>;
 
-export type { User, Project, Film, Article, Partner, Contact };
+export type { User, Project, Film, Article, Partner, Contact, OrganizationProfile, ImpactMetric, ResearchSource, SocialLink };
 
 export const errorSchemas = {
   validation: z.object({
@@ -146,6 +146,28 @@ export const api = {
       path: '/api/contact',
       input: insertContactSchema,
       responses: { 201: z.custom<typeof contacts.$inferSelect>() },
+    },
+  },
+  knowledge: {
+    profile: {
+      method: 'GET' as const,
+      path: '/api/knowledge/profile',
+      responses: { 200: z.custom<typeof organizationProfiles.$inferSelect>() },
+    },
+    metrics: {
+      method: 'GET' as const,
+      path: '/api/knowledge/metrics',
+      responses: { 200: z.array(z.custom<typeof impactMetrics.$inferSelect>()) },
+    },
+    sources: {
+      method: 'GET' as const,
+      path: '/api/knowledge/sources',
+      responses: { 200: z.array(z.custom<typeof researchSources.$inferSelect>()) },
+    },
+    socials: {
+      method: 'GET' as const,
+      path: '/api/knowledge/socials',
+      responses: { 200: z.array(z.custom<typeof socialLinks.$inferSelect>()) },
     },
   },
 };

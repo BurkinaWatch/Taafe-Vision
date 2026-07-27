@@ -78,6 +78,60 @@ export const adminLogs = pgTable("admin_logs", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// Public organization knowledge gathered from official and editorial sources.
+export const organizationProfiles = pgTable("organization_profiles", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  name: text("name").notNull(),
+  tagline: text("tagline").notNull(),
+  foundedYear: integer("founded_year").notNull(),
+  city: text("city").notNull(),
+  country: text("country").notNull(),
+  story: text("story").notNull(),
+  mission: text("mission").notNull(),
+  vision: text("vision").notNull(),
+  meaning: text("meaning").notNull(),
+  website: text("website").notNull(),
+  email: text("email"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const impactMetrics = pgTable("impact_metrics", {
+  id: serial("id").primaryKey(),
+  label: text("label").notNull(),
+  value: integer("value").notNull(),
+  suffix: text("suffix").notNull(),
+  description: text("description").notNull(),
+  sourceName: text("source_name").notNull(),
+  sourceUrl: text("source_url").notNull(),
+  sourceDate: text("source_date"),
+  displayOrder: integer("display_order").notNull().default(0),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const researchSources = pgTable("research_sources", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  summary: text("summary").notNull(),
+  sourceName: text("source_name").notNull(),
+  sourceUrl: text("source_url").notNull().unique(),
+  sourceType: text("source_type").notNull(),
+  publishedAt: text("published_at"),
+  topic: text("topic").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const socialLinks = pgTable("social_links", {
+  id: serial("id").primaryKey(),
+  platform: text("platform").notNull(),
+  label: text("label").notNull(),
+  url: text("url").notNull().unique(),
+  sourceUrl: text("source_url"),
+  verificationNote: text("verification_note"),
+  displayOrder: integer("display_order").notNull().default(0),
+  isVisible: boolean("is_visible").default(true).notNull(),
+});
+
 // Schemas
 export const insertUserSchema = createInsertSchema(users);
 export const insertProjectSchema = createInsertSchema(projects).omit({ id: true });
@@ -87,6 +141,10 @@ export const insertPartnerSchema = createInsertSchema(partners).omit({ id: true 
 export const insertContactSchema = createInsertSchema(contacts).omit({ id: true, createdAt: true });
 export const insertAdminSettingSchema = createInsertSchema(adminSettings).omit({ id: true, updatedAt: true });
 export const insertAdminLogSchema = createInsertSchema(adminLogs).omit({ id: true, createdAt: true });
+export const insertOrganizationProfileSchema = createInsertSchema(organizationProfiles).omit({ id: true, updatedAt: true });
+export const insertImpactMetricSchema = createInsertSchema(impactMetrics).omit({ id: true, updatedAt: true });
+export const insertResearchSourceSchema = createInsertSchema(researchSources).omit({ id: true, createdAt: true });
+export const insertSocialLinkSchema = createInsertSchema(socialLinks).omit({ id: true });
 
 // Insert Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -97,6 +155,10 @@ export type InsertPartner = z.infer<typeof insertPartnerSchema>;
 export type InsertContact = z.infer<typeof insertContactSchema>;
 export type InsertAdminSetting = z.infer<typeof insertAdminSettingSchema>;
 export type InsertAdminLog = z.infer<typeof insertAdminLogSchema>;
+export type InsertOrganizationProfile = z.infer<typeof insertOrganizationProfileSchema>;
+export type InsertImpactMetric = z.infer<typeof insertImpactMetricSchema>;
+export type InsertResearchSource = z.infer<typeof insertResearchSourceSchema>;
+export type InsertSocialLink = z.infer<typeof insertSocialLinkSchema>;
 
 // Types
 export type User = typeof users.$inferSelect;
@@ -107,3 +169,7 @@ export type Partner = typeof partners.$inferSelect;
 export type Contact = typeof contacts.$inferSelect;
 export type AdminSetting = typeof adminSettings.$inferSelect;
 export type AdminLog = typeof adminLogs.$inferSelect;
+export type OrganizationProfile = typeof organizationProfiles.$inferSelect;
+export type ImpactMetric = typeof impactMetrics.$inferSelect;
+export type ResearchSource = typeof researchSources.$inferSelect;
+export type SocialLink = typeof socialLinks.$inferSelect;

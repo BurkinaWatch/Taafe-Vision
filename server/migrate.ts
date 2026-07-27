@@ -71,6 +71,59 @@ export async function ensureTables() {
         details TEXT,
         created_at TIMESTAMP DEFAULT NOW()
       );
+
+      CREATE TABLE IF NOT EXISTS organization_profiles (
+        id SERIAL PRIMARY KEY,
+        slug TEXT NOT NULL UNIQUE,
+        name TEXT NOT NULL,
+        tagline TEXT NOT NULL,
+        founded_year INTEGER NOT NULL,
+        city TEXT NOT NULL,
+        country TEXT NOT NULL,
+        story TEXT NOT NULL,
+        mission TEXT NOT NULL,
+        vision TEXT NOT NULL,
+        meaning TEXT NOT NULL,
+        website TEXT NOT NULL,
+        email TEXT,
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS impact_metrics (
+        id SERIAL PRIMARY KEY,
+        label TEXT NOT NULL,
+        value INTEGER NOT NULL,
+        suffix TEXT NOT NULL,
+        description TEXT NOT NULL,
+        source_name TEXT NOT NULL,
+        source_url TEXT NOT NULL,
+        source_date TEXT,
+        display_order INTEGER NOT NULL DEFAULT 0,
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS research_sources (
+        id SERIAL PRIMARY KEY,
+        title TEXT NOT NULL,
+        summary TEXT NOT NULL,
+        source_name TEXT NOT NULL,
+        source_url TEXT NOT NULL UNIQUE,
+        source_type TEXT NOT NULL,
+        published_at TEXT,
+        topic TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS social_links (
+        id SERIAL PRIMARY KEY,
+        platform TEXT NOT NULL,
+        label TEXT NOT NULL,
+        url TEXT NOT NULL UNIQUE,
+        source_url TEXT,
+        verification_note TEXT,
+        display_order INTEGER NOT NULL DEFAULT 0,
+        is_visible BOOLEAN NOT NULL DEFAULT true
+      );
     `);
     console.log("Database tables ensured.");
   } finally {

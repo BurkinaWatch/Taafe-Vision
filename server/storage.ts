@@ -1,8 +1,11 @@
 import { db } from "./db";
 import { 
   users, projects, films, articles, partners, contacts, adminSettings, adminLogs,
+  organizationProfiles, impactMetrics, researchSources, socialLinks,
   type User, type Project, type Film, type Article, type Partner, type Contact, type AdminSetting, type AdminLog,
-  type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertPartner, type InsertContact, type InsertAdminSetting, type InsertAdminLog
+  type OrganizationProfile, type ImpactMetric, type ResearchSource, type SocialLink,
+  type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertPartner, type InsertContact, type InsertAdminSetting, type InsertAdminLog,
+  type InsertOrganizationProfile, type InsertImpactMetric, type InsertResearchSource, type InsertSocialLink
 } from "@shared/schema";
 import { eq } from "drizzle-orm";
 
@@ -49,6 +52,16 @@ export interface IStorage {
   // Admin Logs
   getAdminLogs(): Promise<AdminLog[]>;
   createAdminLog(log: InsertAdminLog): Promise<AdminLog>;
+
+  // Public knowledge
+  getOrganizationProfile(): Promise<OrganizationProfile | undefined>;
+  createOrganizationProfile(profile: InsertOrganizationProfile): Promise<OrganizationProfile>;
+  getImpactMetrics(): Promise<ImpactMetric[]>;
+  createImpactMetric(metric: InsertImpactMetric): Promise<ImpactMetric>;
+  getResearchSources(): Promise<ResearchSource[]>;
+  createResearchSource(source: InsertResearchSource): Promise<ResearchSource>;
+  getSocialLinks(): Promise<SocialLink[]>;
+  createSocialLink(link: InsertSocialLink): Promise<SocialLink>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -167,6 +180,37 @@ export class DatabaseStorage implements IStorage {
   async createAdminLog(insertLog: InsertAdminLog): Promise<AdminLog> {
     const [log] = await db.insert(adminLogs).values(insertLog).returning();
     return log;
+  }
+
+  // Public knowledge
+  async getOrganizationProfile(): Promise<OrganizationProfile | undefined> {
+    const [profile] = await db.select().from(organizationProfiles).where(eq(organizationProfiles.slug, "taafe-vision"));
+    return profile;
+  }
+  async createOrganizationProfile(profile: InsertOrganizationProfile): Promise<OrganizationProfile> {
+    const [created] = await db.insert(organizationProfiles).values(profile).returning();
+    return created;
+  }
+  async getImpactMetrics(): Promise<ImpactMetric[]> {
+    return await db.select().from(impactMetrics).orderBy(impactMetrics.displayOrder);
+  }
+  async createImpactMetric(metric: InsertImpactMetric): Promise<ImpactMetric> {
+    const [created] = await db.insert(impactMetrics).values(metric).returning();
+    return created;
+  }
+  async getResearchSources(): Promise<ResearchSource[]> {
+    return await db.select().from(researchSources).orderBy(researchSources.publishedAt);
+  }
+  async createResearchSource(source: InsertResearchSource): Promise<ResearchSource> {
+    const [created] = await db.insert(researchSources).values(source).returning();
+    return created;
+  }
+  async getSocialLinks(): Promise<SocialLink[]> {
+    return await db.select().from(socialLinks).where(eq(socialLinks.isVisible, true)).orderBy(socialLinks.displayOrder);
+  }
+  async createSocialLink(link: InsertSocialLink): Promise<SocialLink> {
+    const [created] = await db.insert(socialLinks).values(link).returning();
+    return created;
   }
 }
 
