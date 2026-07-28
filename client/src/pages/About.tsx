@@ -3,10 +3,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { usePartners } from "@/hooks/use-partners";
+import { useOrganizationProfile } from "@/hooks/use-knowledge";
 import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
 
 export default function About() {
   const { partners } = usePartners();
+  const { profile } = useOrganizationProfile();
 
   const container = {
     hidden: { opacity: 0 },
@@ -85,13 +87,13 @@ export default function About() {
           <div className="bg-slate-900 text-white p-12 rounded-2xl space-y-6">
             <h3 className="text-2xl font-display font-bold text-secondary">Notre Mission</h3>
             <p className="text-slate-300 text-lg leading-relaxed">
-              Produire et diffuser des films exempts de stéréotypes du genre et qui soutiennent l’abandon de toutes sortes de violences basées sur le genre tout en contribuant à la promotion de la femme dans un monde plus juste, plus égalitaire.
+              {profile?.mission ?? "Produire et diffuser des films exempts de stéréotypes du genre et qui soutiennent l'abandon de toutes sortes de violences basées sur le genre tout en contribuant à la promotion de la femme dans un monde plus juste, plus égalitaire."}
             </p>
           </div>
           <div className="bg-secondary text-white p-12 rounded-2xl space-y-6">
             <h3 className="text-2xl font-display font-bold">Notre Vision</h3>
             <p className="text-white/90 text-lg leading-relaxed">
-              À l’orée de 2030, être une association leader dans la lutte pour un monde plus égalitaire, plus juste et exempt de toute forme de violence à l’égard de la femme, au moyen du film.
+              {profile?.vision ?? "À l'orée de 2030, être une association leader dans la lutte pour un monde plus égalitaire, plus juste et exempt de toute forme de violence à l'égard de la femme, au moyen du film."}
             </p>
           </div>
         </div>
