@@ -1,6 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@shared/routes";
 
+export function useOrganizationProfile() {
+  const { data, isLoading } = useQuery({
+    queryKey: [api.knowledge.profile.path],
+    queryFn: async () => {
+      const res = await fetch(api.knowledge.profile.path);
+      if (!res.ok) return null;
+      return res.json();
+    },
+  });
+  return { profile: data ?? null, isLoading };
+}
+
 export function useImpactMetrics() {
   const { data, isLoading } = useQuery({
     queryKey: [api.knowledge.metrics.path],
@@ -13,14 +25,26 @@ export function useImpactMetrics() {
   return { metrics: data ?? [], isLoading };
 }
 
-export function useOrganizationProfile() {
+export function useResearchSources() {
   const { data, isLoading } = useQuery({
-    queryKey: [api.knowledge.profile.path],
+    queryKey: [api.knowledge.sources.path],
     queryFn: async () => {
-      const res = await fetch(api.knowledge.profile.path);
-      if (!res.ok) return null;
+      const res = await fetch(api.knowledge.sources.path);
+      if (!res.ok) throw new Error("Failed to fetch sources");
       return res.json();
     },
   });
-  return { profile: data ?? null, isLoading };
+  return { sources: data ?? [], isLoading };
+}
+
+export function useSocialLinks() {
+  const { data, isLoading } = useQuery({
+    queryKey: [api.knowledge.socials.path],
+    queryFn: async () => {
+      const res = await fetch(api.knowledge.socials.path);
+      if (!res.ok) throw new Error("Failed to fetch social links");
+      return res.json();
+    },
+  });
+  return { socials: data ?? [], isLoading };
 }

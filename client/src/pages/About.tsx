@@ -3,12 +3,30 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { usePartners } from "@/hooks/use-partners";
-import { useOrganizationProfile } from "@/hooks/use-knowledge";
+import { useOrganizationProfile, useImpactMetrics, useResearchSources, useSocialLinks } from "@/hooks/use-knowledge";
 import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
+
+const SOCIAL_ICONS: Record<string, JSX.Element> = {
+  facebook: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  ),
+  instagram: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  ),
+  youtube: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+  ),
+  tiktok: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+  ),
+};
 
 export default function About() {
   const { partners } = usePartners();
   const { profile } = useOrganizationProfile();
+  const { metrics } = useImpactMetrics();
+  const { sources } = useResearchSources();
+  const { socials } = useSocialLinks();
 
   const container = {
     hidden: { opacity: 0 },
@@ -210,6 +228,107 @@ export default function About() {
             ))}
           </div>
         </motion.div>
+
+        {/* Impact Metrics Section */}
+        {metrics.length > 0 && (
+          <div className="py-12">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-secondary mb-4">Chiffres clés</h2>
+              <h3 className="text-3xl font-display font-bold text-slate-900">Notre Impact en chiffres</h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {metrics.map((metric: any) => (
+                <motion.div
+                  key={metric.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white border border-slate-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="text-5xl font-display font-bold text-secondary mb-2">
+                    {metric.value.toLocaleString("fr-FR")}{metric.suffix}
+                  </div>
+                  <div className="text-slate-900 font-bold mb-2">{metric.label}</div>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-3">{metric.description}</p>
+                  {metric.sourceUrl && (
+                    <a
+                      href={metric.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-secondary/70 hover:text-secondary underline"
+                    >
+                      Source : {metric.sourceName}
+                    </a>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Research Sources Section */}
+        {sources.length > 0 && (
+          <div className="py-12">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-secondary mb-4">Références documentaires</h2>
+              <h3 className="text-3xl font-display font-bold text-slate-900">Taafé Vision dans les médias</h3>
+              <p className="text-slate-500 mt-4">Sources vérifiées utilisées pour documenter l'histoire et les activités de l'association.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {sources.map((source: any) => (
+                <motion.div
+                  key={source.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-slate-50 rounded-xl p-6 border border-slate-100 hover:border-secondary/30 transition-colors"
+                >
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-widest text-secondary px-2 py-1 bg-secondary/10 rounded-full">
+                      {source.topic}
+                    </span>
+                    <span className="text-xs text-slate-400 whitespace-nowrap">{source.publishedAt}</span>
+                  </div>
+                  <h4 className="font-bold text-slate-900 mb-2 leading-snug">{source.title}</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-3">{source.summary}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-400">{source.sourceName} · {source.sourceType}</span>
+                    <a
+                      href={source.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-secondary font-bold hover:underline"
+                    >
+                      Lire →
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Social Links Section */}
+        {socials.length > 0 && (
+          <div className="bg-slate-900 rounded-3xl py-16 px-8 md:px-20 text-center">
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-secondary mb-4">Suivez-nous</h2>
+            <h3 className="text-3xl font-display font-bold text-white mb-10">Rejoignez la communauté Taafé Vision</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {socials.map((social: any) => (
+                <a
+                  key={social.id}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-3 bg-white/10 hover:bg-secondary text-white rounded-full font-bold transition-all duration-200 hover:scale-105"
+                >
+                  {SOCIAL_ICONS[social.platform] ?? null}
+                  {social.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Partenaires Section */}
         <div className="bg-primary/5 rounded-3xl py-16 px-8 md:px-16">
