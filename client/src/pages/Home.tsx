@@ -137,49 +137,65 @@ export default function Home() {
             </motion.div>
             
             <div className="lg:col-span-3 grid md:grid-cols-3 gap-8">
-              {(() => {
-                const icons = [
-                  <Users className="w-24 h-24 text-[#f146ad]" />,
-                  <Film className="w-24 h-24 text-[#39cd15]" />,
-                  <Star className="w-24 h-24 text-[#f146ad]" />,
-                ];
-                const colors = ["[#f146ad]", "[#39cd15]", "[#f146ad]"];
-                const shadows = [
-                  "shadow-[0_20px_50px_rgba(241,70,173,0.05)] border-[#f146ad]/5 hover:border-[#f146ad]/20",
-                  "shadow-[0_20px_50px_rgba(57,205,21,0.05)] border-[#39cd15]/5 hover:border-[#39cd15]/20",
-                  "shadow-[0_20px_50px_rgba(241,70,173,0.05)] border-[#f146ad]/5 hover:border-[#f146ad]/20",
-                ];
-                // Show first 3 metrics ordered by displayOrder
-                const displayed = [...metrics].sort((a: any, b: any) => a.displayOrder - b.displayOrder).slice(0, 3);
-                // Fallback if metrics not yet loaded
-                const fallback = [
-                  { label: "Femmes formées", value: 33, suffix: "+", description: "Accompagnement technique et artistique complet pour les futures cinéastes." },
-                  { label: "Films produits", value: 10, suffix: "+", description: "Documentaires et fictions engagés pour le changement social et l'égalité." },
-                  { label: "Personnes sensibilisées", value: 6000, suffix: "+", description: "Personnes touchées par nos projections et débats communautaires." },
-                ];
-                const items = displayed.length > 0 ? displayed : fallback;
-                return items.map((m: any, index: number) => (
-                  <motion.div
-                    key={m.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-                    className={`relative p-8 rounded-3xl bg-white ${shadows[index]} border transition-all group overflow-hidden`}
-                  >
-                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                      {icons[index]}
-                    </div>
-                    <div className="relative z-10">
-                      <div className={`text-7xl font-display font-bold text-${colors[index]} mb-4 tracking-tighter`}>
-                        <Counter value={m.value} suffix={m.suffix ?? ""} />
-                      </div>
-                      <h4 className="text-slate-900 font-bold text-lg mb-2">{m.label}</h4>
-                      <p className="text-sm text-slate-500 leading-relaxed">{m.description}</p>
-                    </div>
-                  </motion.div>
-                ));
-              })()}
+              {/* Carte 1 */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(241,70,173,0.05)] border border-[#f146ad]/5 hover:border-[#f146ad]/20 transition-all group overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Users className="w-24 h-24 text-[#f146ad]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
+                    <Counter value={metrics[0]?.value ?? 33} suffix={metrics[0]?.suffix ?? "+"} />
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[0]?.label ?? "Femmes formées"}</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">{metrics[0]?.description ?? "Accompagnement technique et artistique complet pour les futures cinéastes."}</p>
+                </div>
+              </motion.div>
+
+              {/* Carte 2 */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(57,205,21,0.05)] border border-[#39cd15]/5 hover:border-[#39cd15]/20 transition-all group overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Film className="w-24 h-24 text-[#39cd15]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#39cd15] mb-4 tracking-tighter">
+                    <Counter value={metrics[1]?.value ?? 10} suffix={metrics[1]?.suffix ?? "+"} />
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[1]?.label ?? "Films produits"}</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">{metrics[1]?.description ?? "Documentaires et fictions engagés pour le changement social et l'égalité."}</p>
+                </div>
+              </motion.div>
+
+              {/* Carte 3 */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(241,70,173,0.05)] border border-[#f146ad]/5 hover:border-[#f146ad]/20 transition-all group overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Star className="w-24 h-24 text-[#f146ad]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
+                    <Counter value={metrics[2]?.value ?? 6000} suffix={metrics[2]?.suffix ?? "+"} />
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[2]?.label ?? "Personnes sensibilisées"}</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">{metrics[2]?.description ?? "Personnes touchées par nos projections et débats communautaires."}</p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>

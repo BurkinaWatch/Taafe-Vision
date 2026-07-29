@@ -52,20 +52,41 @@ export default function About() {
           <div className="space-y-8">
             <div>
               <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-secondary mb-4">Qui sommes-nous ?</h2>
-              <h3 className="text-3xl font-display font-bold text-slate-900 mb-6">Il était une fois...</h3>
-              <p className="text-lg text-slate-700 leading-relaxed mb-6">
-                En 2016, un groupe de femmes professionnelles du cinéma et de l’audiovisuel font les constats suivants : 
-              </p>
-              <ul className="space-y-3 text-slate-600 list-disc pl-5 mb-8">
-                <li>Insuffisance de femmes sur les plateaux de tournages</li>
-                <li>Les femmes sont moins nombreuses dans le domaine du cinéma</li>
-                <li>Persistance des films stéréotypant</li>
-                <li>Peu de rôles valorisants de l’image de la femme</li>
-              </ul>
-              <p className="text-lg text-slate-700 leading-relaxed">
-                C’est ainsi qu’un groupe d’ami.es professionnel.les et amateur.rices du cinéma qui travaillaient ensemble depuis quelques années, ont décidé de créer une association dénommée « Taafé Vision » pour formaliser les activités de ce groupe de personnes et oeuvrer à la promotion du cinéma au féminin.
-              </p>
+              <h3 className="text-3xl font-display font-bold text-slate-900 mb-6">Notre histoire</h3>
+              {profile?.story ? (
+                <>
+                  {profile.story
+                    .split("\n\n")
+                    .filter((p: string) => !p.startsWith("La présidente"))
+                    .map((para: string, i: number) => (
+                      <p key={i} className="text-lg text-slate-700 leading-relaxed mb-4">
+                        {para}
+                      </p>
+                    ))}
+                </>
+              ) : (
+                <>
+                  <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                    En 2016, un groupe de femmes professionnelles du cinéma et de l'audiovisuel ont décidé de créer une association pour formaliser leur engagement commun pour une meilleure représentativité des femmes dans l'industrie cinématographique.
+                  </p>
+                  <p className="text-lg text-slate-700 leading-relaxed">
+                    C'est ainsi que naquit Taafé Vision, fondée officiellement le 9 janvier 2017 à Ouagadougou.
+                  </p>
+                </>
+              )}
             </div>
+
+            {/* Founder quote */}
+            {profile?.story?.includes("Azaratou Bancé") && (
+              <blockquote className="border-l-4 border-secondary pl-6 py-2 my-6">
+                <p className="text-slate-700 italic leading-relaxed text-base mb-3">
+                  « Il n'est pas rare que lors des diffusions des films, nous soyons approchées par des femmes qui nous confient leur vécu en rapport avec la situation présentée dans le film. Pour elles, voir un personnage prendre son destin en main leur donne l'espoir de faire pareil. »
+                </p>
+                <footer className="text-sm font-bold text-secondary uppercase tracking-widest">
+                  Azaratou Bancé — Présidente de Taafé Vision
+                </footer>
+              </blockquote>
+            )}
           </div>
           <div className="relative">
             <img 
@@ -74,10 +95,16 @@ export default function About() {
               className="rounded-lg shadow-2xl relative z-10 w-full"
             />
             <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-secondary/10 rounded-lg -z-0" />
-            <div className="mt-8 p-6 bg-slate-50 rounded-xl border border-slate-100">
+            <div className="mt-8 p-6 bg-slate-50 rounded-xl border border-slate-100 space-y-3">
               <p className="text-slate-700 leading-relaxed italic">
-                « Taafé » signifie en langue bambara le pagne. Le pagne symbolisant la femme au Burkina Faso, Taafé Vision signifie littéralement « Vision de femmes ».
+                {profile?.meaning ?? "« Taafé » signifie en langue bambara le pagne. Le pagne symbolisant la femme au Burkina Faso, Taafé Vision signifie littéralement « Vision de femmes »."}
               </p>
+              {profile?.foundedYear && (
+                <div className="flex gap-6 pt-2 text-sm font-bold text-slate-500 uppercase tracking-widest">
+                  <span>Fondée en {profile.foundedYear}</span>
+                  {profile.city && <span>· {profile.city}</span>}
+                </div>
+              )}
             </div>
           </div>
         </div>
