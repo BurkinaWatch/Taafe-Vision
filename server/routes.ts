@@ -281,7 +281,7 @@ async function seed() {
         director: "Maimouna OUEDRAOGO",
         synopsis: "Kilayé et Mayô, couple jeune et complice, vivent paisiblement à Ouagadougou avec leur fille de huit ans, Barkima. Un matin, la quiétude du foyer est troublée par la visite inopinée de Yaba, la mère de Kilayé. Mayô surprend alors une discussion alarmante : il est question d’exciser Barkima. Résolue et elle-même survivante de cette pratique dangereuse, elle tente de s’opposer à cette décision. La tension monte, les convictions s’entrechoquent. Arrivera-t-elle à sauver sa fille du couteau de l’exciseuse ?",
         year: 2024,
-        imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+        imageUrl: "/images/a-tout-prix.jpg",
         videoUrl: "#"
       },
       {
@@ -303,17 +303,17 @@ async function seed() {
       {
         title: "LE POIDS DU DESHONNEUR",
         director: "Maimouna LENGLENGUE",
-        synopsis: "Nafi, une jeune mère constamment battue par son mari, décide de quitte le foyer. Elle est renvoyée par sa famille auprès de qui she cherche refuge et fait face à l’inaction des services sociaux. Elle trouve bientôt un emploi et réorganise sa vie. Cependant, menacée de bannissement, Nafi retourne auprès de son bourreau. Ce dernier récidivise. Cette fois, leur voisine, longtemps témoin silencieuse de ces violences décide d’agir. Parviendra-t-elle à sauver Nafi ?",
+        synopsis: "Nafi, une jeune mère constamment battue par son mari, décide de quitte le foyer. Elle est renvoyée par sa famille auprès de qui she cherche refuge et fait face à l'inaction des services sociaux. Elle trouve bientôt un emploi et réorganise sa vie. Cependant, menacée de bannissement, Nafi retourne auprès de son bourreau. Ce dernier récidivise. Cette fois, leur voisine, longtemps témoin silencieuse de ces violences décide d'agir. Parviendra-t-elle à sauver Nafi ?",
         year: 2024,
-        imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+        imageUrl: "/images/poids-du-deshonneur.jpg",
         videoUrl: "#"
       },
       {
         title: "KANU",
         director: "Djata OUATTARA",
-        synopsis: "Désœuvré et obsédé par l’idée d’offrir une meilleure vie à sa mère rongée par un passé douloureux et secret, Sié, un jeune homme intègre les rangs terroristes. Sous la direction de Bella, son mentor, il s’apprête à perpétrer son premier attentat. Mais avant, il fait la connaissance de Yé, une jeune citadine rescapée d’une attaque terroriste et qui a décidé de s’engager pour la paix. Kanu, le film montre la puissance de l’amour maternel et l’importance de l’engagement citoyen des femmes pour la préservation de la paix.",
+        synopsis: "Désœuvré et obsédé par l'idée d'offrir une meilleure vie à sa mère rongée par un passé douloureux et secret, Sié, un jeune homme intègre les rangs terroristes. Sous la direction de Bella, son mentor, il s'apprête à perpétrer son premier attentat. Mais avant, il fait la connaissance de Yé, une jeune citadine rescapée d'une attaque terroriste et qui a décidé de s'engager pour la paix. Kanu, le film montre la puissance de l'amour maternel et l'importance de l'engagement citoyen des femmes pour la préservation de la paix.",
         year: 2024,
-        imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+        imageUrl: "/images/kanu.jpg",
         videoUrl: "#"
       },
       {
@@ -359,9 +359,9 @@ async function seed() {
       {
         title: "LES INSEPARABLES",
         director: "Djeneba LY",
-        synopsis: "Les familles Cissé et Bazongo, ont toujours entretenu de bonnes relations de voisinage jusqu’au jour où Ladji Cissé, désormais respectueux des préceptes d’un nouveau guide spirituel, s’oppose farouchement à la grande amitié qui existe entre sa fille Habiba Cissé et Esther, la fille des Bazongo. Ladji Cissé, en plus d’interdire l’accès à sa cour à la famille Bazongo, les harcèle quotidiennement. Une histoire de tolérance religieuse et d'amitié par-delà les barrières.",
+        synopsis: "Les familles Cissé et Bazongo, ont toujours entretenu de bonnes relations de voisinage jusqu'au jour où Ladji Cissé, désormais respectueux des préceptes d'un nouveau guide spirituel, s'oppose farouchement à la grande amitié qui existe entre sa fille Habiba Cissé et Esther, la fille des Bazongo. Ladji Cissé, en plus d'interdire l'accès à sa cour à la famille Bazongo, les harcèle quotidiennement. Une histoire de tolérance religieuse et d'amitié par-delà les barrières.",
         year: 2024,
-        imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+        imageUrl: "/images/inseparables.jpg",
         videoUrl: "#"
       },
       {
