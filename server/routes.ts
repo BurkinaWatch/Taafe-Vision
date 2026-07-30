@@ -222,27 +222,54 @@ async function seed() {
     });
   }
 
-  const projects = await storage.getProjects();
-  if (projects.length === 0) {
-    console.log("Seeding projects...");
-    await storage.createProject({
+  const existingProjects = await storage.getProjects();
+  const existingTitles = new Set(existingProjects.map(p => p.title));
+
+  const allProjects = [
+    {
       title: "Elles se réalisent",
-      description: "Formation de femmes réalisatrices aboutissant à la production de courts-métrages porteurs de messages sociaux et de sensibilisation aux droits des femmes.",
+      description: "Programme phare d'incubation de femmes réalisatrices : sélection de dix femmes par promotion, ateliers d'écriture de scénario, renforcement des capacités techniques, résidence créative et accompagnement à la production de courts métrages engagés sur les droits des femmes. Six promotions formées depuis 2017.",
       imageUrl: "/images/community-engagement-1.jpg",
-      date: "2023-2024"
-    });
-    await storage.createProject({
+      date: "2017 — en cours"
+    },
+    {
       title: "De l'idée au court métrage",
-      description: "Incubation complète de projets filmiques féminins : écriture, production et diffusion de films sans stéréotypes abordant les violences basées sur le genre.",
+      description: "Programme soutenu par Féministes en Action (Equipop) pour l'incubation complète de projets filmiques féminins : de l'écriture scénaristique à la production et à la diffusion de courts métrages exempts de stéréotypes de genre, abordant les violences basées sur le genre. Les projets sélectionnés font l'objet d'un accompagnement personnalisé jusqu'à la projection publique.",
       imageUrl: "/images/community-screening.jpg",
-      date: "2024"
-    });
-    await storage.createProject({
-      title: "Projections communautaires",
-      description: "Projections suivies de débats dans les villages, quartiers et écoles pour sensibiliser aux droits des femmes et engager les communautés.",
+      date: "2022 — en cours"
+    },
+    {
+      title: "Projections-débats communautaires",
+      description: "Projections de films suivies de débats animés dans les quartiers, villages, communes et établissements scolaires de Ouagadougou et des provinces du Burkina Faso. Ces séances visent à sensibiliser les communautés aux droits des femmes, aux violences basées sur le genre et à l'égalité hommes-femmes, en s'appuyant sur le pouvoir d'empathie du cinéma.",
       imageUrl: "/images/partners-1.jpg",
-      date: "2024"
-    });
+      date: "2017 — en cours"
+    },
+    {
+      title: "Le genre s'invite au FESPACO",
+      description: "Présence de Taafé Vision au FESPACO — le plus grand festival de cinéma africain — avec un stand genre au Marché International du Cinéma (MIC), un panel dédié à la représentativité des femmes dans le cinéma africain, des pitchs de projets réalisés par des femmes et la mise en lumière de talents féminins burkinabè. En 2025, l'événement a réuni des professionnels du cinéma, des partenaires et des militantes autour du thème de l'égalité de genre dans le septième art.",
+      imageUrl: "/images/film-poster-1.jpg",
+      date: "Février 2025"
+    },
+    {
+      title: "16 jours d'activisme — Cinéma contre les VBG",
+      description: "Chaque année du 25 novembre au 10 décembre, Taafé Vision s'engage dans la campagne mondiale des 16 jours d'activisme contre les violences basées sur le genre en organisant des projections-débats dans les localités burkinabè. En décembre 2025, le film « À tout prix » — sur l'excision — a été projeté à Ziniaré et a touché des centaines de participant·es, suscitant des témoignages poignants de femmes concernées.",
+      imageUrl: "/images/community-screening.jpg",
+      date: "Annuel — novembre-décembre"
+    },
+    {
+      title: "Plaidoyer et réseautage féministe",
+      description: "Taafé Vision s'inscrit dans les réseaux féministes régionaux et internationaux (Feminaction, Equipop, Foundation for a Just Society) pour porter le plaidoyer en faveur des droits des femmes au-delà du cinéma. L'association participe à des conférences, forums et événements dédiés à l'égalité de genre, et produit des contenus de sensibilisation diffusés sur ses réseaux sociaux auprès de plusieurs milliers de personnes.",
+      imageUrl: "/images/partners-2.jpg",
+      date: "2017 — en cours"
+    },
+  ];
+
+  const projectsToAdd = allProjects.filter(p => !existingTitles.has(p.title));
+  if (projectsToAdd.length > 0) {
+    console.log(`Seeding ${projectsToAdd.length} new project(s)...`);
+    for (const project of projectsToAdd) {
+      await storage.createProject(project);
+    }
   }
 
   const films = await storage.getFilms();

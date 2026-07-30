@@ -49,7 +49,7 @@ export function Footer() {
               Ouagadougou, Burkina Faso
             </span>
             <a
-              href="mailto:infotaafe@gmail.com"
+              href="mailto:contact@taafevision.com"
               className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-secondary shrink-0" />
