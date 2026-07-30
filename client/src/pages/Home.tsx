@@ -56,16 +56,6 @@ export default function Home() {
 
         <div className="container-wide relative z-10 text-white space-y-10">
           <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-4 mb-6"
-            >
-              <span className="h-px w-12 bg-secondary" />
-              <span className="text-secondary uppercase tracking-[0.3em] text-sm font-bold">Depuis 2017</span>
-            </motion.div>
-
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
