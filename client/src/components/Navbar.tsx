@@ -5,9 +5,11 @@ import { cn } from "@/lib/utils";
 import { SiTiktok } from "react-icons/si";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { SearchModal } from "@/components/SearchModal";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [location] = useLocation();
   const [isDark, setIsDark] = useState(false);
 
@@ -89,14 +91,14 @@ export function Navbar() {
 
           {/* Right: Search + Social Icons */}
           <div className="hidden lg:flex items-center gap-8">
-            <div className="relative group">
-              <input 
-                type="text" 
-                placeholder="Recherche..." 
-                className="bg-slate-50 border-none rounded-full px-4 py-2 text-[10px] w-40 focus:ring-1 focus:ring-slate-200 transition-all placeholder:text-slate-400 font-bold uppercase tracking-wider"
-              />
-              <Search className="w-3.5 h-3.5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2" />
-            </div>
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="relative group flex items-center gap-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-[10px] w-44 transition-all text-slate-400 font-bold uppercase tracking-wider"
+            >
+              <Search className="w-3.5 h-3.5 shrink-0" />
+              <span className="flex-1 text-left">Recherche…</span>
+              <kbd className="hidden group-hover:inline text-[8px] bg-white border border-slate-200 rounded px-1 py-0.5 font-mono text-slate-400">⌘K</kbd>
+            </button>
             
             <div className="flex items-center gap-1.5">
               {socialLinks.map((social) => (
@@ -115,8 +117,11 @@ export function Navbar() {
           </div>
           
           {/* Mobile Search Icon */}
-          <button className="p-2 text-slate-600 lg:hidden">
-             <Search className="w-6 h-6" />
+          <button
+            className="p-2 text-slate-600 lg:hidden"
+            onClick={() => setSearchOpen(true)}
+          >
+            <Search className="w-6 h-6" />
           </button>
         </div>
       </div>
@@ -150,6 +155,8 @@ export function Navbar() {
           </Link>
         </div>
       </div>
+
+      <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
 
       {/* Mobile Nav Menu */}
       {isOpen && (
