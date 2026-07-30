@@ -10,6 +10,7 @@ import { SearchModal } from "@/components/SearchModal";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [logoOpen, setLogoOpen] = useState(false);
   const [location] = useLocation();
   const [isDark, setIsDark] = useState(false);
 
@@ -82,7 +83,8 @@ export function Navbar() {
                 <img 
                   src="/images/logo.jpg" 
                   alt="Taafé Vision Logo" 
-                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105" 
+                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105 cursor-zoom-in"
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLogoOpen(true); }}
                 />
                 <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
              </div>
@@ -193,6 +195,27 @@ export function Navbar() {
                 {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
               </p>
             </div>
+          </div>
+        </div>
+      )}
+      {/* Logo Lightbox */}
+      {logoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={() => setLogoOpen(false)}
+        >
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <img
+              src="/images/logo.jpg"
+              alt="Taafé Vision Logo"
+              className="max-w-[80vw] max-h-[80vh] rounded-2xl shadow-2xl object-contain"
+            />
+            <button
+              onClick={() => setLogoOpen(false)}
+              className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-slate-700 hover:text-slate-900 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
         </div>
       )}
