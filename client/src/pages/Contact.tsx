@@ -69,7 +69,20 @@ export default function Contact() {
                 <Mail className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Nous Écrire</h3>
-              <p className="text-muted-foreground">infotaafe@gmail.com</p>
+              <div className="flex flex-col items-center gap-1">
+                <a
+                  href="mailto:contact@taafevision.com"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  contact@taafevision.com
+                </a>
+                <a
+                  href="mailto:info@taafevision.com"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  info@taafevision.com
+                </a>
+              </div>
             </div>
 
             <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
@@ -95,7 +108,18 @@ export default function Contact() {
                 <h4 className="font-bold text-lg text-slate-900">Informations de contact</h4>
                 <div className="space-y-2 text-slate-600">
                   <p className="flex items-center gap-2"><MapPin className="w-5 h-5 text-primary" /> Ouagadougou, Burkina Faso</p>
-                  <p className="flex items-center gap-2"><Mail className="w-5 h-5 text-primary" /> infotaafe@gmail.com</p>
+                  <p className="flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-primary shrink-0" />
+                    <a href="mailto:contact@taafevision.com" className="hover:text-primary transition-colors">
+                      contact@taafevision.com
+                    </a>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-primary shrink-0" />
+                    <a href="mailto:info@taafevision.com" className="hover:text-primary transition-colors">
+                      info@taafevision.com
+                    </a>
+                  </p>
                   <p className="flex items-center gap-2"><Phone className="w-5 h-5 text-primary" /> +226 00 00 00 00</p>
                 </div>
               </div>

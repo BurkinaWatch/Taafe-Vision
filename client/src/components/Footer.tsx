@@ -48,13 +48,22 @@ export function Footer() {
               <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
               Ouagadougou, Burkina Faso
             </span>
-            <a
-              href="mailto:contact@taafevision.com"
-              className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-secondary shrink-0" />
-              infotaafe@gmail.com
-            </a>
+            <div className="flex flex-col gap-1">
+              <a
+                href="mailto:contact@taafevision.com"
+                className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-secondary shrink-0" />
+                contact@taafevision.com
+              </a>
+              <a
+                href="mailto:info@taafevision.com"
+                className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-secondary shrink-0" />
+                info@taafevision.com
+              </a>
+            </div>
           </div>
           <div className="flex items-center gap-2 pt-1">
             {[
