@@ -1,1 +1,2 @@
 - [Imported Node app setup](imported-node-app-setup.md) — install declared dependencies before diagnosing a missing local runtime binary in an imported project.
+- [Server smoke-test lifecycle](smoke-process-lifecycle.md) — launch checks must own an available port and terminate nested dev processes as a group.
