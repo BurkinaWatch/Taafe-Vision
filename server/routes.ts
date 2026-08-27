@@ -211,12 +211,24 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 }
 
 async function seed() {
-  const admin = await storage.getUserByUsername("admin");
-  if (!admin) {
+  const adminUsername = process.env.ADMIN_USERNAME;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminUsername || !adminPassword) {
+    throw new Error("ADMIN_USERNAME and ADMIN_PASSWORD must be configured.");
+  }
+
+  const configuredAdmin = await storage.getUserByUsername(adminUsername);
+  const legacyAdmin = configuredAdmin ? undefined : await storage.getUserByUsername("admin");
+  const admin = configuredAdmin ?? legacyAdmin;
+  const hashedPassword = await hashPassword(adminPassword);
+
+  if (admin) {
+    await storage.updateUserCredentials(admin.id, adminUsername, hashedPassword);
+  } else {
     console.log("Seeding admin user...");
-    const hashedPassword = await hashPassword("admin123");
     await storage.createUser({
-      username: "admin",
+      username: adminUsername,
       password: hashedPassword,
       isAdmin: true
     });

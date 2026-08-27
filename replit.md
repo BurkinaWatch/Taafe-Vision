@@ -24,6 +24,8 @@ Développer une application web complète pour l'association Taafé Vision, mett
 ### Variables d'environnement requises sur Railway
 - `DATABASE_URL` : URL de connexion PostgreSQL (fournie automatiquement par le plugin PostgreSQL de Railway)
 - `SESSION_SECRET` : Clé secrète pour les sessions (générer une chaîne aléatoire)
+- `ADMIN_USERNAME` : Nom d'utilisateur de l'espace administration
+- `ADMIN_PASSWORD` : Mot de passe de l'espace administration (à enregistrer comme secret)
 - `PORT` : Défini automatiquement par Railway
 - `NODE_ENV` : Défini à `production` automatiquement
 
