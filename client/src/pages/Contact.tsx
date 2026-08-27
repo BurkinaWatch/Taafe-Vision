@@ -60,7 +60,12 @@ export default function Contact() {
                 <Phone className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Nous Appeler</h3>
-              <p className="text-muted-foreground">+226 00 00 00 00</p>
+              <a
+                href="tel:+22678097788"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                +226 78 09 77 88
+              </a>
               <p className="text-sm text-primary font-medium mt-1">Ligne d'urgence 24/7</p>
             </div>
 
@@ -120,7 +125,12 @@ export default function Contact() {
                       info@taafevision.com
                     </a>
                   </p>
-                  <p className="flex items-center gap-2"><Phone className="w-5 h-5 text-primary" /> +226 00 00 00 00</p>
+                  <p className="flex items-center gap-2">
+                    <Phone className="w-5 h-5 text-primary shrink-0" />
+                    <a href="tel:+22678097788" className="hover:text-primary transition-colors">
+                      +226 78 09 77 88
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>

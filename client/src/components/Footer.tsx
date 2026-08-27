@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Facebook, Instagram, Youtube, Mail, MapPin } from "lucide-react";
+import { Facebook, Instagram, Youtube, Mail, MapPin, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -48,6 +48,13 @@ export function Footer() {
               <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
               Ouagadougou, Burkina Faso
             </span>
+            <a
+              href="tel:+22678097788"
+              className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
+              +226 78 09 77 88
+            </a>
             <div className="flex flex-col gap-1">
               <a
                 href="mailto:contact@taafevision.com"
