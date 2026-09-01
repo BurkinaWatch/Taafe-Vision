@@ -1,9 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-export CI=true
-
-npm ci --no-audit --no-fund
-npm run check
-npm run db:push -- --force
-npm run build
+#!/bin/bash
+set -e
+pnpm install --frozen-lockfile
+pnpm --filter db push

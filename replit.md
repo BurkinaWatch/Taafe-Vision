@@ -1,48 +1,45 @@
-# Taafé Vision - Suivi de Projet
+# [Project name]
 
-## Objectif
-Développer une application web complète pour l'association Taafé Vision, mettant en avant le cinéma burkinabè et les droits des femmes.
+_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
 
-## État Actuel
-- Serveur et base de données opérationnels.
-- Navigation et pages principales créées.
-- Bugs TypeScript corrigés.
-- Images réelles de l'organisation intégrées.
+## Run & Operate
 
-## Préférences Utilisateur
-- Utiliser des photos réelles de l'organisation.
-- Visibilité du texte sur fond hero (ajusté avec blanc).
-- Typage TypeScript strict respecté.
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm run typecheck` — full typecheck across all packages
+- `pnpm run build` — typecheck + build all packages
+- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
+- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
+- Required env: `DATABASE_URL` — Postgres connection string
 
-## Architecture
-- React + Vite (Port 5000)
-- Express + PostgreSQL (Drizzle ORM)
-- Tailwind CSS / Shadcn UI
+## Stack
 
-## Déploiement Railway
+- pnpm workspaces, Node.js 24, TypeScript 5.9
+- API: Express 5
+- DB: PostgreSQL + Drizzle ORM
+- Validation: Zod (`zod/v4`), `drizzle-zod`
+- API codegen: Orval (from OpenAPI spec)
+- Build: esbuild (CJS bundle)
 
-### Variables d'environnement requises sur Railway
-- `DATABASE_URL` : URL de connexion PostgreSQL (fournie automatiquement par le plugin PostgreSQL de Railway)
-- `SESSION_SECRET` : Clé secrète pour les sessions (générer une chaîne aléatoire)
-- `ADMIN_USERNAME` : Nom d'utilisateur de l'espace administration
-- `ADMIN_PASSWORD` : Mot de passe de l'espace administration (à enregistrer comme secret)
-- `PORT` : Défini automatiquement par Railway
-- `NODE_ENV` : Défini à `production` automatiquement
+## Where things live
 
-### Étapes de déploiement
-1. Créer un projet sur Railway
-2. Ajouter un service PostgreSQL
-3. Connecter le dépôt Git
-4. Railway détecte automatiquement `railway.toml` pour la configuration
-5. Ajouter `SESSION_SECRET` dans les variables d'environnement
-6. Déployer
+_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
 
-### Build & Start
-- Build : `npm ci && npm run build && npx drizzle-kit push --force`
-- Start : `node dist/index.cjs`
-- Le serveur écoute sur le port défini par `PORT`
+## Architecture decisions
 
-## Changements Récents
-- Préparation au déploiement Railway (Février 2026) : railway.toml, build optimisé, trust proxy, cookies sécurisés.
-- Remplacement de l'image du projet par une équipe de femmes africaines en tournage (Janvier 2026).
-- Correction globale des types TypeScript.
+_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+
+## Product
+
+_Describe the high-level user-facing capabilities of this app once they exist._
+
+## User preferences
+
+_Populate as you build — explicit user instructions worth remembering across sessions._
+
+## Gotchas
+
+_Populate as you build — sharp edges, "always run X before Y" rules._
+
+## Pointers
+
+- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details

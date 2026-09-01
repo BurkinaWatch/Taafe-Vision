@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Jaune Lumineux (Fond) */
+  --background: 55 100% 93%;
+  --foreground: 330 80% 30%;
+
+  /* Rose Taafé (Accent Primaire) */
+  --primary: 330 100% 64%; 
+  --primary-foreground: 0 0% 100%;
+
+  /* Vert Vision (Accent Secondaire) */
+  --secondary: 104 100% 45%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Violet Taafé (Barre de navigation) */
+  --purple-taafe: 317 55% 23%;
+  --purple-taafe-accent: 317 55% 31%;
+
+  --card: 55 100% 95%;
+  --card-foreground: 330 80% 30%;
+  
+  --popover: 55 100% 95%;
+  --popover-foreground: 330 80% 30%;
+
+  --muted: 55 50% 85%;
+  --muted-foreground: 330 30% 45%;
+
+  --accent: 95 80% 90%;
+  --accent-foreground: 95 100% 25%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 55 50% 80%;
+  --input: 55 50% 80%;
+  --ring: 330 81% 60%;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-secondary/30;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-primary;
+  }
+}
+
+@layer components {
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .nav-link {
+    @apply text-foreground/80 hover:text-secondary transition-colors duration-300 font-medium tracking-wide relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 ease-out;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}

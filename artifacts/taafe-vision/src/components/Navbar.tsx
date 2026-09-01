@@ -1,0 +1,224 @@
+import { Link, useLocation } from "wouter";
+import { Menu, X, Facebook, Instagram, Youtube, Search, Moon, Sun, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { SiTiktok } from "react-icons/si";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
+import { SearchModal } from "@/components/SearchModal";
+
+export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [logoOpen, setLogoOpen] = useState(false);
+  const [location] = useLocation();
+  const [isDark, setIsDark] = useState(false);
+
+  const links = [
+    { href: "/", label: "Accueil" },
+    { href: "/news", label: "Blog" },
+    { href: "/projects", label: "Projets" },
+    { href: "/films", label: "Films" },
+    { href: "/trainings", label: "Formations" },
+    { href: "/about", label: "À propos" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  const socialLinks = [
+    { icon: Facebook, href: "https://facebook.com/taafevision", label: "Facebook" },
+    { icon: Youtube, href: "https://youtube.com/@taafevision", label: "Youtube" },
+    { icon: Instagram, href: "https://instagram.com/taafevision", label: "Instagram" },
+    { icon: SiTiktok, href: "https://tiktok.com/@taafevision", label: "Tiktok" },
+  ];
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-slate-100">
+      {/* Top Bar: Minimal Links + Date + Mode Toggle */}
+      <div className="bg-slate-50 border-b border-slate-200 py-1.5 hidden lg:block">
+        <div className="container-wide flex items-center justify-between">
+          <div className="flex items-center gap-4 text-[10px] uppercase font-bold text-slate-500 tracking-widest">
+            <Link href="/about" className="hover:text-slate-900 transition-colors">À propos</Link>
+            <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+              {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
+            </span>
+            <button 
+              onClick={() => setIsDark(!isDark)}
+              className="w-10 h-5 bg-slate-200 rounded-full relative transition-colors flex items-center px-1"
+            >
+              <div className={cn(
+                "w-3.5 h-3.5 bg-white rounded-full shadow-sm flex items-center justify-center transition-transform",
+                isDark ? "translate-x-4.5" : "translate-x-0"
+              )}>
+                {isDark ? <Moon className="w-2 h-2 text-slate-400" /> : <Sun className="w-2 h-2 text-slate-400" />}
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Middle Bar: Menu Toggle + Logo + Search + Social */}
+      <div className="bg-white py-1.5 lg:py-2">
+        <div className="container-wide flex items-center justify-between gap-4 lg:gap-6">
+          {/* Left: Mobile Menu Toggle */}
+          <button 
+            className="p-2 text-slate-600 lg:hidden" 
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+          
+          <div className="hidden lg:block w-16">
+             <button className="text-slate-400 hover:text-slate-900 transition-colors">
+                <Menu className="w-5 h-5" />
+             </button>
+          </div>
+
+          {/* Center: Logo */}
+          <Link href="/" className="flex flex-col items-center flex-1 group">
+             <div className="flex items-center gap-2 lg:gap-3">
+                <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
+                <img 
+                  src="/images/logo.jpg" 
+                  alt="Taafé Vision Logo" 
+                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105 cursor-zoom-in"
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLogoOpen(true); }}
+                />
+                <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
+             </div>
+             <span className="text-[6px] lg:text-[9px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-slate-400">CINÉMA & DROITS DES FEMMES</span>
+          </Link>
+
+          {/* Right: Search + Social Icons */}
+          <div className="hidden lg:flex items-center gap-8">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="relative group flex items-center gap-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-[10px] w-44 transition-all text-slate-400 font-bold uppercase tracking-wider"
+            >
+              <Search className="w-3.5 h-3.5 shrink-0" />
+              <span className="flex-1 text-left">Recherche…</span>
+              <kbd className="hidden group-hover:inline text-[8px] bg-white border border-slate-200 rounded px-1 py-0.5 font-mono text-slate-400">⌘K</kbd>
+            </button>
+            
+            <div className="flex items-center gap-1.5">
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#561a44] text-white w-8 h-8 flex items-center justify-center rounded-sm hover:bg-[#32cd32] hover:text-[#561a44] transition-all shadow-sm"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-3.5 h-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          {/* Mobile Search Icon */}
+          <button
+            className="p-2 text-slate-600 lg:hidden"
+            onClick={() => setSearchOpen(true)}
+          >
+            <Search className="w-6 h-6" />
+          </button>
+        </div>
+      </div>
+
+      {/* Bottom Bar: Navigation Menu */}
+      <div className="bg-[#561a44] hidden lg:block border-t border-white/5">
+        <div className="container-wide flex items-center justify-between h-14">
+          <div className="flex items-center h-full">
+            {links.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={cn(
+                  "px-6 h-full flex items-center text-[10px] font-black uppercase tracking-[0.2em] transition-all relative group",
+                  location === link.href 
+                    ? "bg-[#7a2561] text-white" 
+                    : "text-white/80 hover:text-white"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          
+          <Link 
+            href="/contact" 
+            className="border border-white/30 px-6 py-2 rounded-sm text-white text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#561a44] transition-all flex items-center gap-2"
+          >
+            <Mail className="w-3.5 h-3.5" />
+            RÉSERVEZ VOTRE PLACE
+          </Link>
+        </div>
+      </div>
+
+      <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
+
+      {/* Mobile Nav Menu */}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 top-[70px] lg:top-[80px] z-[60] bg-white animate-in slide-in-from-top-2 overflow-y-auto">
+          <div className="flex flex-col p-8 space-y-6">
+            {links.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={cn(
+                  "text-xl font-display font-black uppercase tracking-widest border-b border-slate-100 pb-4",
+                  location === link.href ? "text-secondary" : "text-slate-900"
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-8 flex flex-col gap-6 items-center">
+              <div className="flex items-center gap-4">
+                {socialLinks.map((social) => (
+                  <a 
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#561a44] text-white w-12 h-12 flex items-center justify-center rounded-sm shadow-md"
+                  >
+                    <social.icon className="w-6 h-6" />
+                  </a>
+                ))}
+              </div>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Logo Lightbox */}
+      {logoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={() => setLogoOpen(false)}
+        >
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <img
+              src="/images/logo.jpg"
+              alt="Taafé Vision Logo"
+              className="max-w-[80vw] max-h-[80vh] rounded-2xl shadow-2xl object-contain"
+            />
+            <button
+              onClick={() => setLogoOpen(false)}
+              className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-slate-700 hover:text-slate-900 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}

@@ -1,0 +1,210 @@
+Crée une Web Application complète (frontend + backend) pour l’association culturelle burkinabè Taafé Vision.
+
+L’application doit être :
+
+publique (site vitrine accessible à tous)
+
+avec un espace administrateur sécurisé pour gérer le contenu
+
+responsive, moderne, performante et évolutive
+
+🧱 STACK TECHNIQUE (à utiliser)
+
+Frontend : React + Vite (ou Next.js si pertinent)
+
+Styling : Tailwind CSS
+
+Backend : Node.js + Express
+
+Base de données : PostgreSQL ou SQLite (selon simplicité)
+
+ORM : Prisma
+
+Auth : JWT + bcrypt
+
+Upload médias : local + possibilité cloud plus tard
+
+Déploiement : compatible Replit + exportable
+
+🎨 IDENTITÉ VISUELLE
+
+Respecter le code couleur du logo Taafé Vision :
+
+Couleur principale : violet / bordeaux profond
+
+Couleurs secondaires : orange / ocre / tons terre
+
+Ambiance :
+
+cinématographique
+
+africaine contemporaine
+
+féminine élégante
+
+institutionnelle mais chaleureuse
+
+Utiliser :
+
+grandes images
+
+typographie moderne
+
+design clair et lisible
+
+📚 CONTENU MÉTIER À INTÉGRER
+Présentation
+
+Association fondée en 2017
+
+Présidente : Azaratou Bancé
+
+Mission : promotion des femmes dans le cinéma et l’audiovisuel
+
+Axes :
+
+formation
+
+production
+
+sensibilisation
+
+projections-débats
+
+participation au FESPACO
+
+Projets
+
+« Elles se réalisent »
+
+« De l’idée au court métrage »
+
+Projections communautaires
+
+Pitchs & panels
+
+Films
+
+Chaque film contient :
+
+titre
+
+réalisatrice
+
+synopsis
+
+année
+
+image
+
+lien vidéo
+
+Autres contenus
+
+Actualités
+
+Événements
+
+Partenaires
+
+Formations
+
+🧭 STRUCTURE DU SITE (FRONTEND)
+
+Créer les pages suivantes :
+
+/ Accueil
+
+/about À propos
+
+/projects Projets
+
+/films Films & productions
+
+/trainings Formations
+
+/news Actualités
+
+/partners Partenaires
+
+/contact Contact
+
+Navigation claire + footer complet.
+
+🔐 ESPACE ADMIN
+
+Créer un espace admin accessible via /admin avec :
+
+Fonctionnalités
+
+Connexion sécurisée
+
+Dashboard
+
+CRUD complet pour :
+
+Pages
+
+Projets
+
+Films
+
+Articles
+
+Partenaires
+
+Upload images
+
+Éditeur de texte riche
+
+Protection des routes
+
+Modèles de données (minimum)
+
+User
+
+Project
+
+Film
+
+Article
+
+Partner
+
+Media
+
+🧠 ARCHITECTURE ATTENDUE
+
+Code clair et commenté
+
+Séparation frontend / backend
+
+API REST bien structurée
+
+Variables d’environnement
+
+Sécurité basique (auth, validation, permissions)
+
+🚀 LIVRABLES ATTENDUS
+
+Arborescence complète du projet
+
+Base de données + schéma Prisma
+
+API fonctionnelle
+
+Interface utilisateur stylée
+
+Admin panel opérationnel
+
+Instructions pour lancer le projet sur Replit
+
+📌 CONTRAINTE FINALE
+
+Le projet doit pouvoir être :
+
+utilisé par une association réelle
+
+administré sans compétences techniques
+
+évolutif (multi-langue, nouveaux projets, nouveaux films)
