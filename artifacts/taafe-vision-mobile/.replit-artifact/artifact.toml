@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/taafe-vision-mobile/"
+title = "Taafé Vision Mobile"
+description = "Application Android qui embarque le site Taafé Vision pour permettre aux visiteurs de consulter les contenus et contacter l'association depuis leur téléphone."
+version = "1.0.0"
+id = "artifacts/taafe-vision-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/taafe-vision-mobile/" ]
+localPort = 23072
+
+[services.development]
+run = "pnpm --filter @workspace/taafe-vision-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/taafe-vision-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/taafe-vision-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "23072"
+BASE_PATH = "/taafe-vision-mobile/"
