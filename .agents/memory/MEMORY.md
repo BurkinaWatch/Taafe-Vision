@@ -1,1 +1,2 @@
 - [Workspace artifact workflows](workspace-artifact-workflows.md) — managed workflows provide PORT and BASE_PATH; direct artifact builds need those values supplied explicitly.
+- [Expo Android release builds](expo-android-release-builds.md) — use OpenJDK 17 and an explicit local Android SDK for Gradle release builds in this workspace.

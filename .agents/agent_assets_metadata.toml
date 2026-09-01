@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "m3_oWK5wRZe3HA7rlW8FV"
+uri = "file://dist/taafe-vision-mobile-release.apk"
+type = "unspecified"
+title = "Taafé Vision — APK Android release signé"
+description = "APK Android release signé, package org.taafevision.mobile, build arm64-v8a. L’application charge https://taafevision.org/ dans le WebView natif."
+logical_id = "520bfbf7-93b2-4bb8-ab04-cc6266eefa28"
+content_hash = "sha256:f3878d18995f45cb04a564fcf640579b43746f7ef890bff8cd34551183646478"
+size = 39196990
+mtime_ms = 1788284609316
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/520bfbf7-93b2-4bb8-ab04-cc6266eefa28/e3100f10-a4ef-496b-89d4-a5c1c414fdf3"
+storage_version_token = "1788284728666822"
+content_type = "application/octet-stream"
