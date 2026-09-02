@@ -1,0 +1,1 @@
+.taafe-armv7-pkg/lib/armeabi-v7a/libreactnative.so filter=lfs diff=lfs merge=lfs -text

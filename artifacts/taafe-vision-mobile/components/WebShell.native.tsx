@@ -14,6 +14,10 @@ import {
 } from 'react-native-webview';
 import { useColors } from '@/hooks/useColors';
 import { SITE_HOSTS } from '@/components/site-config';
+import MobileChrome, {
+  getMobileRoutePath,
+  type MobileRoute,
+} from '@/components/MobileChrome';
 import type { WebShellProps } from './WebShell';
 
 export default function WebShell({ uri }: WebShellProps) {
@@ -22,6 +26,7 @@ export default function WebShell({ uri }: WebShellProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [canGoBack, setCanGoBack] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [currentUrl, setCurrentUrl] = useState(uri);
 
   useEffect(() => {
     const subscription = BackHandler.addEventListener(
@@ -81,67 +86,88 @@ export default function WebShell({ uri }: WebShellProps) {
     webViewRef.current?.reload();
   }, []);
 
+  const navigateToRoute = useCallback(
+    (route: MobileRoute) => {
+      const nextUrl = new URL(getMobileRoutePath(route), uri).toString();
+      webViewRef.current?.injectJavaScript(
+        `window.location.href = ${JSON.stringify(nextUrl)}; true;`,
+      );
+    },
+    [uri],
+  );
+
   return (
-    <View style={styles.container}>
-      {errorMessage ? (
-        <View style={[styles.errorState, { backgroundColor: colors.background }]}>
-          <Text style={[styles.errorTitle, { color: colors.foreground }]}>
-            Impossible de charger Taafé Vision
-          </Text>
-          <Text style={[styles.errorText, { color: colors.mutedForeground }]}>
-            {errorMessage}
-          </Text>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Réessayer de charger le site"
-            onPress={retry}
-            style={({ pressed }) => [
-              styles.retryButton,
-              {
-                backgroundColor: colors.primary,
-                opacity: pressed ? 0.78 : 1,
-              },
-            ]}
-          >
-            <Text style={[styles.retryLabel, { color: colors.primaryForeground }]}>
-              Réessayer
+    <MobileChrome
+      canGoBack={canGoBack}
+      currentUrl={currentUrl}
+      onBack={() => webViewRef.current?.goBack()}
+      onNavigate={navigateToRoute}
+      onRefresh={retry}
+    >
+      <View style={styles.container}>
+        {errorMessage ? (
+          <View style={[styles.errorState, { backgroundColor: colors.background }]}>
+            <Text style={[styles.errorTitle, { color: colors.foreground }]}>
+              Impossible de charger Taafé Vision
             </Text>
-          </Pressable>
-        </View>
-      ) : (
-        <>
-          <WebView
-            ref={webViewRef}
-            source={{ uri }}
-            originWhitelist={['https://*', 'http://*']}
-            onLoadStart={() => {
-              setIsLoading(true);
-              setErrorMessage(null);
-            }}
-            onLoadEnd={() => setIsLoading(false)}
-            onError={handleError}
-            onNavigationStateChange={(state) => setCanGoBack(state.canGoBack)}
-            onShouldStartLoadWithRequest={handleNavigation}
-            javaScriptEnabled
-            domStorageEnabled
-            allowsBackForwardNavigationGestures
-            startInLoadingState
-            style={styles.webView}
-          />
-          {isLoading ? (
-            <View
-              pointerEvents="none"
-              style={[styles.loadingOverlay, { backgroundColor: colors.background }]}
+            <Text style={[styles.errorText, { color: colors.mutedForeground }]}>
+              {errorMessage}
+            </Text>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Réessayer de charger le site"
+              onPress={retry}
+              style={({ pressed }) => [
+                styles.retryButton,
+                {
+                  backgroundColor: colors.primary,
+                  opacity: pressed ? 0.78 : 1,
+                },
+              ]}
             >
-              <ActivityIndicator color={colors.primary} size="large" />
-              <Text style={[styles.loadingText, { color: colors.mutedForeground }]}>
-                Chargement de Taafé Vision…
+              <Text style={[styles.retryLabel, { color: colors.primaryForeground }]}>
+                Réessayer
               </Text>
-            </View>
-          ) : null}
-        </>
-      )}
-    </View>
+            </Pressable>
+          </View>
+        ) : (
+          <>
+            <WebView
+              ref={webViewRef}
+              source={{ uri }}
+              originWhitelist={['https://*', 'http://*']}
+              onLoadStart={() => {
+                setIsLoading(true);
+                setErrorMessage(null);
+              }}
+              onLoadEnd={() => setIsLoading(false)}
+              onError={handleError}
+              onNavigationStateChange={(state) => {
+                setCanGoBack(state.canGoBack);
+                setCurrentUrl(state.url);
+              }}
+              onShouldStartLoadWithRequest={handleNavigation}
+              javaScriptEnabled
+              domStorageEnabled
+              allowsBackForwardNavigationGestures
+              startInLoadingState
+              style={styles.webView}
+            />
+            {isLoading ? (
+              <View
+                pointerEvents="none"
+                style={[styles.loadingOverlay, { backgroundColor: colors.background }]}
+              >
+                <ActivityIndicator color={colors.primary} size="large" />
+                <Text style={[styles.loadingText, { color: colors.mutedForeground }]}>
+                  Chargement de Taafé Vision…
+                </Text>
+              </View>
+            ) : null}
+          </>
+        )}
+      </View>
+    </MobileChrome>
   );
 }
 

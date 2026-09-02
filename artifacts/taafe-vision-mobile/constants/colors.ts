@@ -49,6 +49,11 @@ const colors = {
     // Borders and input outlines
     border: '#d9d49e',
     input: '#d9d49e',
+
+    // Native mobile chrome, synced with the website navigation palette
+    purpleTaafe: '#5b1b52',
+    purpleMuted: '#e8c7e1',
+    onPurple: '#fff7fc',
   },
 
   // Border radius (in px). Sync from the sibling web artifact's --radius

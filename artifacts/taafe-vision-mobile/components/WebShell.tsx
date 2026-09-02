@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
+import MobileChrome, {
+  getMobileRoutePath,
+  type MobileRoute,
+} from '@/components/MobileChrome';
 
 export type WebShellProps = {
   uri: string;
@@ -11,21 +15,34 @@ export type WebShellProps = {
  */
 export default function WebShell({ uri }: WebShellProps) {
   const Iframe = 'iframe' as unknown as React.ElementType;
+  const [currentUrl, setCurrentUrl] = useState(uri);
+
+  const navigateToRoute = (route: MobileRoute) => {
+    setCurrentUrl(new URL(getMobileRoutePath(route), uri).toString());
+  };
 
   return (
-    <View style={styles.container}>
-      {React.createElement(Iframe, {
-        title: 'Site Taafé Vision',
-        src: uri,
-        allow: 'fullscreen',
-        style: {
-          border: '0',
-          display: 'block',
-          height: '100%',
-          width: '100%',
-        },
-      })}
-    </View>
+    <MobileChrome
+      canGoBack={currentUrl !== uri}
+      currentUrl={currentUrl}
+      onBack={() => setCurrentUrl(uri)}
+      onNavigate={navigateToRoute}
+      onRefresh={() => setCurrentUrl((url) => `${url.split('?')[0]}?refresh=${Date.now()}`)}
+    >
+      <View style={styles.container}>
+        {React.createElement(Iframe, {
+          title: 'Site Taafé Vision',
+          src: currentUrl,
+          allow: 'fullscreen',
+          style: {
+            border: '0',
+            display: 'block',
+            height: '100%',
+            width: '100%',
+          },
+        })}
+      </View>
+    </MobileChrome>
   );
 }
 
