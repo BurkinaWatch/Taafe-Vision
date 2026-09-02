@@ -1,45 +1,58 @@
-# [Project name]
+# Taafé Vision
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+The official website for Taafé Vision, a Burkinabè association using cinema to promote women's rights, support women filmmakers, and engage communities.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm install --frozen-lockfile` — install the workspace dependencies
+- `PORT=20053 BASE_PATH=/ pnpm --filter @workspace/taafe-vision run dev` — run the frontend
+- `PORT=8080 pnpm --filter @workspace/api-server run dev` — run the API server
+- `PORT=20053 BASE_PATH=/ pnpm --filter @workspace/taafe-vision run build` — build the frontend
 - `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+
+The Replit workflows are `Taafe Vision` (frontend) and `API Server` (backend). The frontend proxies `/api` requests to the API on port 8080 during development.
+
+Required environment:
+
+- `RAILWAY_DATABASE_URL` or `DATABASE_URL` — PostgreSQL connection string
+- `ADMIN_USERNAME` — administrator login username
+- `ADMIN_PASSWORD` — administrator login password
+- `SESSION_SECRET` — persistent session signing secret
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
+- pnpm workspaces, Node.js 20, TypeScript 5.9
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite + Tailwind CSS
+- Validation: Zod
+- Build: Vite and esbuild
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/taafe-vision/src` — frontend pages, components, hooks, and API client
+- `artifacts/api-server/src` — Express API routes, storage, and database initialization
+- `lib/db/src/schema` — database schema
+- `lib/api-spec/openapi.yaml` — shared API contract
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Keep the imported pnpm workspace and React/Vite/Express/PostgreSQL stack unchanged.
+- Run the frontend and API as separate Replit workflows.
+- Proxy `/api` from Vite to the API workflow in development so browser requests stay same-origin.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The public site presents Taafé Vision's films, projects, news, partners, training activities, organization information, and contact form. An authenticated admin area manages the site's content.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+No project-specific preferences recorded.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The Vite config requires both `PORT` and `BASE_PATH` for direct commands.
+- The API requires a PostgreSQL connection and `ADMIN_PASSWORD`; do not replace missing values with mock data.
 
 ## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
