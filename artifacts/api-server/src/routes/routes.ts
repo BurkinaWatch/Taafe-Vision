@@ -9,6 +9,11 @@ import MemoryStore from "memorystore";
 const scryptAsync = promisify(scrypt);
 const SessionStore = MemoryStore(session);
 
+function parseRouteId(value: string | string[]): number {
+  const rawValue = Array.isArray(value) ? value[0] : value;
+  return parseInt(rawValue, 10);
+}
+
 async function hashPassword(password: string) {
   const salt = randomBytes(16).toString("hex");
   const buf = (await scryptAsync(password, salt, 64)) as Buffer;
@@ -50,11 +55,12 @@ export async function registerRoutes(app: Express): Promise<void> {
   };
 
   // Auth Routes
-  app.post(api.auth.login.path, async (req, res) => {
+  app.post(api.auth.login.path, async (req, res): Promise<void> => {
     const { username, password } = req.body;
     const user = await storage.getUserByUsername(username);
     if (!user || !(await comparePassword(password, user.password))) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      res.status(401).json({ message: "Invalid credentials" });
+      return;
     }
     (req.session as any).userId = user.id;
     res.json(user);
@@ -66,8 +72,11 @@ export async function registerRoutes(app: Express): Promise<void> {
     });
   });
 
-  app.get(api.auth.me.path, async (req, res) => {
-    if (!(req.session as any).userId) return res.status(401).send(null);
+  app.get(api.auth.me.path, async (req, res): Promise<void> => {
+    if (!(req.session as any).userId) {
+      res.status(401).send(null);
+      return;
+    }
     const user = await storage.getUser((req.session as any).userId);
     res.json(user);
   });
@@ -94,7 +103,7 @@ export async function registerRoutes(app: Express): Promise<void> {
     }
   });
   app.delete(api.projects.delete.path, requireAuth, async (req, res) => {
-    await storage.deleteProject(parseInt(req.params.id));
+    await storage.deleteProject(parseRouteId(req.params.id));
     res.sendStatus(204);
   });
 
@@ -103,9 +112,12 @@ export async function registerRoutes(app: Express): Promise<void> {
     const films = await storage.getFilms();
     res.json(films);
   });
-  app.get(api.films.get.path, async (req, res) => {
-    const film = await storage.getFilm(parseInt(req.params.id));
-    if (!film) return res.status(404).json({ message: "Film not found" });
+  app.get(api.films.get.path, async (req, res): Promise<void> => {
+    const film = await storage.getFilm(parseRouteId(req.params.id));
+    if (!film) {
+      res.status(404).json({ message: "Film not found" });
+      return;
+    }
     res.json(film);
   });
   app.post(api.films.create.path, requireAuth, async (req, res) => {
@@ -125,7 +137,7 @@ export async function registerRoutes(app: Express): Promise<void> {
     }
   });
   app.delete(api.films.delete.path, requireAuth, async (req, res) => {
-    await storage.deleteFilm(parseInt(req.params.id));
+    await storage.deleteFilm(parseRouteId(req.params.id));
     res.sendStatus(204);
   });
 
@@ -151,7 +163,7 @@ export async function registerRoutes(app: Express): Promise<void> {
     }
   });
   app.delete(api.articles.delete.path, requireAuth, async (req, res) => {
-    await storage.deleteArticle(parseInt(req.params.id));
+    await storage.deleteArticle(parseRouteId(req.params.id));
     res.sendStatus(204);
   });
 
@@ -169,7 +181,7 @@ export async function registerRoutes(app: Express): Promise<void> {
     }
   });
   app.delete(api.partners.delete.path, requireAuth, async (req, res) => {
-    await storage.deletePartner(parseInt(req.params.id));
+    await storage.deletePartner(parseRouteId(req.params.id));
     res.sendStatus(204);
   });
 
@@ -188,9 +200,12 @@ export async function registerRoutes(app: Express): Promise<void> {
   });
 
   // Public organization knowledge
-  app.get(api.knowledge.profile.path, async (_req, res) => {
+  app.get(api.knowledge.profile.path, async (_req, res): Promise<void> => {
     const profile = await storage.getOrganizationProfile();
-    if (!profile) return res.status(404).json({ message: "Organization profile not found" });
+    if (!profile) {
+      res.status(404).json({ message: "Organization profile not found" });
+      return;
+    }
     res.json(profile);
   });
   app.get(api.knowledge.metrics.path, async (_req, res) => {

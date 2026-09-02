@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { useProjects } from "@/hooks/use-projects";
 import { Calendar, ArrowRight, Users, Film, Globe, Megaphone } from "lucide-react";
 import { motion } from "framer-motion";
+import type { Project } from "@/lib/api";
 
 const CATEGORY_MAP: Record<string, { label: string; color: string; Icon: any }> = {
   "Elles se réalisent":            { label: "Formation", color: "bg-purple-100 text-purple-700", Icon: Users },
@@ -81,7 +82,7 @@ export default function Projects() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 gap-8">
-              {featured.map((project, i) => {
+              {featured.map((project: Project, i: number) => {
                 const cat = CATEGORY_MAP[project.title];
                 const Icon = cat?.Icon ?? Film;
                 const status = statusBadge(project.date);
@@ -151,7 +152,7 @@ export default function Projects() {
           <div className="container-wide">
             <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-secondary mb-12">Toutes nos initiatives</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {secondary.map((project, i) => {
+              {secondary.map((project: Project, i: number) => {
                 const cat = CATEGORY_MAP[project.title];
                 const Icon = cat?.Icon ?? Film;
                 const status = statusBadge(project.date);

@@ -13,6 +13,7 @@ import {
 import { useFilms } from "@/hooks/use-films";
 import { useArticles } from "@/hooks/use-articles";
 import { useProjects } from "@/hooks/use-projects";
+import type { Article, Film as FilmType, Project } from "@/lib/api";
 
 interface SearchModalProps {
   open: boolean;
@@ -47,7 +48,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
   const q = query.toLowerCase().trim();
 
   const filteredFilms = (films ?? []).filter(
-    (f) =>
+    (f: FilmType) =>
       !q ||
       f.title.toLowerCase().includes(q) ||
       f.director.toLowerCase().includes(q) ||
@@ -55,14 +56,14 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
   );
 
   const filteredArticles = (articles ?? []).filter(
-    (a) =>
+    (a: Article) =>
       !q ||
       a.title.toLowerCase().includes(q) ||
       a.content.toLowerCase().includes(q)
   );
 
   const filteredProjects = (projects ?? []).filter(
-    (p) =>
+    (p: Project) =>
       !q ||
       p.title.toLowerCase().includes(q) ||
       p.description.toLowerCase().includes(q)
@@ -94,7 +95,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
 
         {filteredFilms.length > 0 && (
           <CommandGroup heading="Films">
-            {filteredFilms.slice(0, 6).map((film) => (
+            {filteredFilms.slice(0, 6).map((film: FilmType) => (
               <CommandItem
                 key={film.id}
                 value={`film-${film.id}-${film.title}`}
@@ -119,7 +120,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
 
         {filteredArticles.length > 0 && (
           <CommandGroup heading="Articles & Actualités">
-            {filteredArticles.slice(0, 5).map((article) => (
+            {filteredArticles.slice(0, 5).map((article: Article) => (
               <CommandItem
                 key={article.id}
                 value={`article-${article.id}-${article.title}`}
@@ -144,7 +145,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
 
         {filteredProjects.length > 0 && (
           <CommandGroup heading="Programmes & Projets">
-            {filteredProjects.slice(0, 5).map((project) => (
+            {filteredProjects.slice(0, 5).map((project: Project) => (
               <CommandItem
                 key={project.id}
                 value={`project-${project.id}-${project.title}`}

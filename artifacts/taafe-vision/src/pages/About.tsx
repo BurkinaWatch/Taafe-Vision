@@ -5,8 +5,10 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { usePartners } from "@/hooks/use-partners";
 import { useOrganizationProfile, useImpactMetrics, useResearchSources, useSocialLinks } from "@/hooks/use-knowledge";
 import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
+import type { Partner } from "@/lib/api";
+import type { ReactElement } from "react";
 
-const SOCIAL_ICONS: Record<string, JSX.Element> = {
+const SOCIAL_ICONS: Record<string, ReactElement> = {
   facebook: (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
   ),
@@ -346,7 +348,7 @@ export default function About() {
               viewport={{ once: true }}
               className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-items-center"
             >
-              {partners.map((partner) => (
+              {partners.map((partner: Partner) => (
                 <motion.div
                   key={partner.id}
                   variants={item}
