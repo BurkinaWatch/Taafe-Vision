@@ -2,7 +2,7 @@
   "expo": {
     "name": "Taafé Vision Mobile",
     "slug": "taafe-vision-mobile",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "taafe-vision-mobile",
@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "org.taafevision.mobile",
-      "versionCode": 2
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/images/icon.png"
