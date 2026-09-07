@@ -30,7 +30,7 @@ export default function Films() {
                   <div className="group relative bg-gray-900 rounded-xl overflow-hidden shadow-2xl hover:shadow-secondary/20 transition-all duration-300 border border-gray-800 flex flex-col h-full cursor-pointer">
                     <div className="aspect-[3/4] relative overflow-hidden bg-gray-800">
                       <img 
-                        src={film.imageUrl} 
+                        src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
                         alt={film.title} 
                         className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
                         onError={(e) => { 

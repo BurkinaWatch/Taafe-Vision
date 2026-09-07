@@ -231,7 +231,10 @@ export default function Home() {
             {(films || []).slice(0, 3).map((film) => (
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
-                  <img src={film.imageUrl} alt={film.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                  <img
+                    src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
+                    alt={film.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     onError={(e) => {
                       const target = e.currentTarget;
                       target.onerror = null;

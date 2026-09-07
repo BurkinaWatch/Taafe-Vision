@@ -98,10 +98,14 @@ export default function Projects() {
                     {/* Image area */}
                     <div className="relative h-56 overflow-hidden" style={{ backgroundColor: bg }}>
                       <img
-                        src={project.imageUrl}
+                         src={project.imageUrl.startsWith("/images/") ? project.imageUrl : "/images/community-engagement-1.jpg"}
                         alt={project.title}
                         className="w-full h-full object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
-                        onError={(e) => { e.currentTarget.style.display = "none"; }}
+                         onError={(e) => {
+                           const target = e.currentTarget;
+                           target.onerror = null;
+                           target.src = "/images/community-engagement-1.jpg";
+                         }}
                       />
                       <div className="absolute inset-0 flex items-end p-6">
                         <div className="flex items-center gap-3">
