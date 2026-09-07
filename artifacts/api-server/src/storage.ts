@@ -17,21 +17,21 @@ export interface IStorage {
   updateUserCredentials(id: number, username: string, password: string): Promise<User>;
 
   // Projects
-  getProjects(): Promise<Project[]>;
+  getProjects(includeHidden?: boolean): Promise<Project[]>;
   getProject(id: number): Promise<Project | undefined>;
   createProject(project: InsertProject): Promise<Project>;
   updateProject(id: number, project: Partial<InsertProject>): Promise<Project>;
   deleteProject(id: number): Promise<void>;
 
   // Films
-  getFilms(): Promise<Film[]>;
-  getFilm(id: number): Promise<Film | undefined>;
+  getFilms(includeHidden?: boolean): Promise<Film[]>;
+  getFilm(id: number, includeHidden?: boolean): Promise<Film | undefined>;
   createFilm(film: InsertFilm): Promise<Film>;
   updateFilm(id: number, film: Partial<InsertFilm>): Promise<Film>;
   deleteFilm(id: number): Promise<void>;
 
   // Articles
-  getArticles(): Promise<Article[]>;
+  getArticles(includeHidden?: boolean): Promise<Article[]>;
   getArticle(id: number): Promise<Article | undefined>;
   createArticle(article: InsertArticle): Promise<Article>;
   updateArticle(id: number, article: Partial<InsertArticle>): Promise<Article>;
@@ -89,8 +89,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Projects
-  async getProjects(): Promise<Project[]> {
-    return await db.select().from(projects);
+  async getProjects(includeHidden = false): Promise<Project[]> {
+    if (includeHidden) return await db.select().from(projects);
+    return await db.select().from(projects).where(eq(projects.isHidden, false));
   }
   async getProject(id: number): Promise<Project | undefined> {
     const [project] = await db.select().from(projects).where(eq(projects.id, id));
@@ -109,11 +110,16 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Films
-  async getFilms(): Promise<Film[]> {
-    return await db.select().from(films);
+  async getFilms(includeHidden = false): Promise<Film[]> {
+    if (includeHidden) return await db.select().from(films);
+    return await db.select().from(films).where(eq(films.isHidden, false));
   }
-  async getFilm(id: number): Promise<Film | undefined> {
-    const [film] = await db.select().from(films).where(eq(films.id, id));
+  async getFilm(id: number, includeHidden = false): Promise<Film | undefined> {
+    const conditions = includeHidden
+      ? eq(films.id, id)
+      : eq(films.id, id);
+    const [film] = await db.select().from(films).where(conditions);
+    if (!includeHidden && film?.isHidden) return undefined;
     return film;
   }
   async createFilm(insertFilm: InsertFilm): Promise<Film> {
@@ -129,8 +135,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Articles
-  async getArticles(): Promise<Article[]> {
-    return await db.select().from(articles);
+  async getArticles(includeHidden = false): Promise<Article[]> {
+    if (includeHidden) return await db.select().from(articles);
+    return await db.select().from(articles).where(eq(articles.isHidden, false));
   }
   async getArticle(id: number): Promise<Article | undefined> {
     const [article] = await db.select().from(articles).where(eq(articles.id, id));
