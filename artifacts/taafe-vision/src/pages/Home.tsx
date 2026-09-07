@@ -41,7 +41,6 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       {/* ... previous sections remain the same ... */}
-
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden bg-slate-950">
         {/* Background Image with Overlay */}
@@ -70,9 +69,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl md:text-2xl font-light max-w-2xl text-slate-300 leading-relaxed"
-            >
-              Taafé Vision utilise le septième art comme un levier puissant pour la défense des droits des femmes et l'égalité des genres au Burkina Faso.
-            </motion.p>
+            >Artivisme pour un monde plus juste</motion.p>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -96,7 +93,6 @@ export default function Home() {
           <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent" />
         </div>
       </section>
-
       {/* Impact Section */}
       <section className="py-32 relative overflow-hidden bg-[#fdf8e6]">
         {/* Decorative elements */}
@@ -190,7 +186,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Mission Highlights */}
       <section className="py-24 bg-background">
         <div className="container-wide grid md:grid-cols-3 gap-12 text-center">
@@ -217,7 +212,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Latest Films Preview */}
       <section className="py-24 bg-muted/30">
         <div className="container-wide">
@@ -280,7 +274,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Partners Section */}
       <section className="py-24 bg-white">
         <div className="container-wide">
@@ -312,7 +305,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

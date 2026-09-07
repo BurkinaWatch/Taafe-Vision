@@ -10,7 +10,7 @@ export function Footer() {
         <div className="flex flex-col gap-3">
           <div className="border-l-2 border-secondary pl-4">
             <p className="text-xl font-display font-bold text-white leading-tight">Taafé Vision</p>
-            <p className="text-secondary text-[10px] uppercase tracking-[0.25em] font-bold mt-0.5">Cinéma & Droits des Femmes</p>
+            <p className="text-secondary text-[10px] uppercase tracking-[0.25em] font-bold mt-0.5">Artivisme pour un monde plus juste</p>
           </div>
           <p className="text-slate-500 text-xs leading-relaxed">
             Organisation féministe utilisant le cinéma pour défendre les droits des femmes au Burkina Faso, depuis 2017.
@@ -92,7 +92,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-
       {/* Bottom bar */}
       <div className="border-t border-white/5">
         <div className="container-wide py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] text-slate-600 uppercase tracking-widest">
