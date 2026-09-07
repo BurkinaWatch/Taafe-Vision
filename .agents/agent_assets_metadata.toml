@@ -28,3 +28,17 @@ mtime_ms = 1788293625361
 storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/c600e17b-5a6e-4808-a126-1d9e10e62eb7/8285c9aa-cd88-4ba7-b5c9-d3e3e76acb37"
 storage_version_token = "1788293630475543"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "7PxWrcKzrHIUhjsh2Eh7_"
+uri = "file://artifacts/taafe-vision/public/images/taafe-vision-logo-clean.png"
+type = "image"
+title = "Logo Taafé Vision nettoyé"
+description = "Version sans la mention « Aimez et », utilisée pour le site, le favicon et l’application mobile."
+logical_id = "a106310c-d50c-4f62-ba22-019580a1f824"
+content_hash = "sha256:4fb0bf45397a1b578cd5ef49e07e66507116f52a50c6a4ff6561bf94adb596c7"
+size = 1452590
+mtime_ms = 1788781293401
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/a106310c-d50c-4f62-ba22-019580a1f824/636181d0-a5f2-47da-a64f-8c51a70cee84"
+storage_version_token = "1788784955501237"
+content_type = "image/png"
