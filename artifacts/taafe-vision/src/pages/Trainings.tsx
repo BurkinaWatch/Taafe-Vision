@@ -1,39 +1,61 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
-import { BookOpen, Users, Award, Zap, Lightbulb } from "lucide-react";
+import { BookOpen, Users, Award, Zap, Lightbulb, type LucideIcon } from "lucide-react";
+import { useArticles } from "@/hooks/use-articles";
+import type { Article } from "@/lib/types";
+
+type TrainingCard = {
+  id: string | number;
+  title: string;
+  description: string;
+  duration: string | null;
+  icon: LucideIcon;
+};
+
+const defaultTrainings: TrainingCard[] = [
+  {
+    id: "default-writing",
+    title: "Écriture Cinématographique",
+    description: "Développez vos compétences en écriture de scénarios et en développement d'histoires. Apprenez à écrire des films sans stéréotypes qui abordent des enjeux sociaux importants.",
+    duration: "8 semaines",
+    icon: BookOpen,
+  },
+  {
+    id: "default-directing",
+    title: "Réalisation de Courts-Métrages",
+    description: "Formation complète en réalisation : de la préproduction à la post-production. Accompagnement personnalisé pour transformer vos idées en films.",
+    duration: "12 semaines",
+    icon: Zap,
+  },
+  {
+    id: "default-production",
+    title: "Production & Diffusion",
+    description: "Maîtrisez les aspects techniques et administratifs de la production filmique. Apprenez à gérer un projet de sa conception à sa distribution.",
+    duration: "10 semaines",
+    icon: Award,
+  },
+  {
+    id: "default-awareness",
+    title: "Sensibilisation Cinéma & Droits",
+    description: "Utilisez le cinéma comme outil de sensibilisation. Formations sur la théâtralisation, les projections communautaires et l'engagement social.",
+    duration: "6 semaines",
+    icon: Users,
+  },
+];
 
 export default function Trainings() {
-  const trainings = [
-    {
-      id: 1,
-      title: "Écriture Cinématographique",
-      description: "Développez vos compétences en écriture de scénarios et en développement d'histoires. Apprenez à écrire des films sans stéréotypes qui abordent des enjeux sociaux importants.",
-      duration: "8 semaines",
-      icon: BookOpen,
-    },
-    {
-      id: 2,
-      title: "Réalisation de Courts-Métrages",
-      description: "Formation complète en réalisation : de la préproduction à la post-production. Accompagnement personnalisé pour transformer vos idées en films.",
-      duration: "12 semaines",
-      icon: Zap,
-    },
-    {
-      id: 3,
-      title: "Production & Diffusion",
-      description: "Maîtrisez les aspects techniques et administratifs de la production filmique. Apprenez à gérer un projet de sa conception à sa distribution.",
-      duration: "10 semaines",
-      icon: Award,
-    },
-    {
-      id: 4,
-      title: "Sensibilisation Cinéma & Droits",
-      description: "Utilisez le cinéma comme outil de sensibilisation. Formations sur la théâtralisation, les projections communautaires et l'engagement social.",
-      duration: "6 semaines",
-      icon: Users,
-    },
-  ];
+  const { articles, isLoading } = useArticles();
+  const publishedTrainings: Article[] = articles?.filter((article: Article) => article.category === "training") ?? [];
+  const trainings: TrainingCard[] = publishedTrainings.length > 0
+    ? publishedTrainings.map((article: Article, index: number) => ({
+        id: article.id,
+        title: article.title,
+        description: article.content,
+        duration: null,
+        icon: [BookOpen, Zap, Award, Users, Lightbulb][index % 5],
+      }))
+    : defaultTrainings;
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
@@ -56,7 +78,15 @@ export default function Trainings() {
           />
 
           <div className="grid md:grid-cols-2 gap-8 mt-16">
-            {trainings.map((training) => {
+            {isLoading ? (
+              [1, 2, 3, 4].map((id) => (
+                <div key={id} className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 animate-pulse">
+                  <div className="w-16 h-16 bg-slate-100 rounded-full mb-6" />
+                  <div className="h-7 bg-slate-100 rounded w-3/4 mb-4" />
+                  <div className="h-20 bg-slate-100 rounded" />
+                </div>
+              ))
+            ) : trainings.map((training: TrainingCard) => {
               const Icon = training.icon;
               return (
                 <div 
@@ -69,7 +99,9 @@ export default function Trainings() {
                   <h3 className="text-2xl font-display font-bold text-primary mb-4">{training.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6 flex-1">{training.description}</p>
                   <div className="pt-6 border-t border-border">
-                    <p className="text-sm font-bold text-secondary uppercase tracking-widest">Durée: {training.duration}</p>
+                    <p className="text-sm font-bold text-secondary uppercase tracking-widest">
+                      {training.duration ? `Durée: ${training.duration}` : "Formation disponible"}
+                    </p>
                   </div>
                 </div>
               );
