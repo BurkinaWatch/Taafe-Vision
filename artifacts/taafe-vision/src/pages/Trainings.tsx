@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { BookOpen, Users, Award, Zap, Lightbulb, type LucideIcon } from "lucide-react";
 import { useArticles } from "@/hooks/use-articles";
 import type { Article } from "@/lib/types";
+import { Link } from "wouter";
 
 type TrainingCard = {
   id: string | number;
@@ -116,9 +117,12 @@ export default function Trainings() {
               et d'une aide à la production de leurs propres courts-métrages.
             </p>
             <div className="mt-8">
-              <button className="px-8 py-4 bg-secondary text-white rounded-full font-bold uppercase tracking-widest hover:bg-secondary/90 transition-all">
+              <Link
+                href="/contact"
+                className="inline-flex px-8 py-4 bg-secondary text-white rounded-full font-bold uppercase tracking-widest hover:bg-secondary/90 transition-all"
+              >
                 En savoir plus
-              </button>
+              </Link>
             </div>
           </div>
         </div>
