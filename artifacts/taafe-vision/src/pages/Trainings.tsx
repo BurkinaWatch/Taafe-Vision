@@ -1,10 +1,19 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
-import { BookOpen, Users, Award, Zap, Lightbulb } from "lucide-react";
+import { BookOpen, Users, Award, Zap, Lightbulb, type LucideIcon } from "lucide-react";
 import { useArticles } from "@/hooks/use-articles";
+import type { Article } from "@/lib/types";
 
-const defaultTrainings = [
+type TrainingCard = {
+  id: string | number;
+  title: string;
+  description: string;
+  duration: string | null;
+  icon: LucideIcon;
+};
+
+const defaultTrainings: TrainingCard[] = [
   {
     id: "default-writing",
     title: "Écriture Cinématographique",
@@ -37,9 +46,9 @@ const defaultTrainings = [
 
 export default function Trainings() {
   const { articles, isLoading } = useArticles();
-  const publishedTrainings = articles?.filter((article) => article.category === "training") ?? [];
-  const trainings = publishedTrainings.length > 0
-    ? publishedTrainings.map((article, index) => ({
+  const publishedTrainings: Article[] = articles?.filter((article: Article) => article.category === "training") ?? [];
+  const trainings: TrainingCard[] = publishedTrainings.length > 0
+    ? publishedTrainings.map((article: Article, index: number) => ({
         id: article.id,
         title: article.title,
         description: article.content,
@@ -77,7 +86,7 @@ export default function Trainings() {
                   <div className="h-20 bg-slate-100 rounded" />
                 </div>
               ))
-            ) : trainings.map((training) => {
+            ) : trainings.map((training: TrainingCard) => {
               const Icon = training.icon;
               return (
                 <div 
