@@ -1,0 +1,11 @@
+node_modules
+.git
+.replit
+replit.nix
+.local
+attached_assets
+.gitignore
+.railwayignore
+artifacts/taafe-vision-mobile/android/.gradle
+artifacts/taafe-vision-mobile/android/.cxx
+artifacts/taafe-vision-mobile/android/local.properties
