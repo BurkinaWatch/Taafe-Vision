@@ -9,24 +9,28 @@ const defaultTrainings = [
     id: "default-writing",
     title: "Écriture Cinématographique",
     description: "Développez vos compétences en écriture de scénarios et en développement d'histoires. Apprenez à écrire des films sans stéréotypes qui abordent des enjeux sociaux importants.",
+    duration: "8 semaines",
     icon: BookOpen,
   },
   {
     id: "default-directing",
     title: "Réalisation de Courts-Métrages",
     description: "Formation complète en réalisation : de la préproduction à la post-production. Accompagnement personnalisé pour transformer vos idées en films.",
+    duration: "12 semaines",
     icon: Zap,
   },
   {
     id: "default-production",
     title: "Production & Diffusion",
     description: "Maîtrisez les aspects techniques et administratifs de la production filmique. Apprenez à gérer un projet de sa conception à sa distribution.",
+    duration: "10 semaines",
     icon: Award,
   },
   {
     id: "default-awareness",
     title: "Sensibilisation Cinéma & Droits",
     description: "Utilisez le cinéma comme outil de sensibilisation. Formations sur la théâtralisation, les projections communautaires et l'engagement social.",
+    duration: "6 semaines",
     icon: Users,
   },
 ];
@@ -39,6 +43,7 @@ export default function Trainings() {
         id: article.id,
         title: article.title,
         description: article.content,
+        duration: null,
         icon: [BookOpen, Zap, Award, Users, Lightbulb][index % 5],
       }))
     : defaultTrainings;
@@ -84,11 +89,11 @@ export default function Trainings() {
                   </div>
                   <h3 className="text-2xl font-display font-bold text-primary mb-4">{training.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6 flex-1">{training.description}</p>
-                    <div className="pt-6 border-t border-border">
-                      <p className="text-sm font-bold text-secondary uppercase tracking-widest">
-                        {publishedTrainings.length > 0 ? "Formation disponible" : `Programme ${training.id}`}
-                      </p>
-                    </div>
+                  <div className="pt-6 border-t border-border">
+                    <p className="text-sm font-bold text-secondary uppercase tracking-widest">
+                      {training.duration ? `Durée: ${training.duration}` : "Formation disponible"}
+                    </p>
+                  </div>
                 </div>
               );
             })}

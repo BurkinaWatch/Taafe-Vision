@@ -115,10 +115,7 @@ export class DatabaseStorage implements IStorage {
     return await db.select().from(films).where(eq(films.isHidden, false));
   }
   async getFilm(id: number, includeHidden = false): Promise<Film | undefined> {
-    const conditions = includeHidden
-      ? eq(films.id, id)
-      : eq(films.id, id);
-    const [film] = await db.select().from(films).where(conditions);
+    const [film] = await db.select().from(films).where(eq(films.id, id));
     if (!includeHidden && film?.isHidden) return undefined;
     return film;
   }
