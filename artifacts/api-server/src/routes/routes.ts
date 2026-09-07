@@ -398,24 +398,24 @@ async function seed() {
     });
     await storage.createPartner({
       name: "Union Européenne",
-      logoUrl: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&q=80",
+      logoUrl: "/images/ue.png",
       website: "https://europa.eu"
     });
     await storage.createPartner({
       name: "FDCT / PAIC-GC",
-      logoUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
+      logoUrl: "/images/fdct.jpg"
     });
     await storage.createPartner({
       name: "Equipop",
-      logoUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
+      logoUrl: "/images/equi_pop.png"
     });
     await storage.createPartner({
       name: "Foundation for a Just Society (FJS)",
-      logoUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
+      logoUrl: "/images/fjs.png"
     });
     await storage.createPartner({
       name: "Agence Burkinabe de la Cinematographie et de l'Audioviseul (ABCA)",
-      logoUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80"
+      logoUrl: "/images/abca.png"
     });
   }
 
@@ -426,25 +426,25 @@ async function seed() {
       title: "Lancement du projet 'Elles se réalisent' 2024",
       content: "Nous sommes fières d'annoncer le lancement de notre programme phare pour l'année 2024. Ce programme sélectionnera 10 femmes réalisatrices pour une formation complète et une aide à la production de leurs courts-métrages.",
       category: "news",
-      imageUrl: "https://images.unsplash.com/photo-1517457373614-b7152f800fd1?auto=format&fit=crop&q=80"
+      imageUrl: "/images/community-engagement-1.jpg"
     });
     await storage.createArticle({
       title: "Cinéma et droits des femmes au FESPACO 2024",
       content: "Taafé Vision sera présente au FESPACO 2024 avec un stand dédié à la promotion des femmes cinéastes. Rejoignez-nous pour des panels, des pitchs et des projections spéciales.",
       category: "event",
-      imageUrl: "https://images.unsplash.com/photo-1540575467063-178f50002c4b?auto=format&fit=crop&q=80"
+      imageUrl: "/images/film-poster-1.jpg"
     });
     await storage.createArticle({
       title: "Projection-débat: 'Violences et Résilience'",
       content: "Nous organisons une série de projections-débats dans les communes de Ouagadougou pour sensibiliser aux violences basées sur le genre. Venez découvrir nos derniers courts-métrages et participer au débat.",
       category: "event",
-      imageUrl: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80"
+      imageUrl: "/images/community-screening.jpg"
     });
     await storage.createArticle({
       title: "Nos films primés au festival d'Ouagadougou",
       content: "Trois de nos productions ont été sélectionnées et récompensées au festival du cinéma d'Ouagadougou. Bravo à toutes les réalisatrices qui ont contribué à ces succès!",
       category: "news",
-      imageUrl: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&q=80"
+      imageUrl: "/images/partners-2.jpg"
     });
   }
 

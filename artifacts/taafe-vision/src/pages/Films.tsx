@@ -35,8 +35,8 @@ export default function Films() {
                         className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
                         onError={(e) => { 
                           const target = e.currentTarget as HTMLImageElement;
-                          target.src = "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80";
-                          target.onerror = null; // Prevent infinite loop
+                          target.onerror = null;
+                          target.src = "/images/community-screening.jpg";
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />

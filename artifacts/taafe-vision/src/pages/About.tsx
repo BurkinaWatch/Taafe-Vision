@@ -5,6 +5,21 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { usePartners } from "@/hooks/use-partners";
 import { useOrganizationProfile, useImpactMetrics, useResearchSources, useSocialLinks } from "@/hooks/use-knowledge";
 import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
+import abcaLogo from "@/assets/partners/abca.png";
+import equiPopLogo from "@/assets/partners/equi_pop.png";
+import fdctLogo from "@/assets/partners/fdct.jpg";
+import fespacoLogo from "@/assets/partners/fespaco.jpg";
+import fjsLogo from "@/assets/partners/fjs.png";
+import ueLogo from "@/assets/partners/ue.png";
+
+const PARTNER_LOGOS: Record<string, string> = {
+  FESPACO: fespacoLogo,
+  "Union Européenne": ueLogo,
+  "FDCT / PAIC-GC": fdctLogo,
+  Equipop: equiPopLogo,
+  "Foundation for a Just Society (FJS)": fjsLogo,
+  "Agence Burkinabe de la Cinematographie et de l'Audioviseul (ABCA)": abcaLogo,
+};
 
 const SOCIAL_ICONS: Record<string, JSX.Element> = {
   facebook: (
@@ -355,7 +370,7 @@ export default function About() {
                 >
                   <div className="text-center">
                     <img
-                      src={partner.logoUrl}
+                      src={PARTNER_LOGOS[partner.name] ?? partner.logoUrl}
                       alt={partner.name}
                       className="h-20 object-contain mx-auto mb-3 opacity-80 group-hover:opacity-100 transition-opacity"
                     />

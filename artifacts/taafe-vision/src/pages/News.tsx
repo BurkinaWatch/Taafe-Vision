@@ -25,11 +25,8 @@ export default function News() {
   });
 
   const getArticleImage = (article: Article) => {
-    if (article.imageUrl && article.imageUrl.startsWith("http")) {
-      return article.imageUrl;
-    }
-    
-    // Map local assets to articles based on title or category if image_url is a local path
+    // Use Taafé Vision's local field photography for the editorial cards.
+    // This keeps older database records from reintroducing generic stock imagery.
     const title = article.title.toLowerCase();
     if (title.includes("elles se réalisent")) return ellesSeRealiseImg;
     if (title.includes("fespaco")) return fespacoImg;
