@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
 import {
+  Image,
   Platform,
   Pressable,
   StyleSheet,
@@ -38,6 +39,8 @@ const navigationItems: Array<{
   { route: 'about', label: 'À propos' },
   { route: 'contact', label: 'Contact' },
 ];
+
+const brandLogo = require('../assets/images/icon.png');
 
 const routePaths: Record<MobileRoute, string> = {
   home: '/',
@@ -199,12 +202,20 @@ export default function MobileChrome({
             ]}
             testID="mobile-back-button"
           >
-            <Icon
-              name={canGoBack ? 'back' : 'brand'}
-              color={colors.onPurple}
-              detailColor={colors.purpleTaafe}
-              size={24}
-            />
+            {canGoBack ? (
+              <Icon
+                name="back"
+                color={colors.onPurple}
+                detailColor={colors.purpleTaafe}
+                size={24}
+              />
+            ) : (
+              <Image
+                source={brandLogo}
+                accessibilityLabel="Logo Taafé Vision"
+                style={styles.brandLogo}
+              />
+            )}
           </Pressable>
 
           <View style={styles.titleBlock}>
@@ -309,6 +320,11 @@ const styles = StyleSheet.create({
     height: 44,
     justifyContent: 'center',
     width: 44,
+  },
+  brandLogo: {
+    borderRadius: 22,
+    height: 34,
+    width: 34,
   },
   titleBlock: {
     flex: 1,

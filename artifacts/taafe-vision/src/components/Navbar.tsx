@@ -81,7 +81,7 @@ export function Navbar() {
              <div className="flex items-center gap-2 lg:gap-3">
                 <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
                 <img 
-                  src="/images/logo.jpg" 
+                  src="/images/taafe-vision-logo-clean.png" 
                   alt="Taafé Vision Logo" 
                   className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105 cursor-zoom-in"
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLogoOpen(true); }}
@@ -206,7 +206,7 @@ export function Navbar() {
         >
           <div className="relative" onClick={(e) => e.stopPropagation()}>
             <img
-              src="/images/logo.jpg"
+              src="/images/taafe-vision-logo-clean.png"
               alt="Taafé Vision Logo"
               className="max-w-[80vw] max-h-[80vh] rounded-2xl shadow-2xl object-contain"
             />
