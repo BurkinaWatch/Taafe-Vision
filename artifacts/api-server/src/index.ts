@@ -2,6 +2,7 @@ import app from "./app";
 import { logger } from "./lib/logger";
 import { ensureTables } from "./migrate";
 import { registerRoutes } from "./routes/routes";
+import { serveStatic } from "./static";
 
 const rawPort = process.env["PORT"];
 
@@ -20,6 +21,7 @@ if (Number.isNaN(port) || port <= 0) {
 async function start() {
   await ensureTables();
   await registerRoutes(app);
+  serveStatic(app);
 
   app.listen(port, (err) => {
     if (err) {
