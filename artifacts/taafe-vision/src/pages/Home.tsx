@@ -8,6 +8,7 @@ import { useImpactMetrics } from "@/hooks/use-knowledge";
 import { motion } from "framer-motion";
 import { Marquee } from "@/components/Marquee";
 import { Counter } from "@/components/Counter";
+import type { Film as FilmType } from "@/lib/api";
 
 // ... partners import ...
 
@@ -222,7 +223,7 @@ export default function Home() {
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(films || []).slice(0, 3).map((film) => (
+            {(films || []).slice(0, 3).map((film: FilmType) => (
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
                   <img

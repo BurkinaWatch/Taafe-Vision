@@ -1,4 +1,4 @@
-modules = ["nodejs-24", "java-graalvm22.3", "python-base-3.13"]
+modules = ["nodejs-20"]
 
 [deployment]
 router = "application"
@@ -9,7 +9,28 @@ args = ["pnpm", "store", "prune"]
 env = { "CI" = "true" }
 
 [workflows]
-runButton = "Project"
+runButton = "Taafe Vision App"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Taafe Vision App"
+
+[[workflows.workflow]]
+name = "Taafe Vision App"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bash -lc 'set -e; PORT=8080 pnpm --filter @workspace/api-server run dev & api_pid=$!; PORT=20053 BASE_PATH=/ pnpm --filter @workspace/taafe-vision run dev & web_pid=$!; cleanup() { kill $api_pid $web_pid 2>/dev/null || true; wait $api_pid $web_pid 2>/dev/null || true; }; trap cleanup EXIT INT TERM; wait -n $api_pid $web_pid'"
+waitForPort = 20053
+
+[workflows.workflow.metadata]
+outputType = "webview"
 
 [agent]
 stack = "PNPM_WORKSPACE"

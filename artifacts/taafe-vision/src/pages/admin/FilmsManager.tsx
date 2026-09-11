@@ -219,7 +219,7 @@ export default function FilmsManager() {
             ) : films?.length === 0 ? (
               <TableRow><TableCell colSpan={4} className="text-center py-8">Aucun film trouvé.</TableCell></TableRow>
             ) : (
-              films?.map((film) => (
+              films?.map((film: Film) => (
                 <TableRow key={film.id} className={film.isHidden ? "opacity-60" : ""}>
                   <TableCell className="font-medium flex items-center gap-2">
                     {film.title}

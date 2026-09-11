@@ -17,7 +17,9 @@ export function Counter({ value, suffix = "", duration = 2 }: CounterProps) {
     if (isInView) {
       let start = 0;
       const end = value;
-      if (start === end) return;
+      if (start === end) {
+        return undefined;
+      }
 
       let totalMilisecondsSecs = duration * 1000;
       let timerStep = Math.max(totalMilisecondsSecs / end, 20);
@@ -30,6 +32,8 @@ export function Counter({ value, suffix = "", duration = 2 }: CounterProps) {
 
       return () => clearInterval(timer);
     }
+
+    return undefined;
   }, [value, duration, isInView]);
 
   return <span ref={ref}>{count}{suffix}</span>;
