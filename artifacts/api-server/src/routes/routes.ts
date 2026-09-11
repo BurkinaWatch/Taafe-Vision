@@ -82,8 +82,8 @@ export async function registerRoutes(app: Express): Promise<void> {
   });
 
   // Projects
-  app.get(api.projects.list.path, async (_req, res) => {
-    const projects = await storage.getProjects();
+  app.get(api.projects.list.path, async (req, res) => {
+    const projects = await storage.getProjects(Boolean((req.session as any).userId));
     res.json(projects);
   });
   app.post(api.projects.create.path, requireAuth, async (req, res) => {
@@ -108,12 +108,15 @@ export async function registerRoutes(app: Express): Promise<void> {
   });
 
   // Films
-  app.get(api.films.list.path, async (_req, res) => {
-    const films = await storage.getFilms();
+  app.get(api.films.list.path, async (req, res) => {
+    const films = await storage.getFilms(Boolean((req.session as any).userId));
     res.json(films);
   });
   app.get(api.films.get.path, async (req, res): Promise<void> => {
-    const film = await storage.getFilm(parseRouteId(req.params.id));
+    const film = await storage.getFilm(
+      parseRouteId(req.params.id),
+      Boolean((req.session as any).userId),
+    );
     if (!film) {
       res.status(404).json({ message: "Film not found" });
       return;
@@ -142,8 +145,8 @@ export async function registerRoutes(app: Express): Promise<void> {
   });
 
   // Articles
-  app.get(api.articles.list.path, async (_req, res) => {
-    const articles = await storage.getArticles();
+  app.get(api.articles.list.path, async (req, res) => {
+    const articles = await storage.getArticles(Boolean((req.session as any).userId));
     res.json(articles);
   });
   app.post(api.articles.create.path, requireAuth, async (req, res) => {
@@ -246,7 +249,7 @@ async function seed() {
     });
   }
 
-  const existingProjects = await storage.getProjects();
+  const existingProjects = await storage.getProjects(true);
   const existingTitles = new Set(existingProjects.map(p => p.title));
 
   const allProjects = [
@@ -296,7 +299,7 @@ async function seed() {
     }
   }
 
-  const films = await storage.getFilms();
+  const films = await storage.getFilms(true);
   if (films.length === 0 || films.length <= 2) {
     console.log("Seeding films...");
     const filmsToSeed = [
@@ -434,7 +437,7 @@ async function seed() {
     });
   }
 
-  const articles = await storage.getArticles();
+  const articles = await storage.getArticles(true);
   if (articles.length === 0) {
     console.log("Seeding articles...");
     await storage.createArticle({
