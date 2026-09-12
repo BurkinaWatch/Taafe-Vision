@@ -11,6 +11,14 @@ import fdctLogo from "@/assets/partners/fdct.jpg";
 import fespacoLogo from "@/assets/partners/fespaco.jpg";
 import fjsLogo from "@/assets/partners/fjs.png";
 import ueLogo from "@/assets/partners/ue.png";
+import canalPlusLogo from "@/assets/partners/canal-plus.svg";
+import canalPlusUniversityLogo from "@/assets/partners/canal-plus-university.svg";
+import girlFirstFundLogo from "@/assets/partners/girl-first-fund.svg";
+import loumbamaProductionLogo from "@/assets/partners/loumbama-production.svg";
+import filmsDuDromadaireLogo from "@/assets/partners/films-du-dromadaire.svg";
+import isisSeLogo from "@/assets/partners/isis-se.svg";
+import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.svg";
+import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.svg";
 
 const PARTNER_LOGOS: Record<string, string> = {
   FESPACO: fespacoLogo,
@@ -20,6 +28,21 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Foundation for a Just Society (FJS)": fjsLogo,
   "Agence Burkinabe de la Cinematographie et de l'Audioviseul (ABCA)": abcaLogo,
 };
+
+const ADDITIONAL_PARTNERS = [
+  { id: "canal-plus", name: "Canal+", logoUrl: canalPlusLogo },
+  { id: "canal-plus-university", name: "Canal+ University", logoUrl: canalPlusUniversityLogo },
+  { id: "girl-first-fund", name: "Girl First Fund", logoUrl: girlFirstFundLogo },
+  { id: "loumbama-production", name: "Loumbama Production", logoUrl: loumbamaProductionLogo },
+  { id: "films-du-dromadaire", name: "Les Films du Dromadaire", logoUrl: filmsDuDromadaireLogo },
+  { id: "isis-se", name: "ISIS/SE", logoUrl: isisSeLogo },
+  { id: "faso-films-fonds", name: "Faso Films Fonds", logoUrl: fasoFilmsFondsLogo },
+  {
+    id: "ministere-communication-culture-tourisme",
+    name: "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
+    logoUrl: ministereCommunicationLogo,
+  },
+];
 
 const SOCIAL_ICONS: Record<string, JSX.Element> = {
   facebook: (
@@ -38,6 +61,7 @@ const SOCIAL_ICONS: Record<string, JSX.Element> = {
 
 export default function About() {
   const { partners } = usePartners();
+  const displayedPartners = [...(partners ?? []), ...ADDITIONAL_PARTNERS];
   const { profile } = useOrganizationProfile();
   const { metrics } = useImpactMetrics();
   const { sources } = useResearchSources();
@@ -353,7 +377,7 @@ export default function About() {
             centered
           />
 
-          {partners && partners.length > 0 ? (
+          {displayedPartners.length > 0 ? (
             <motion.div
               variants={container}
               initial="hidden"
@@ -361,7 +385,7 @@ export default function About() {
               viewport={{ once: true }}
               className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-items-center"
             >
-              {partners.map((partner) => (
+              {displayedPartners.map((partner) => (
                 <motion.div
                   key={partner.id}
                   variants={item}
