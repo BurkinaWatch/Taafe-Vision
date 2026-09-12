@@ -13,13 +13,19 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export default function Contact() {
   const { mutate, isPending } = useContact();
+  const action = new URLSearchParams(window.location.search).get("action");
+  const actionMessages: Record<string, string> = {
+    engagement: "Je souhaite m'engager aux côtés de Taafé Vision. Voici comment je peux contribuer :\n\n",
+    volunteer: "Je souhaite devenir bénévole pour Taafé Vision. Je peux aider dans les domaines suivants :\n\n",
+    don: "Je souhaite soutenir Taafé Vision par un don. Merci de m'indiquer les modalités :\n\n",
+  };
   
   const form = useForm({
     resolver: zodResolver(insertContactSchema),
     defaultValues: {
       name: "",
       email: "",
-      message: "",
+      message: (action && actionMessages[action]) ?? "",
     },
   });
 

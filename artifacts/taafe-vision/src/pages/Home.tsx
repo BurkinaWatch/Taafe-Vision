@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Play, Award, Users, Star, Film, Sparkles } from "lucide-react";
+import { ArrowRight, Play, Award, Users, Star, Film, Sparkles, Heart, HandHeart, Gift } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -184,6 +184,65 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </div>
+      </section>
+      {/* Engagement Section */}
+      <section id="engagement" className="relative overflow-hidden bg-slate-950 py-24 text-white">
+        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#f146ad]/20 blur-3xl" />
+        <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-[#39cd15]/15 blur-3xl" />
+
+        <div className="container-wide relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#f8d34f]">
+              <Heart className="h-4 w-4 fill-current" />
+              Agir avec Taafé Vision
+            </div>
+            <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">
+              Votre engagement fait avancer l’égalité.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-300">
+              Rejoignez notre mouvement pour donner plus de place aux femmes dans le cinéma et faire vivre des histoires qui transforment les regards.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                href: "/contact?action=engagement",
+                title: "S’engager",
+                description: "Partagez vos idées, vos compétences ou votre envie de soutenir nos actions.",
+                icon: Heart,
+                className: "bg-[#f146ad] hover:bg-[#e13a9d]",
+              },
+              {
+                href: "/contact?action=volunteer",
+                title: "Devenir bénévole",
+                description: "Mettez votre temps et vos talents au service de nos projets et de nos communautés.",
+                icon: HandHeart,
+                className: "bg-[#39cd15] text-slate-950 hover:bg-[#31b912]",
+              },
+              {
+                href: "/contact?action=don",
+                title: "Faites un don",
+                description: "Contribuez à la production, la formation et la diffusion de récits qui changent les choses.",
+                icon: Gift,
+                className: "bg-[#f8d34f] text-slate-950 hover:bg-[#e8c23f]",
+              },
+            ].map(({ href, title, description, icon: Icon, className }) => (
+              <Link
+                key={title}
+                href={href}
+                className={`group rounded-2xl p-7 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${className}`}
+              >
+                <div className="mb-6 flex items-center justify-between">
+                  <Icon className="h-8 w-8" aria-hidden="true" />
+                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+                <h3 className="font-display text-2xl font-bold">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed opacity-80">{description}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
