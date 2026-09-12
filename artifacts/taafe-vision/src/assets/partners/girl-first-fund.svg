@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-labelledby="title">
+  <title>Girl First Fund</title>
+  <rect width="360" height="120" rx="24" fill="#f8e9f1"/>
+  <circle cx="58" cy="60" r="30" fill="#a72d63"/>
+  <path d="M58 39l6 13 14 1-11 9 4 14-13-8-13 8 4-14-11-9 14-1z" fill="#fff"/>
+  <text x="104" y="58" fill="#7d214b" font-family="Arial, sans-serif" font-size="26" font-weight="700">GIRL FIRST</text>
+  <text x="104" y="84" fill="#a72d63" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">FUND</text>
+</svg>

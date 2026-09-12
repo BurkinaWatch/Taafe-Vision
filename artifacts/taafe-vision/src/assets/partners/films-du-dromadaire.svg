@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 120" role="img" aria-labelledby="title">
+  <title>Les Films du Dromadaire</title>
+  <rect width="390" height="120" rx="24" fill="#eef4f1"/>
+  <circle cx="58" cy="60" r="30" fill="#23645d"/>
+  <path d="M39 68c9-18 25-20 37-8M46 68v-15M70 68V51M47 49c9-5 17-5 25 1" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="104" y="54" fill="#23645d" font-family="Arial, sans-serif" font-size="22" font-weight="700">LES FILMS DU</text>
+  <text x="104" y="82" fill="#23645d" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="1">DROMADAIRE</text>
+</svg>

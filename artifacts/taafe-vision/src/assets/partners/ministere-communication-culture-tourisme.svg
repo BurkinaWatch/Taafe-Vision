@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-labelledby="title">
+  <title>Ministère de la Communication, de la Culture, des Arts et du Tourisme</title>
+  <rect width="520" height="140" rx="24" fill="#f6f0eb"/>
+  <circle cx="62" cy="70" r="35" fill="#7d214b"/>
+  <path d="M43 78h38M48 78V57l14-11 14 11v21M54 78V64h16v14" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+  <text x="116" y="48" fill="#7d214b" font-family="Arial, sans-serif" font-size="20" font-weight="700">MINISTÈRE DE LA</text>
+  <text x="116" y="76" fill="#7d214b" font-family="Arial, sans-serif" font-size="19" font-weight="700">COMMUNICATION, DE LA CULTURE,</text>
+  <text x="116" y="104" fill="#a15a36" font-family="Arial, sans-serif" font-size="16" font-weight="700">DES ARTS ET DU TOURISME</text>
+</svg>

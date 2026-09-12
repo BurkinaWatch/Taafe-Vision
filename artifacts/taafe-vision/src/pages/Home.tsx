@@ -19,6 +19,14 @@ import fdctLogo from "@/assets/partners/fdct.jpg";
 import fespacoLogo from "@/assets/partners/fespaco.jpg";
 import fjsLogo from "@/assets/partners/fjs.png";
 import ueLogo from "@/assets/partners/ue.png";
+import canalPlusLogo from "@/assets/partners/canal-plus.svg";
+import canalPlusUniversityLogo from "@/assets/partners/canal-plus-university.svg";
+import girlFirstFundLogo from "@/assets/partners/girl-first-fund.svg";
+import loumbamaProductionLogo from "@/assets/partners/loumbama-production.svg";
+import filmsDuDromadaireLogo from "@/assets/partners/films-du-dromadaire.svg";
+import isisSeLogo from "@/assets/partners/isis-se.svg";
+import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.svg";
+import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.svg";
 
 const PARTNERS = [
   { name: "ABCA", logo: abcaLogo },
@@ -27,6 +35,14 @@ const PARTNERS = [
   { name: "FESPACO", logo: fespacoLogo },
   { name: "Foundation for a Just Society", logo: fjsLogo },
   { name: "Union Européenne", logo: ueLogo },
+  { name: "Canal+", logo: canalPlusLogo },
+  { name: "Canal+ University", logo: canalPlusUniversityLogo },
+  { name: "Girl First Fund", logo: girlFirstFundLogo },
+  { name: "Loumbama Production", logo: loumbamaProductionLogo },
+  { name: "Les Films du Dromadaire", logo: filmsDuDromadaireLogo },
+  { name: "ISIS/SE", logo: isisSeLogo },
+  { name: "Faso Films Fonds", logo: fasoFilmsFondsLogo },
+  { name: "Ministère de la Communication, de la Culture, des Arts et du Tourisme", logo: ministereCommunicationLogo },
 ];
 
 export default function Home() {

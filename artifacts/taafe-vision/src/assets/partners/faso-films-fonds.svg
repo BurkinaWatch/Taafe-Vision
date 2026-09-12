@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 120" role="img" aria-labelledby="title">
+  <title>Faso Films Fonds</title>
+  <rect width="340" height="120" rx="24" fill="#fff4e6"/>
+  <circle cx="58" cy="60" r="30" fill="#d46b27"/>
+  <path d="M43 72V50h30v22M48 50l10-10 10 10M50 59h16M50 66h16" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+  <text x="104" y="56" fill="#a84917" font-family="Arial, sans-serif" font-size="25" font-weight="700">FASO FILMS</text>
+  <text x="104" y="83" fill="#d46b27" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="3">FONDS</text>
+</svg>
