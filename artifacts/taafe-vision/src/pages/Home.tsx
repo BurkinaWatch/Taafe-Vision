@@ -352,7 +352,7 @@ export default function Home() {
         </div>
       </section>
       {/* Partners Section */}
-      <section className="py-24 bg-white">
+      <section id="partners" className="py-24 bg-white scroll-mt-32">
         <div className="container-wide">
           <SectionHeader 
             title="Nos Partenaires" 
