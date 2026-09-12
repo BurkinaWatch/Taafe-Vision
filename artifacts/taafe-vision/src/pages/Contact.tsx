@@ -72,6 +72,12 @@ export default function Contact() {
               >
                 +226 78 09 77 88
               </a>
+              <a
+                href="tel:+22664141715"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                +226 64 14 17 15
+              </a>
               <p className="text-sm text-primary font-medium mt-1">Ligne d'urgence 24/7</p>
             </div>
 
@@ -135,6 +141,12 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-primary shrink-0" />
                     <a href="tel:+22678097788" className="hover:text-primary transition-colors">
                       +226 78 09 77 88
+                    </a>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Phone className="w-5 h-5 text-primary shrink-0" />
+                    <a href="tel:+22664141715" className="hover:text-primary transition-colors">
+                      +226 64 14 17 15
                     </a>
                   </p>
                 </div>

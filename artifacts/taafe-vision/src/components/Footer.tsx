@@ -55,6 +55,13 @@ export function Footer() {
               <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
               +226 78 09 77 88
             </a>
+            <a
+              href="tel:+22664141715"
+              className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
+              +226 64 14 17 15
+            </a>
             <div className="flex flex-col gap-1">
               <a
                 href="mailto:contact@taafevision.com"
