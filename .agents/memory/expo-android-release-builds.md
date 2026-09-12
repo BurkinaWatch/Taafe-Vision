@@ -14,3 +14,9 @@ When Prefab reports an old `minSdkVersion` even though Gradle's effective Androi
 **Why:** Android Gradle configuration and Prefab metadata can come from different incremental-build generations; retrying without invalidating the stale native metadata repeats the same misleading API-level error.
 
 **How to apply:** Confirm the effective `minSdk` through Gradle first, then remove only the generated native metadata for the affected ABI/modules and rerun the constrained release script.
+
+In the current Expo/RN 0.81 workspace, AGP 8.11 can still regenerate the Worklets CMake model with `ANDROID_PLATFORM=android-22` even when Gradle reports `minSdk=24`; clearing `.cxx`, CXX intermediates, and the Gradle build cache does not by itself change that input.
+
+**Why:** Prefab rejects React Native 0.81 libraries built for API 24 before APK assembly, so treating this as a successful resumable build would produce a false release result.
+
+**How to apply:** Keep the APK gate strict and track this as an explicit compatibility follow-up until the AGP/Expo configuration or a compatible native dependency produces a CMake model at API 24 or higher.

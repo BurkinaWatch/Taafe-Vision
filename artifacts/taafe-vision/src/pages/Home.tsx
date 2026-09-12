@@ -188,7 +188,7 @@ export default function Home() {
         </div>
       </section>
       {/* Engagement Section */}
-      <section id="engagement" className="relative overflow-hidden bg-slate-950 py-24 text-white">
+      <section id="engagement" className="relative scroll-mt-32 overflow-hidden bg-slate-950 py-24 text-white">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#f146ad]/20 blur-3xl" />
         <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-[#39cd15]/15 blur-3xl" />
 
@@ -210,7 +210,7 @@ export default function Home() {
             {[
               {
                 href: "/contact?action=engagement",
-                title: "S’engager",
+                title: "S'engager",
                 description: "Partagez vos idées, vos compétences ou votre envie de soutenir nos actions.",
                 icon: Heart,
                 className: "bg-[#f146ad] hover:bg-[#e13a9d]",
@@ -233,7 +233,8 @@ export default function Home() {
               <Link
                 key={title}
                 href={href}
-                className={`group rounded-2xl p-7 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${className}`}
+                aria-label={`${title} avec Taafé Vision`}
+                className={`group rounded-2xl p-7 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#f8d34f]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${className}`}
               >
                 <div className="mb-6 flex items-center justify-between">
                   <Icon className="h-8 w-8" aria-hidden="true" />
