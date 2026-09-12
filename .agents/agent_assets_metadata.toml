@@ -2,32 +2,32 @@ uploads = []
 generated = []
 
 [[outputs]]
-id = "m3_oWK5wRZe3HA7rlW8FV"
-uri = "file://dist/taafe-vision-mobile-release.apk"
-type = "unspecified"
-title = "Taafé Vision Mobile — APK Android compatible"
-description = "APK Android 1.0.1 (versionCode 2), package org.taafevision.mobile, 80 125 175 octets. Version ARM 32 bits armeabi-v7a avec 23 bibliothèques natives compressées, compatible avec les téléphones ARM 32 bits et la plupart des ARM 64 bits. Manifeste, ZIP, alignement et signatures APK v2/v3 vérifiés."
-logical_id = "520bfbf7-93b2-4bb8-ab04-cc6266eefa28"
-content_hash = "sha256:9221bc2d95b9f0a6967298d7788d553220841e174c405a2bd0e3d226c81ad2d7"
-size = 80125175
-mtime_ms = 1788303555571
-storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/520bfbf7-93b2-4bb8-ab04-cc6266eefa28/5105f3ff-df64-4678-9f47-4e1b72762385"
-storage_version_token = "1788304138308418"
-content_type = "application/octet-stream"
+id = "7PxWrcKzrHIUhjsh2Eh7_"
+uri = "file://artifacts/taafe-vision/public/images/taafe-vision-logo-clean.png"
+type = "image"
+title = "Logo Taafé Vision nettoyé"
+description = "Version sans la mention « Aimez et », utilisée pour le site, le favicon et l’application mobile."
+logical_id = "a106310c-d50c-4f62-ba22-019580a1f824"
+content_hash = "sha256:4fb0bf45397a1b578cd5ef49e07e66507116f52a50c6a4ff6561bf94adb596c7"
+size = 1452590
+mtime_ms = 1788781293401
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/a106310c-d50c-4f62-ba22-019580a1f824/636181d0-a5f2-47da-a64f-8c51a70cee84"
+storage_version_token = "1788784955501237"
+content_type = "image/png"
 
 [[outputs]]
-id = "tbrUU0Y6SrTtgeBgVAuXD"
-uri = "file://dist/taafe-vision-mobile-interface.apk"
-type = "unspecified"
-title = "Taafé Vision — APK interface mobile (nouveau téléchargement)"
-description = "Fichier APK Android complet — 39 327 438 octets (~37,5 Mo). Package org.taafevision.mobile, version 1.0.0, arm64-v8a, signature APK v2 vérifiée."
-logical_id = "c600e17b-5a6e-4808-a126-1d9e10e62eb7"
-content_hash = "sha256:1a79dede33d915dd7d0fed6f6a395a083defcb4aa26c241ccf1461f8ddebdf84"
-size = 39327438
-mtime_ms = 1788293625361
-storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/c600e17b-5a6e-4808-a126-1d9e10e62eb7/8285c9aa-cd88-4ba7-b5c9-d3e3e76acb37"
-storage_version_token = "1788293630475543"
-content_type = "application/octet-stream"
+id = "7PxWrcKzrHIUhjsh2Eh7_"
+uri = "file://artifacts/taafe-vision/public/images/taafe-vision-logo-clean.png"
+type = "image"
+title = "Logo Taafé Vision nettoyé"
+description = "Version sans la mention « Aimez et », utilisée pour le site, le favicon et l’application mobile."
+logical_id = "a106310c-d50c-4f62-ba22-019580a1f824"
+content_hash = "sha256:4fb0bf45397a1b578cd5ef49e07e66507116f52a50c6a4ff6561bf94adb596c7"
+size = 1452590
+mtime_ms = 1788781293401
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:52ed7cbd-b099-45fe-b6b5-cf644515dd3c/a106310c-d50c-4f62-ba22-019580a1f824/636181d0-a5f2-47da-a64f-8c51a70cee84"
+storage_version_token = "1788784955501237"
+content_type = "image/png"
 
 [[outputs]]
 id = "7PxWrcKzrHIUhjsh2Eh7_"

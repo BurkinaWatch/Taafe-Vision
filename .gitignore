@@ -50,3 +50,5 @@ Thumbs.db
 
 # Local Android SDK used for release builds
 .android-sdk/
+.gradle-cache/
+artifacts/taafe-vision-mobile/.android-build/
