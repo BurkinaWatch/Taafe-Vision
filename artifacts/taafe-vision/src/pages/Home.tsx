@@ -19,14 +19,14 @@ import fdctLogo from "@/assets/partners/fdct.jpg";
 import fespacoLogo from "@/assets/partners/fespaco.jpg";
 import fjsLogo from "@/assets/partners/fjs.png";
 import ueLogo from "@/assets/partners/ue.png";
-import canalPlusLogo from "@/assets/partners/canal-plus.svg";
-import canalPlusUniversityLogo from "@/assets/partners/canal-plus-university.svg";
-import girlFirstFundLogo from "@/assets/partners/girl-first-fund.svg";
+import canalPlusLogo from "@/assets/partners/canal-plus.jpg";
+import canalPlusUniversityLogo from "@/assets/partners/canal-plus-university.jpg";
+import girlFirstFundLogo from "@/assets/partners/girl-first-fund.jpg";
 import loumbamaProductionLogo from "@/assets/partners/loumbama-production.svg";
-import filmsDuDromadaireLogo from "@/assets/partners/films-du-dromadaire.svg";
-import isisSeLogo from "@/assets/partners/isis-se.svg";
-import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.svg";
-import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.svg";
+import filmsDuDromadaireLogo from "@/assets/partners/films-du-dromadaire.jpg";
+import isisSeLogo from "@/assets/partners/isis-se.jpg";
+import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.jpg";
+import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.jpg";
 
 const PARTNERS = [
   { name: "ABCA", logo: abcaLogo },
