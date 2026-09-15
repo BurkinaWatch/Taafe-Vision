@@ -14,6 +14,10 @@ export function Navbar() {
   const [location] = useLocation();
   const [isDark, setIsDark] = useState(false);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+  }, [isDark]);
+
   const links = [
     { href: "/", label: "Accueil" },
     { href: "/news", label: "Blog" },

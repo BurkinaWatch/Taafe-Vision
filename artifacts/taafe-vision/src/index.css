@@ -136,6 +136,15 @@
     @apply bg-foreground text-background;
   }
 
+  .page-hero h1,
+  .page-hero h2,
+  .page-hero h3,
+  .page-hero h4,
+  .page-hero h5,
+  .page-hero h6 {
+    @apply text-background;
+  }
+
   .page-section {
     @apply bg-background;
   }
