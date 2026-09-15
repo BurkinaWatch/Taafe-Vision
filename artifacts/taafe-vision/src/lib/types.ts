@@ -33,6 +33,38 @@ export const insertArticleSchema = z.object({
   isHidden: z.boolean().optional(),
 });
 
+export const festivalMediaSchema = z.object({
+  id: z.number(),
+  festivalId: z.number(),
+  imageUrl: z.string(),
+  caption: z.string(),
+  altText: z.string(),
+  displayOrder: z.number(),
+});
+
+export const festivalSchema = z.object({
+  id: z.number(),
+  slug: z.string(),
+  name: z.string(),
+  tagline: z.string(),
+  description: z.string(),
+  category: z.string(),
+  location: z.string(),
+  city: z.string(),
+  phone: z.string(),
+  messenger: z.string(),
+  facebookUrl: z.string().url(),
+  edition: z.string(),
+  dateRange: z.string(),
+  followers: z.number(),
+  following: z.number(),
+  featuredImageUrl: z.string(),
+  isPublished: z.boolean(),
+  createdAt: z.union([z.string(), z.date()]).nullable(),
+  updatedAt: z.union([z.string(), z.date()]).nullable(),
+  media: z.array(festivalMediaSchema),
+});
+
 export const insertPartnerSchema = z.object({
   name: z.string(),
   logoUrl: z.string(),
@@ -49,6 +81,8 @@ export type InsertUser = z.infer<typeof insertUserSchema>;
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type InsertFilm = z.infer<typeof insertFilmSchema>;
 export type InsertArticle = z.infer<typeof insertArticleSchema>;
+export type Festival = z.infer<typeof festivalSchema>;
+export type FestivalMedia = z.infer<typeof festivalMediaSchema>;
 export type InsertPartner = z.infer<typeof insertPartnerSchema>;
 export type InsertContact = z.infer<typeof insertContactSchema>;
 

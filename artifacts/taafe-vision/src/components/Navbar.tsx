@@ -19,6 +19,7 @@ export function Navbar() {
     { href: "/news", label: "Blog" },
     { href: "/projects", label: "Projets" },
     { href: "/films", label: "Films" },
+    { href: "/festival/16-films-une-cause", label: "Festival" },
     { href: "/trainings", label: "Formations" },
     { href: "/about", label: "À propos" },
     { href: "/contact", label: "Contact" },

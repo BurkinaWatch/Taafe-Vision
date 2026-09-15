@@ -1,10 +1,10 @@
 import { db } from "./db";
 import { 
-  users, projects, films, articles, partners, contacts, adminSettings, adminLogs,
+  users, projects, films, articles, festivals, festivalMedia, partners, contacts, adminSettings, adminLogs,
   organizationProfiles, impactMetrics, researchSources, socialLinks,
-  type User, type Project, type Film, type Article, type Partner, type Contact, type AdminSetting, type AdminLog,
+  type User, type Project, type Film, type Article, type Festival, type FestivalMedia, type Partner, type Contact, type AdminSetting, type AdminLog,
   type OrganizationProfile, type ImpactMetric, type ResearchSource, type SocialLink,
-  type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertPartner, type InsertContact, type InsertAdminSetting, type InsertAdminLog,
+  type InsertUser, type InsertProject, type InsertFilm, type InsertArticle, type InsertFestival, type InsertFestivalMedia, type InsertPartner, type InsertContact, type InsertAdminSetting, type InsertAdminLog,
   type InsertOrganizationProfile, type InsertImpactMetric, type InsertResearchSource, type InsertSocialLink
 } from "@workspace/db";
 import { eq } from "drizzle-orm";
@@ -36,6 +36,12 @@ export interface IStorage {
   createArticle(article: InsertArticle): Promise<Article>;
   updateArticle(id: number, article: Partial<InsertArticle>): Promise<Article>;
   deleteArticle(id: number): Promise<void>;
+
+  // Festivals
+  getFestivalBySlug(slug: string, includeUnpublished?: boolean): Promise<Festival | undefined>;
+  createFestival(festival: InsertFestival): Promise<Festival>;
+  getFestivalMedia(festivalId: number): Promise<FestivalMedia[]>;
+  createFestivalMedia(media: InsertFestivalMedia): Promise<FestivalMedia>;
 
   // Partners
   getPartners(): Promise<Partner[]>;
@@ -150,6 +156,24 @@ export class DatabaseStorage implements IStorage {
   }
   async deleteArticle(id: number): Promise<void> {
     await db.delete(articles).where(eq(articles.id, id));
+  }
+
+  // Festivals
+  async getFestivalBySlug(slug: string, includeUnpublished = false): Promise<Festival | undefined> {
+    const [festival] = await db.select().from(festivals).where(eq(festivals.slug, slug));
+    if (!includeUnpublished && festival && !festival.isPublished) return undefined;
+    return festival;
+  }
+  async createFestival(insertFestival: InsertFestival): Promise<Festival> {
+    const [festival] = await db.insert(festivals).values(insertFestival).returning();
+    return festival;
+  }
+  async getFestivalMedia(festivalId: number): Promise<FestivalMedia[]> {
+    return await db.select().from(festivalMedia).where(eq(festivalMedia.festivalId, festivalId)).orderBy(festivalMedia.displayOrder);
+  }
+  async createFestivalMedia(insertFestivalMedia: InsertFestivalMedia): Promise<FestivalMedia> {
+    const [media] = await db.insert(festivalMedia).values(insertFestivalMedia).returning();
+    return media;
   }
 
   // Partners

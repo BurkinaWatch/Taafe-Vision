@@ -25,6 +25,9 @@ export const api = {
     update: endpoint("/api/articles/:id", "PATCH"),
     delete: endpoint("/api/articles/:id", "DELETE"),
   },
+  festivals: {
+    get: endpoint("/api/festivals/:slug", "GET"),
+  },
   partners: {
     list: endpoint("/api/partners", "GET"),
     create: endpoint("/api/partners", "POST"),

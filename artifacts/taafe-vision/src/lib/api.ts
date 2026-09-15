@@ -1,6 +1,7 @@
 import {
   articleSchema,
   contactSchema,
+  festivalSchema,
   filmSchema,
   insertArticleSchema,
   insertContactSchema,
@@ -74,6 +75,11 @@ export const api = {
   contact: {
     submit: endpoint("/api/contacts", "POST", insertContactSchema, {
       201: contactSchema,
+    }),
+  },
+  festivals: {
+    get: endpoint("/api/festivals/:slug", "GET", z.object({}), {
+      200: festivalSchema,
     }),
   },
   knowledge: {

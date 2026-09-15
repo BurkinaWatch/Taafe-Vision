@@ -170,6 +170,18 @@ export async function registerRoutes(app: Express): Promise<void> {
     res.sendStatus(204);
   });
 
+  // Festivals
+  app.get(api.festivals.get.path, async (req, res): Promise<void> => {
+    const slug = Array.isArray(req.params.slug) ? req.params.slug[0] : req.params.slug;
+    const festival = await storage.getFestivalBySlug(slug);
+    if (!festival) {
+      res.status(404).json({ message: "Festival not found" });
+      return;
+    }
+    const media = await storage.getFestivalMedia(festival.id);
+    res.json({ ...festival, media });
+  });
+
   // Partners
   app.get(api.partners.list.path, async (_req, res) => {
     const partners = await storage.getPartners();

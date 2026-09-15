@@ -44,6 +44,38 @@ export const articles = pgTable("articles", {
   isHidden: boolean("is_hidden").default(false).notNull(),
 });
 
+// Festival landing pages
+export const festivals = pgTable("festivals", {
+  id: serial("id").primaryKey(),
+  slug: text("slug").notNull().unique(),
+  name: text("name").notNull(),
+  tagline: text("tagline").notNull(),
+  description: text("description").notNull(),
+  category: text("category").notNull(),
+  location: text("location").notNull(),
+  city: text("city").notNull(),
+  phone: text("phone").notNull(),
+  messenger: text("messenger").notNull(),
+  facebookUrl: text("facebook_url").notNull(),
+  edition: text("edition").notNull(),
+  dateRange: text("date_range").notNull(),
+  followers: integer("followers").default(0).notNull(),
+  following: integer("following").default(0).notNull(),
+  featuredImageUrl: text("featured_image_url").notNull(),
+  isPublished: boolean("is_published").default(true).notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const festivalMedia = pgTable("festival_media", {
+  id: serial("id").primaryKey(),
+  festivalId: integer("festival_id").references(() => festivals.id).notNull(),
+  imageUrl: text("image_url").notNull(),
+  caption: text("caption").notNull(),
+  altText: text("alt_text").notNull(),
+  displayOrder: integer("display_order").default(0).notNull(),
+});
+
 // Partners
 export const partners = pgTable("partners", {
   id: serial("id").primaryKey(),
@@ -137,6 +169,8 @@ export const insertUserSchema = createInsertSchema(users);
 export const insertProjectSchema = createInsertSchema(projects).omit({ id: true });
 export const insertFilmSchema = createInsertSchema(films).omit({ id: true });
 export const insertArticleSchema = createInsertSchema(articles).omit({ id: true, createdAt: true });
+export const insertFestivalSchema = createInsertSchema(festivals).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertFestivalMediaSchema = createInsertSchema(festivalMedia).omit({ id: true });
 export const insertPartnerSchema = createInsertSchema(partners).omit({ id: true });
 export const insertContactSchema = createInsertSchema(contacts).omit({ id: true, createdAt: true });
 export const insertAdminSettingSchema = createInsertSchema(adminSettings).omit({ id: true, updatedAt: true });
@@ -151,6 +185,8 @@ export type InsertUser = z.infer<typeof insertUserSchema>;
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type InsertFilm = z.infer<typeof insertFilmSchema>;
 export type InsertArticle = z.infer<typeof insertArticleSchema>;
+export type InsertFestival = z.infer<typeof insertFestivalSchema>;
+export type InsertFestivalMedia = z.infer<typeof insertFestivalMediaSchema>;
 export type InsertPartner = z.infer<typeof insertPartnerSchema>;
 export type InsertContact = z.infer<typeof insertContactSchema>;
 export type InsertAdminSetting = z.infer<typeof insertAdminSettingSchema>;
@@ -165,6 +201,8 @@ export type User = typeof users.$inferSelect;
 export type Project = typeof projects.$inferSelect;
 export type Film = typeof films.$inferSelect;
 export type Article = typeof articles.$inferSelect;
+export type Festival = typeof festivals.$inferSelect;
+export type FestivalMedia = typeof festivalMedia.$inferSelect;
 export type Partner = typeof partners.$inferSelect;
 export type Contact = typeof contacts.$inferSelect;
 export type AdminSetting = typeof adminSettings.$inferSelect;

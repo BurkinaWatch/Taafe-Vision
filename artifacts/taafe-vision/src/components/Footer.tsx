@@ -24,6 +24,7 @@ export function Footer() {
             {[
               { href: "/about", label: "À propos" },
               { href: "/films", label: "Films" },
+              { href: "/festival/16-films-une-cause", label: "Festival" },
               { href: "/projects", label: "Programmes" },
               { href: "/news", label: "Blog" },
               { href: "/contact", label: "Contact" },

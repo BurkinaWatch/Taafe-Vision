@@ -42,6 +42,37 @@ export async function ensureTables() {
         is_hidden BOOLEAN NOT NULL DEFAULT false
       );
 
+      CREATE TABLE IF NOT EXISTS festivals (
+        id SERIAL PRIMARY KEY,
+        slug TEXT NOT NULL UNIQUE,
+        name TEXT NOT NULL,
+        tagline TEXT NOT NULL,
+        description TEXT NOT NULL,
+        category TEXT NOT NULL,
+        location TEXT NOT NULL,
+        city TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        messenger TEXT NOT NULL,
+        facebook_url TEXT NOT NULL,
+        edition TEXT NOT NULL,
+        date_range TEXT NOT NULL,
+        followers INTEGER NOT NULL DEFAULT 0,
+        following INTEGER NOT NULL DEFAULT 0,
+        featured_image_url TEXT NOT NULL,
+        is_published BOOLEAN NOT NULL DEFAULT true,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+      );
+
+      CREATE TABLE IF NOT EXISTS festival_media (
+        id SERIAL PRIMARY KEY,
+        festival_id INTEGER NOT NULL REFERENCES festivals(id),
+        image_url TEXT NOT NULL,
+        caption TEXT NOT NULL,
+        alt_text TEXT NOT NULL,
+        display_order INTEGER NOT NULL DEFAULT 0
+      );
+
       CREATE TABLE IF NOT EXISTS partners (
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,

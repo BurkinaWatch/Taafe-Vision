@@ -15,6 +15,7 @@ import News from "./pages/News";
 import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
 import Volunteer from "./pages/Volunteer";
+import Festival from "./pages/Festival";
 import NotFound from "./pages/not-found";
 
 // Admin Pages
@@ -41,6 +42,7 @@ function Router() {
       <Route path="/partners" component={Partners} />
       <Route path="/contact" component={Contact} />
       <Route path="/volunteer" component={Volunteer} />
+      <Route path="/festival/16-films-une-cause" component={Festival} />
 
       {/* Admin Routes */}
       {/* @ts-ignore wouter Route type compatibility */}
