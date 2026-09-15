@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
 import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronLeft, ChevronRight, CircleAlert, Clapperboard, Facebook, MapPin, MessageCircle, Phone, RefreshCw, Sparkles, X } from "lucide-react";
 import { Link } from "wouter";
 import { Footer } from "@/components/Footer";
@@ -63,7 +63,7 @@ function GalleryCard({
 }: {
   media: FestivalMedia;
   index: number;
-  onOpen: () => void;
+  onOpen: (event: MouseEvent<HTMLButtonElement>) => void;
 }) {
   return (
     <button
@@ -93,6 +93,9 @@ function GalleryCard({
 export default function Festival() {
   const { festival, isLoading, isError, refetch } = useFestival(FESTIVAL_SLUG);
   const [activeMedia, setActiveMedia] = useState<number | null>(null);
+  const galleryTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const galleryWasOpenRef = useRef(false);
 
   const sortedMedia = useMemo(
     () => [...(festival?.media ?? [])].sort((a, b) => a.displayOrder - b.displayOrder),
@@ -101,6 +104,19 @@ export default function Festival() {
   const activeIndex = activeMedia === null ? -1 : sortedMedia.findIndex((media) => media.id === activeMedia);
   const activeImage = activeIndex >= 0 ? sortedMedia[activeIndex] : null;
   const heroImage = festival?.featuredImageUrl || sortedMedia[0]?.imageUrl;
+
+  useEffect(() => {
+    const galleryIsOpen = activeImage !== null;
+
+    if (galleryIsOpen && !galleryWasOpenRef.current) {
+      closeButtonRef.current?.focus();
+    } else if (!galleryIsOpen && galleryWasOpenRef.current) {
+      galleryTriggerRef.current?.focus();
+      galleryTriggerRef.current = null;
+    }
+
+    galleryWasOpenRef.current = galleryIsOpen;
+  }, [activeImage]);
 
   if (isLoading) return <LoadingFestival />;
   if (isError || !festival) return <FestivalError onRetry={() => void refetch()} />;
@@ -114,6 +130,18 @@ export default function Festival() {
     if (!sortedMedia.length) return;
     const previousIndex = activeIndex > 0 ? activeIndex - 1 : sortedMedia.length - 1;
     setActiveMedia(sortedMedia[previousIndex].id);
+  };
+  const handleGalleryKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setActiveMedia(null);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      previousImage();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      nextImage();
+    }
   };
 
   return (
@@ -253,7 +281,15 @@ export default function Festival() {
             {sortedMedia.length ? (
               <div className="grid auto-rows-[250px] gap-4 md:grid-cols-2 md:auto-rows-[270px]">
                 {sortedMedia.map((media, index) => (
-                  <GalleryCard key={media.id} media={media} index={index} onOpen={() => setActiveMedia(media.id)} />
+                  <GalleryCard
+                    key={media.id}
+                    media={media}
+                    index={index}
+                    onOpen={(event) => {
+                      galleryTriggerRef.current = event.currentTarget;
+                      setActiveMedia(media.id);
+                    }}
+                  />
                 ))}
               </div>
             ) : (
@@ -308,11 +344,18 @@ export default function Festival() {
       <Footer />
 
       {activeImage && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-[#191613]/95 p-4 md:p-10" role="dialog" aria-modal="true" aria-label="Visionneuse de la galerie" onClick={() => setActiveMedia(null)}>
+        <div
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-[#191613]/95 p-4 md:p-10"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visionneuse de la galerie"
+          onClick={() => setActiveMedia(null)}
+          onKeyDown={handleGalleryKeyDown}
+        >
           <div className="relative flex h-full w-full max-w-6xl items-center justify-center" onClick={(event) => event.stopPropagation()}>
             <img src={activeImage.imageUrl} alt={activeImage.altText} className="max-h-[82vh] max-w-full object-contain" data-testid={`img-gallery-lightbox-${activeImage.id}`} />
             <p className="absolute bottom-0 left-0 right-0 bg-[#191613]/80 p-4 text-center text-sm text-[#fff7e8]">{activeImage.caption}</p>
-            <button type="button" onClick={() => setActiveMedia(null)} data-testid="button-close-gallery" aria-label="Fermer la galerie" className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center border border-[#fff7e8]/40 text-[#fff7e8] transition-colors hover:bg-[#fff7e8] hover:text-[#191613]">
+            <button type="button" ref={closeButtonRef} onClick={() => setActiveMedia(null)} data-testid="button-close-gallery" aria-label="Fermer la galerie" className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center border border-[#fff7e8]/40 text-[#fff7e8] transition-colors hover:bg-[#fff7e8] hover:text-[#191613]">
               <X className="h-5 w-5" />
             </button>
             {sortedMedia.length > 1 && (
