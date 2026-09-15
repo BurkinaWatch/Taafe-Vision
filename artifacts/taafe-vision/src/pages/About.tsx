@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactElement } from "react";
+import { useState } from "react";
 import {
   CalendarDays,
   Camera,
@@ -65,6 +66,7 @@ const JOURNEY_MILESTONES = [
     description: "Taafé Vision est fondée le 9 janvier 2017 à Ouagadougou pour renforcer la représentativité des femmes dans le cinéma.",
     icon: CalendarDays,
     tone: "bg-primary/10 text-primary",
+    image: "/images/community-engagement-1.jpg",
   },
   {
     year: "2018",
@@ -72,6 +74,7 @@ const JOURNEY_MILESTONES = [
     description: "L’association poursuit son engagement pour utiliser le film comme espace de dialogue sur les droits des femmes.",
     icon: MessageCircleHeart,
     tone: "bg-secondary/20 text-secondary-foreground",
+    image: "/images/community-screening.jpg",
   },
   {
     year: "2019",
@@ -79,6 +82,7 @@ const JOURNEY_MILESTONES = [
     description: "La formation, la production et la diffusion s’affirment comme les leviers d’action de Taafé Vision.",
     icon: GraduationCap,
     tone: "bg-accent text-accent-foreground",
+    image: "/images/film-poster-1.jpg",
   },
   {
     year: "2020",
@@ -86,6 +90,7 @@ const JOURNEY_MILESTONES = [
     description: "Le cinéma reste un outil de sensibilisation et de mobilisation au service des communautés.",
     icon: Handshake,
     tone: "bg-primary/10 text-primary",
+    image: "/images/community-engagement-1.jpg",
   },
   {
     year: "2021",
@@ -93,6 +98,7 @@ const JOURNEY_MILESTONES = [
     description: "Taafé Vision continue d’accompagner les talents et de faire grandir les espaces de création féminins.",
     icon: UsersRound,
     tone: "bg-secondary/20 text-secondary-foreground",
+    image: "/images/partners-1.jpg",
   },
   {
     year: "2022",
@@ -100,6 +106,7 @@ const JOURNEY_MILESTONES = [
     description: "Le programme d’incubation accompagne les projets féminins de l’écriture à la production et à la diffusion.",
     icon: Clapperboard,
     tone: "bg-accent text-accent-foreground",
+    image: "/images/community-screening.jpg",
   },
   {
     year: "2023",
@@ -107,6 +114,7 @@ const JOURNEY_MILESTONES = [
     description: "Les actions de formation et de production sont documentées et renforcent la visibilité des créatrices.",
     icon: Camera,
     tone: "bg-primary/10 text-primary",
+    image: "/images/film-poster-1.jpg",
   },
   {
     year: "2024",
@@ -114,6 +122,7 @@ const JOURNEY_MILESTONES = [
     description: "Le programme donne la parole aux femmes et développe leurs compétences autour de courts métrages engagés.",
     icon: Film,
     tone: "bg-secondary/20 text-secondary-foreground",
+    image: "/images/community-engagement-1.jpg",
   },
   {
     year: "2025",
@@ -121,6 +130,7 @@ const JOURNEY_MILESTONES = [
     description: "Panels, pitchs et échanges portent la représentativité des femmes au cœur du cinéma africain.",
     icon: Globe2,
     tone: "bg-accent text-accent-foreground",
+    image: "/images/partners-2.jpg",
   },
   {
     year: "2026",
@@ -128,6 +138,7 @@ const JOURNEY_MILESTONES = [
     description: "Dix projets de films sont présentés et Taafé Vision poursuit son engagement pour briser les silences.",
     icon: Megaphone,
     tone: "bg-primary/10 text-primary",
+    image: "/images/community-screening.jpg",
   },
 ] as const;
 
@@ -153,6 +164,9 @@ export default function About() {
   const { metrics } = useImpactMetrics();
   const { sources } = useResearchSources();
   const { socials } = useSocialLinks();
+  const [selectedMilestoneIndex, setSelectedMilestoneIndex] = useState(0);
+  const selectedMilestone = JOURNEY_MILESTONES[selectedMilestoneIndex];
+  const SelectedIcon = selectedMilestone.icon;
 
   const container = {
     hidden: { opacity: 0 },
@@ -277,52 +291,70 @@ export default function About() {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7 }}
           aria-labelledby="journey-title"
+          className="overflow-hidden rounded-[2rem] bg-accent/25 px-5 py-10 md:px-12 md:py-14"
         >
-          <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="page-eyebrow mb-4">2017 — 2026</p>
-            <h2 id="journey-title" className="text-4xl font-display font-bold text-foreground md:text-5xl">
-              Une décennie pour faire avancer les regards.
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Des repères qui racontent l’évolution de Taafé Vision, de sa création officielle à ses actions actuelles pour un cinéma plus égalitaire.
-            </p>
-          </div>
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 text-center">
+              <p className="page-eyebrow mb-4">2017 — 2026</p>
+              <h2 id="journey-title" className="text-4xl font-display font-bold text-foreground md:text-5xl">
+                Une décennie pour faire avancer les regards.
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                Sélectionnez une année pour découvrir un repère de l’histoire de Taafé Vision.
+              </p>
+            </div>
 
-          <div className="relative">
-            <div className="absolute left-5 top-0 hidden h-full w-px bg-border md:left-1/2 md:block" aria-hidden="true" />
-            <div className="space-y-6 md:space-y-0">
-              {JOURNEY_MILESTONES.map((milestone, index) => {
-                const Icon = milestone.icon;
-                const isEven = index % 2 === 0;
+            <div className="mx-auto max-w-2xl">
+              <motion.img
+                key={selectedMilestone.year}
+                initial={{ opacity: 0.4, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                src={selectedMilestone.image}
+                alt=""
+                className="h-52 w-full rounded-[1.5rem] object-cover shadow-lg md:h-64"
+              />
+              <div className="mt-8 text-center">
+                <div className="mb-3 flex items-center justify-center gap-3">
+                  <div className={`flex h-10 w-10 items-center justify-center rounded-full ${selectedMilestone.tone}`}>
+                    <SelectedIcon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <span className="font-display text-3xl font-bold text-foreground">{selectedMilestone.year}</span>
+                </div>
+                <h3 className="font-display text-3xl font-bold text-foreground md:text-4xl">{selectedMilestone.title}</h3>
+                <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {selectedMilestone.description}
+                </p>
+              </div>
+            </div>
 
-                return (
-                  <motion.article
-                    key={milestone.year}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.25 }}
-                    transition={{ duration: 0.45, delay: index * 0.04 }}
-                    className="relative grid gap-5 md:grid-cols-2 md:gap-14 md:py-5"
-                  >
-                    <div className={isEven ? "md:text-right" : "md:col-start-2"}>
-                      <div className="page-card flex items-start gap-4 p-5 text-left md:inline-flex md:max-w-xl">
-                        <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${milestone.tone}`}>
+            <div className="mt-12 overflow-x-auto pb-3" aria-label="Parcours de Taafé Vision de 2017 à 2026">
+              <div className="relative min-w-[760px] px-5">
+                <div className="absolute left-10 right-10 top-[3.75rem] h-px bg-foreground/15" aria-hidden="true" />
+                <div className="relative grid grid-cols-10 gap-3">
+                  {JOURNEY_MILESTONES.map((milestone, index) => {
+                    const Icon = milestone.icon;
+                    const isSelected = index === selectedMilestoneIndex;
+
+                    return (
+                      <button
+                        key={milestone.year}
+                        type="button"
+                        onClick={() => setSelectedMilestoneIndex(index)}
+                        aria-pressed={isSelected}
+                        className="group flex min-w-0 flex-col items-center gap-3 rounded-2xl px-1 py-2 text-center outline-none transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                      >
+                        <span className={`font-display text-xl font-bold transition-colors ${isSelected ? "text-foreground" : "text-foreground/30 group-hover:text-foreground/65"}`}>
+                          {milestone.year}
+                        </span>
+                        <span className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-4 border-accent/25 transition-all ${isSelected ? "scale-110 bg-primary text-primary-foreground shadow-lg" : "bg-background/75 text-foreground/30 group-hover:bg-background group-hover:text-primary"}`}>
                           <Icon className="h-5 w-5" aria-hidden="true" />
-                        </div>
-                        <div>
-                          <div className="mb-1 flex items-center gap-3 md:justify-start">
-                            <span className="font-display text-2xl font-bold text-foreground">{milestone.year}</span>
-                            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-                          </div>
-                          <h3 className="font-display text-xl font-bold text-foreground">{milestone.title}</h3>
-                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{milestone.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute left-5 top-10 hidden h-3 w-3 -translate-x-1/2 rounded-full border-4 border-background bg-primary md:left-1/2 md:block" aria-hidden="true" />
-                  </motion.article>
-                );
-              })}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </motion.section>
