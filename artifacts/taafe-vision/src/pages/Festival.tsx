@@ -117,7 +117,7 @@ export default function Festival() {
   };
 
   return (
-    <div className="festival-grain min-h-screen overflow-hidden bg-[#f6efe1] text-[#191613]">
+    <div className="festival-page festival-grain min-h-screen overflow-hidden bg-[var(--campaign-paper)] text-[var(--campaign-ink)]">
       <Navbar />
 
       <main>

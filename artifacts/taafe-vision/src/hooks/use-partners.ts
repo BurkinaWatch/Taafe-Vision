@@ -36,5 +36,5 @@ export function usePartners() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: [api.partners.list.path] }),
   });
 
-  return { partners: list.data, isLoading: list.isLoading, create, remove };
+  return { partners: list.data, isLoading: list.isLoading, isError: list.isError, create, remove };
 }

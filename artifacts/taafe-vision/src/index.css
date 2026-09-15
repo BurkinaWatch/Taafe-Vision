@@ -50,6 +50,12 @@
   --shadow-lifted: 0 24px 60px -34px hsl(var(--foreground) / 0.52);
   --motion-fast: 160ms;
   --motion-standard: 240ms;
+  --campaign-paper: #f6efe1;
+  --campaign-ink: #191613;
+  --campaign-orange: #ee5b25;
+  --campaign-gold: #ffb21c;
+  --campaign-sun: #ffcf45;
+  --campaign-white: #fff7e8;
   --card-border: 37 24% 78%;
   --popover-border: 37 24% 78%;
   --primary-border: hsl(23 91% 53%);
@@ -212,5 +218,14 @@
   .festival-rule {
     height: 1px;
     background: hsl(24 20% 10% / 0.2);
+  }
+
+  .festival-page {
+    --campaign-paper: #f6efe1;
+    --campaign-ink: #191613;
+    --campaign-orange: #ee5b25;
+    --campaign-gold: #ffb21c;
+    --campaign-sun: #ffcf45;
+    --campaign-white: #fff7e8;
   }
 }
