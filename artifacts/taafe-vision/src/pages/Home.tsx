@@ -55,11 +55,11 @@ export default function Home() {
     metrics.find((m: any) => m.label.toLowerCase().includes(keyword.toLowerCase()));
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="page-shell">
       <Navbar />
       {/* ... previous sections remain the same ... */}
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden bg-slate-950">
+      <section className="relative h-screen flex items-center overflow-hidden page-hero">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -69,7 +69,7 @@ export default function Home() {
             fetchPriority="high"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/25 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/30 to-transparent" />
         </div>
 
         <div className="container-wide relative z-10 text-white space-y-10">
@@ -80,14 +80,14 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8"
             >
-              <span className="text-[#f146ad]">TAAFÉ</span> <span className="text-[#39cd15]">V</span><span className="text-[#f146ad]">ISION</span>
+              <span className="text-primary">TAAFÉ</span> <span className="text-secondary">V</span><span className="text-primary">ISION</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl font-light max-w-2xl text-slate-300 leading-relaxed"
+              className="text-xl md:text-2xl font-light max-w-2xl text-background/75 leading-relaxed"
             >Artivisme pour un monde plus juste</motion.p>
             
             <motion.div 
@@ -96,10 +96,10 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-6 pt-10"
             >
-              <Link href="/projects" className="px-10 py-5 bg-white text-slate-950 rounded-sm font-bold uppercase tracking-widest hover:bg-secondary hover:text-white transition-all flex items-center justify-center gap-3 group">
+              <Link href="/projects" className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold uppercase tracking-widest hover:bg-primary/90 transition-all flex items-center justify-center gap-3 group">
                 Découvrir nos actions <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/about" className="px-10 py-5 border border-white/20 text-white rounded-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center">
+              <Link href="/about" className="px-10 py-5 border border-background/30 text-background rounded-full font-bold uppercase tracking-widest hover:bg-background/10 transition-all flex items-center justify-center">
                 Notre Vision
               </Link>
             </motion.div>
@@ -113,10 +113,10 @@ export default function Home() {
         </div>
       </section>
       {/* Impact Section */}
-      <section className="py-32 relative overflow-hidden bg-[#fdf8e6]">
+      <section className="py-32 relative overflow-hidden page-section">
         {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#f146ad]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#39cd15]/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
         {/* Afro-style Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ 
@@ -133,12 +133,12 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-1"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f146ad]/10 text-[#f146ad] text-xs font-bold uppercase tracking-widest mb-6">
+              <div className="page-pill mb-6">
                 <Sparkles className="w-3 h-3" /> Chiffres Clés
               </div>
-              <h2 className="text-5xl font-display font-bold text-slate-950 leading-tight mb-6">Notre impact en chiffres.</h2>
-              <p className="text-slate-600 leading-relaxed mb-8">Chaque chiffre raconte une histoire de changement, d'engagement et de passion pour le cinéma burkinabè.</p>
-              <div className="h-1.5 w-16 bg-[#39cd15]" />
+              <h2 className="text-5xl font-display font-bold text-foreground leading-tight mb-6">Notre impact en chiffres.</h2>
+              <p className="text-muted-foreground leading-relaxed mb-8">Chaque chiffre raconte une histoire de changement, d'engagement et de passion pour le cinéma burkinabè.</p>
+              <div className="h-1.5 w-16 bg-secondary rounded-full" />
             </motion.div>
             
             <div className="lg:col-span-3 grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -148,13 +148,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(241,70,173,0.05)] border border-[#f146ad]/5 hover:border-[#f146ad]/20 transition-all group overflow-hidden"
+                className="page-card relative p-8 hover:border-primary/40 group overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <Users className="w-24 h-24 text-[#f146ad]" />
+                  <Users className="w-24 h-24 text-primary" />
                 </div>
                 <div className="relative z-10">
-                  <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
+                  <div className="text-7xl font-display font-bold text-primary mb-4 tracking-tighter">
                     <Counter value={metrics[0]?.value ?? 33} suffix={metrics[0]?.suffix ?? "+"} />
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[0]?.label ?? "Femmes formées"}</h4>
@@ -168,13 +168,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(57,205,21,0.05)] border border-[#39cd15]/5 hover:border-[#39cd15]/20 transition-all group overflow-hidden"
+                className="page-card relative p-8 hover:border-secondary/50 group overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <Film className="w-24 h-24 text-[#39cd15]" />
+                  <Film className="w-24 h-24 text-secondary" />
                 </div>
                 <div className="relative z-10">
-                  <div className="text-7xl font-display font-bold text-[#39cd15] mb-4 tracking-tighter">
+                  <div className="text-7xl font-display font-bold text-secondary mb-4 tracking-tighter">
                     <Counter value={15} suffix={metrics[1]?.suffix ?? "+"} />
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[1]?.label ?? "Films produits"}</h4>
@@ -188,13 +188,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(241,70,173,0.05)] border border-[#f146ad]/5 hover:border-[#f146ad]/20 transition-all group overflow-hidden"
+                className="page-card relative p-8 hover:border-primary/40 group overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <Star className="w-24 h-24 text-[#f146ad]" />
+                  <Star className="w-24 h-24 text-primary" />
                 </div>
                 <div className="relative z-10">
-                  <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
+                  <div className="text-7xl font-display font-bold text-primary mb-4 tracking-tighter">
                     <Counter value={15000} suffix={metrics[2]?.suffix ?? "+"} animate={false} />
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[2]?.label ?? "Personnes sensibilisées"}</h4>
@@ -208,7 +208,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(86,26,68,0.05)] border border-[#561a44]/5 hover:border-[#561a44]/20 transition-all group overflow-hidden"
+                className="page-card relative p-8 hover:border-border group overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                   <Tv className="w-24 h-24 text-[#561a44]" />
@@ -224,20 +224,20 @@ export default function Home() {
         </div>
       </section>
       {/* Engagement Section */}
-      <section id="engagement" className="relative scroll-mt-32 overflow-hidden bg-slate-950 py-24 text-white">
-        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#f146ad]/20 blur-3xl" />
-        <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-[#39cd15]/15 blur-3xl" />
+      <section id="engagement" className="relative scroll-mt-32 overflow-hidden page-hero py-24">
+        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-secondary/15 blur-3xl" />
 
         <div className="container-wide relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-[#f8d34f]">
+            <div className="page-pill mb-5 bg-background/10 text-accent">
               <Heart className="h-4 w-4 fill-current" />
               Agir avec Taafé Vision
             </div>
             <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">
               Votre engagement fait avancer l’égalité.
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-slate-300">
+            <p className="mt-5 text-lg leading-relaxed text-background/70">
               Rejoignez notre mouvement pour donner plus de place aux femmes dans le cinéma et faire vivre des histoires qui transforment les regards.
             </p>
           </div>
@@ -249,21 +249,21 @@ export default function Home() {
                 title: "S'engager",
                 description: "Partagez vos idées, vos compétences ou votre envie de soutenir nos actions.",
                 icon: Heart,
-                className: "bg-[#f146ad] hover:bg-[#e13a9d]",
+                className: "bg-primary hover:bg-primary/90",
               },
               {
                 href: "/volunteer",
                 title: "Devenir bénévole",
                 description: "Mettez votre temps et vos talents au service de nos projets et de nos communautés.",
                 icon: HandHeart,
-                className: "bg-[#39cd15] text-slate-950 hover:bg-[#31b912]",
+                className: "bg-secondary text-secondary-foreground hover:bg-secondary/90",
               },
               {
                 href: "/contact?action=don",
                 title: "Faites un don",
                 description: "Contribuez à la production, la formation et la diffusion de récits qui changent les choses.",
                 icon: Gift,
-                className: "bg-[#f8d34f] text-slate-950 hover:bg-[#e8c23f]",
+                className: "bg-accent text-accent-foreground hover:bg-accent/90",
               },
             ].map(({ href, title, description, icon: Icon, className }) => (
               <Link

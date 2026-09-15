@@ -1,5 +1,18 @@
 import { motion } from "framer-motion";
 import type { ReactElement } from "react";
+import {
+  CalendarDays,
+  Camera,
+  Clapperboard,
+  Film,
+  Globe2,
+  GraduationCap,
+  Handshake,
+  Megaphone,
+  MessageCircleHeart,
+  Settings2,
+  UsersRound,
+} from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -45,6 +58,79 @@ const ADDITIONAL_PARTNERS = [
   },
 ];
 
+const JOURNEY_MILESTONES = [
+  {
+    year: "2017",
+    title: "Création officielle",
+    description: "Taafé Vision est fondée le 9 janvier 2017 à Ouagadougou pour renforcer la représentativité des femmes dans le cinéma.",
+    icon: CalendarDays,
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    year: "2018",
+    title: "Faire circuler les voix",
+    description: "L’association poursuit son engagement pour utiliser le film comme espace de dialogue sur les droits des femmes.",
+    icon: MessageCircleHeart,
+    tone: "bg-secondary/20 text-secondary-foreground",
+  },
+  {
+    year: "2019",
+    title: "Créer et transmettre",
+    description: "La formation, la production et la diffusion s’affirment comme les leviers d’action de Taafé Vision.",
+    icon: GraduationCap,
+    tone: "bg-accent text-accent-foreground",
+  },
+  {
+    year: "2020",
+    title: "Maintenir le lien",
+    description: "Le cinéma reste un outil de sensibilisation et de mobilisation au service des communautés.",
+    icon: Handshake,
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    year: "2021",
+    title: "Renforcer les capacités",
+    description: "Taafé Vision continue d’accompagner les talents et de faire grandir les espaces de création féminins.",
+    icon: UsersRound,
+    tone: "bg-secondary/20 text-secondary-foreground",
+  },
+  {
+    year: "2022",
+    title: "De l’idée au court métrage",
+    description: "Le programme d’incubation accompagne les projets féminins de l’écriture à la production et à la diffusion.",
+    icon: Clapperboard,
+    tone: "bg-accent text-accent-foreground",
+  },
+  {
+    year: "2023",
+    title: "Accompagner la production",
+    description: "Les actions de formation et de production sont documentées et renforcent la visibilité des créatrices.",
+    icon: Camera,
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    year: "2024",
+    title: "Elles se réalisent",
+    description: "Le programme donne la parole aux femmes et développe leurs compétences autour de courts métrages engagés.",
+    icon: Film,
+    tone: "bg-secondary/20 text-secondary-foreground",
+  },
+  {
+    year: "2025",
+    title: "Le genre s’invite au FESPACO",
+    description: "Panels, pitchs et échanges portent la représentativité des femmes au cœur du cinéma africain.",
+    icon: Globe2,
+    tone: "bg-accent text-accent-foreground",
+  },
+  {
+    year: "2026",
+    title: "Une sixième promotion",
+    description: "Dix projets de films sont présentés et Taafé Vision poursuit son engagement pour briser les silences.",
+    icon: Megaphone,
+    tone: "bg-primary/10 text-primary",
+  },
+] as const;
+
 const SOCIAL_ICONS: Record<string, ReactElement> = {
   facebook: (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -78,11 +164,11 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="page-shell">
       <Navbar />
       
       {/* Header */}
-      <div className="py-32 text-white relative overflow-hidden">
+      <div className="py-32 text-background relative overflow-hidden page-hero">
         {/* Artistic Logo Background */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -154,7 +240,7 @@ export default function About() {
               className="rounded-lg shadow-2xl relative z-10 w-full"
             />
             <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-secondary/10 rounded-lg -z-0" />
-            <div className="mt-8 p-6 bg-slate-50 rounded-xl border border-slate-100 space-y-3">
+            <div className="mt-8 p-6 bg-card rounded-3xl border border-border space-y-3">
               <p className="text-slate-700 leading-relaxed italic">
                 {profile?.meaning ?? "« Taafé » signifie en langue bambara le pagne. Le pagne symbolisant la femme au Burkina Faso, Taafé Vision signifie littéralement « Vision de femmes »."}
               </p>
@@ -170,19 +256,76 @@ export default function About() {
 
         {/* Mission & Vision Section */}
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-slate-900 text-white p-12 rounded-2xl space-y-6">
+          <div className="page-card page-hero p-12 space-y-6">
             <h3 className="text-2xl font-display font-bold text-secondary">Notre Mission</h3>
             <p className="text-slate-300 text-lg leading-relaxed">
               {profile?.mission ?? "Produire et diffuser des films exempts de stéréotypes du genre et qui soutiennent l'abandon de toutes sortes de violences basées sur le genre tout en contribuant à la promotion de la femme dans un monde plus juste, plus égalitaire."}
             </p>
           </div>
-          <div className="bg-secondary text-white p-12 rounded-2xl space-y-6">
+          <div className="rounded-3xl bg-secondary text-secondary-foreground p-12 space-y-6">
             <h3 className="text-2xl font-display font-bold">Notre Vision</h3>
             <p className="text-white/90 text-lg leading-relaxed">
               {profile?.vision ?? "À l'orée de 2030, être une association leader dans la lutte pour un monde plus égalitaire, plus juste et exempt de toute forme de violence à l'égard de la femme, au moyen du film."}
             </p>
           </div>
         </div>
+
+        {/* Journey Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7 }}
+          aria-labelledby="journey-title"
+        >
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <p className="page-eyebrow mb-4">2017 — 2026</p>
+            <h2 id="journey-title" className="text-4xl font-display font-bold text-foreground md:text-5xl">
+              Une décennie pour faire avancer les regards.
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Des repères qui racontent l’évolution de Taafé Vision, de sa création officielle à ses actions actuelles pour un cinéma plus égalitaire.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-5 top-0 hidden h-full w-px bg-border md:left-1/2 md:block" aria-hidden="true" />
+            <div className="space-y-6 md:space-y-0">
+              {JOURNEY_MILESTONES.map((milestone, index) => {
+                const Icon = milestone.icon;
+                const isEven = index % 2 === 0;
+
+                return (
+                  <motion.article
+                    key={milestone.year}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ duration: 0.45, delay: index * 0.04 }}
+                    className="relative grid gap-5 md:grid-cols-2 md:gap-14 md:py-5"
+                  >
+                    <div className={isEven ? "md:text-right" : "md:col-start-2"}>
+                      <div className="page-card flex items-start gap-4 p-5 text-left md:inline-flex md:max-w-xl">
+                        <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${milestone.tone}`}>
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </div>
+                        <div>
+                          <div className="mb-1 flex items-center gap-3 md:justify-start">
+                            <span className="font-display text-2xl font-bold text-foreground">{milestone.year}</span>
+                            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+                          </div>
+                          <h3 className="font-display text-xl font-bold text-foreground">{milestone.title}</h3>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{milestone.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute left-5 top-10 hidden h-3 w-3 -translate-x-1/2 rounded-full border-4 border-background bg-primary md:left-1/2 md:block" aria-hidden="true" />
+                  </motion.article>
+                );
+              })}
+            </div>
+          </div>
+        </motion.section>
 
         {/* Values Section */}
         <div className="py-12">
@@ -215,7 +358,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-slate-50 rounded-3xl p-12 md:p-20 relative overflow-hidden"
+              className="page-card bg-muted/40 p-12 md:p-20 relative overflow-hidden"
         >
           {/* Decorative element */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-full -mr-32 -mt-32 blur-3xl" />
@@ -235,19 +378,19 @@ export default function About() {
                 axe: "Axe 1", 
                 title: "Production & Diffusion", 
                 desc: "Renforcement de la production et de la diffusion de films réalisés par les femmes.",
-                icon: "🎬"
+                icon: Camera
               },
               { 
                 axe: "Axe 2", 
                 title: "Promotion de la femme", 
                 desc: "Promotion de la femme au travers du cinéma.",
-                icon: "🤝"
+                icon: Handshake
               },
               { 
                 axe: "Axe 3", 
                 title: "Capacités techniques", 
                 desc: "Renforcement des capacités techniques et organisationnelles de Taafé Vision.",
-                icon: "⚙️"
+                icon: Settings2
               }
             ].map((axe, index) => (
               <motion.div 
@@ -261,7 +404,7 @@ export default function About() {
               >
                 <div className="flex justify-between items-start">
                   <span className="text-secondary font-bold text-sm tracking-widest uppercase">{axe.axe}</span>
-                  <span className="text-2xl opacity-50 group-hover:opacity-100 transition-opacity">{axe.icon}</span>
+                  <axe.icon className="h-6 w-6 text-primary/60 opacity-50 transition-opacity group-hover:opacity-100" aria-hidden="true" />
                 </div>
                 <h4 className="text-xl font-bold text-slate-900 group-hover:text-secondary transition-colors">{axe.title}</h4>
                 <p className="text-slate-600 leading-relaxed">{axe.desc}</p>

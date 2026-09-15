@@ -6,19 +6,19 @@ import { motion } from "framer-motion";
 import type { Project } from "@/lib/api";
 
 const CATEGORY_MAP: Record<string, { label: string; color: string; Icon: any }> = {
-  "Elles se réalisent":            { label: "Formation", color: "bg-purple-100 text-purple-700", Icon: Users },
-  "De l'idée au court métrage":   { label: "Incubation", color: "bg-blue-100 text-blue-700", Icon: Film },
-  "Projections-débats communautaires": { label: "Sensibilisation", color: "bg-green-100 text-green-700", Icon: Megaphone },
-  "Le genre s'invite au FESPACO": { label: "Événement", color: "bg-orange-100 text-orange-700", Icon: Globe },
-  "16 jours d'activisme — Cinéma contre les VBG": { label: "Campagne", color: "bg-red-100 text-red-700", Icon: Megaphone },
-  "Plaidoyer et réseautage féministe": { label: "Plaidoyer", color: "bg-slate-100 text-slate-700", Icon: Globe },
+  "Elles se réalisent":            { label: "Formation", color: "bg-accent text-accent-foreground", Icon: Users },
+  "De l'idée au court métrage":   { label: "Incubation", color: "bg-secondary/25 text-secondary-foreground", Icon: Film },
+  "Projections-débats communautaires": { label: "Sensibilisation", color: "bg-primary/15 text-primary", Icon: Megaphone },
+  "Le genre s'invite au FESPACO": { label: "Événement", color: "bg-accent text-accent-foreground", Icon: Globe },
+  "16 jours d'activisme — Cinéma contre les VBG": { label: "Campagne", color: "bg-primary/15 text-primary", Icon: Megaphone },
+  "Plaidoyer et réseautage féministe": { label: "Plaidoyer", color: "bg-muted text-muted-foreground", Icon: Globe },
 };
 
 function statusBadge(date?: string | null) {
   if (!date) return null;
   const d = date.toLowerCase();
   if (d.includes("en cours")) return { label: "En cours", cls: "bg-secondary/10 text-secondary" };
-  if (d.includes("annuel"))   return { label: "Annuel",   cls: "bg-blue-50 text-blue-600" };
+  if (d.includes("annuel"))   return { label: "Annuel",   cls: "bg-accent text-accent-foreground" };
   return null;
 }
 
@@ -38,17 +38,17 @@ export default function Projects() {
   const secondary = projects?.slice(2) ?? [];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="page-shell">
       <Navbar />
 
       {/* Hero */}
-      <div className="bg-slate-950 pt-32 pb-20 relative overflow-hidden">
+      <div className="page-hero pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: "radial-gradient(circle at 20% 50%, #32cd32 0%, transparent 60%), radial-gradient(circle at 80% 20%, #561a44 0%, transparent 50%)" }}
         />
         <div className="container-wide relative z-10">
           <p className="text-secondary text-xs font-bold uppercase tracking-[0.4em] mb-4">Taafé Vision · Action sur le terrain</p>
-          <h1 className="text-5xl md:text-7xl font-display font-black text-white mb-6 leading-none">
+          <h1 className="text-5xl md:text-7xl font-display font-black text-background mb-6 leading-none">
             NOS<br /><span className="text-secondary">PROGRAMMES</span>
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
@@ -70,7 +70,7 @@ export default function Projects() {
       </div>
 
       {/* Featured Programs */}
-      <div className="bg-white py-20">
+      <div className="page-section py-20">
         <div className="container-wide">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-secondary mb-12">Programmes phares</h2>
 
@@ -154,7 +154,7 @@ export default function Projects() {
 
       {/* All other programs */}
       {secondary.length > 0 && (
-        <div className="bg-slate-50 py-20">
+        <div className="bg-muted/40 py-20">
           <div className="container-wide">
             <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-secondary mb-12">Toutes nos initiatives</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -212,7 +212,7 @@ export default function Projects() {
       )}
 
       {/* Axes stratégiques */}
-      <div className="bg-slate-950 py-20">
+      <div className="page-hero py-20">
         <div className="container-wide">
           <div className="max-w-2xl mb-16">
             <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-secondary mb-4">Axes Stratégiques</h2>

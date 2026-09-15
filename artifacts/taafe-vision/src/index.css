@@ -93,6 +93,34 @@
   .container-wide {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  .page-shell {
+    @apply min-h-screen flex flex-col bg-background text-foreground;
+  }
+
+  .page-hero {
+    @apply bg-foreground text-background;
+  }
+
+  .page-section {
+    @apply bg-background;
+  }
+
+  .page-card {
+    @apply rounded-3xl border border-border bg-card shadow-sm transition-all duration-300;
+  }
+
+  .page-eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.22em] text-primary;
+  }
+
+  .page-pill {
+    @apply inline-flex items-center rounded-full bg-accent/70 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-accent-foreground;
+  }
+
+  .page-form-panel {
+    @apply rounded-3xl border border-border bg-card p-6 shadow-sm md:p-10;
+  }
   
   .glass-panel {
     @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;

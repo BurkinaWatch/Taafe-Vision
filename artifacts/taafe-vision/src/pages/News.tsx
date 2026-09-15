@@ -52,12 +52,12 @@ export default function News() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="page-shell">
       <Navbar />
 
       <main className="flex-1 pt-24">
         {/* Header Section */}
-        <section className="bg-slate-50 py-20">
+        <section className="bg-muted/40 py-20">
           <div className="container-wide text-center max-w-4xl mx-auto">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -86,9 +86,9 @@ export default function News() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={cn(
                   "px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase transition-all",
-                  activeCategory === cat.id
-                    ? "bg-[#86efac] text-slate-900 shadow-lg"
-                    : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                   activeCategory === cat.id
+                     ? "bg-secondary text-secondary-foreground shadow-lg"
+                     : "bg-muted text-muted-foreground hover:bg-accent"
                 )}
               >
                 {cat.label}
@@ -124,7 +124,7 @@ export default function News() {
                     ease: [0.21, 0.47, 0.32, 0.98]
                   }}
                   whileHover={{ y: -10 }}
-                  className="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500"
+                  className="group cursor-pointer page-card overflow-hidden hover:shadow-2xl"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <motion.img 
@@ -137,7 +137,7 @@ export default function News() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="bg-[#86efac] text-slate-900 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg">
+                      <span className="bg-secondary text-secondary-foreground px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg">
                         {article.category}
                       </span>
                     </div>

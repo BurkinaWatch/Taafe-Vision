@@ -59,7 +59,7 @@ export default function Trainings() {
     : defaultTrainings;
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden">
+    <div className="page-shell relative overflow-hidden">
       <Navbar />
 
       {/* Background Pattern Elements */}
@@ -81,7 +81,7 @@ export default function Trainings() {
           <div className="grid md:grid-cols-2 gap-8 mt-16">
             {isLoading ? (
               [1, 2, 3, 4].map((id) => (
-                <div key={id} className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 animate-pulse">
+                <div key={id} className="page-card p-8 animate-pulse">
                   <div className="w-16 h-16 bg-slate-100 rounded-full mb-6" />
                   <div className="h-7 bg-slate-100 rounded w-3/4 mb-4" />
                   <div className="h-20 bg-slate-100 rounded" />
@@ -92,7 +92,7 @@ export default function Trainings() {
               return (
                 <div 
                   key={training.id}
-                  className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-2"
+                  className="page-card p-8 hover:shadow-xl flex flex-col hover:-translate-y-2"
                 >
                   <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 text-secondary">
                     <Icon className="w-8 h-8" />
@@ -109,7 +109,7 @@ export default function Trainings() {
             })}
           </div>
 
-          <div className="mt-20 bg-primary rounded-3xl p-12 md:p-20 text-white text-center">
+          <div className="mt-20 bg-primary rounded-3xl p-12 md:p-20 text-primary-foreground text-center">
             <h3 className="text-3xl font-display font-bold mb-6">Projet "Elles se réalisent"</h3>
             <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
               Notre programme phare offre une formation intégrée et un accompagnement personnalisé pour les femmes réalisatrices. 
@@ -119,7 +119,7 @@ export default function Trainings() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex px-8 py-4 bg-secondary text-white rounded-full font-bold uppercase tracking-widest hover:bg-secondary/90 transition-all"
+                className="inline-flex px-8 py-4 bg-secondary text-secondary-foreground rounded-full font-bold uppercase tracking-widest hover:bg-secondary/90 transition-all"
               >
                 En savoir plus
               </Link>

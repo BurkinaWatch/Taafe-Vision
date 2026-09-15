@@ -36,12 +36,12 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="page-shell">
       <Navbar />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <div className="bg-slate-950 text-white pt-32 pb-20">
+        <div className="page-hero pt-32 pb-20">
           <div className="container-wide">
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">CONTACTEZ-NOUS</h1>
             <p className="text-xl text-slate-300 max-w-2xl leading-relaxed">
@@ -53,7 +53,7 @@ export default function Contact() {
         {/* Info Cards */}
         <div className="container-wide -mt-10 mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
+            <div className="page-card p-8 flex flex-col items-center text-center">
               <div className="bg-primary/10 p-4 rounded-full text-primary mb-4">
                 <MapPin className="w-8 h-8" />
               </div>
@@ -61,7 +61,7 @@ export default function Contact() {
               <p className="text-muted-foreground">Ouagadougou, Burkina Faso</p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
+            <div className="page-card p-8 flex flex-col items-center text-center">
               <div className="bg-primary/10 p-4 rounded-full text-primary mb-4">
                 <Phone className="w-8 h-8" />
               </div>
@@ -81,7 +81,7 @@ export default function Contact() {
               <p className="text-sm text-primary font-medium mt-1">Ligne d'urgence 24/7</p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
+            <div className="page-card p-8 flex flex-col items-center text-center">
               <div className="bg-primary/10 p-4 rounded-full text-primary mb-4">
                 <Mail className="w-8 h-8" />
               </div>
@@ -102,7 +102,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 flex flex-col items-center text-center">
+            <div className="page-card p-8 flex flex-col items-center text-center">
               <div className="bg-primary/10 p-4 rounded-full text-primary mb-4">
                 <Clock className="w-8 h-8" />
               </div>
@@ -153,7 +153,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="bg-slate-50 p-8 md:p-12 rounded-2xl border border-slate-200">
+            <div className="page-form-panel">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
@@ -202,7 +202,7 @@ export default function Contact() {
                   <Button 
                     type="submit" 
                     disabled={isPending}
-                    className="w-full h-12 text-lg bg-slate-900 hover:bg-slate-800 text-white font-bold tracking-wide rounded-lg transition-all"
+                    className="w-full h-12 text-lg bg-primary hover:bg-primary/90 text-primary-foreground font-bold tracking-wide rounded-full transition-all"
                   >
                     {isPending ? "Envoi en cours..." : "Envoyer le message"}
                   </Button>

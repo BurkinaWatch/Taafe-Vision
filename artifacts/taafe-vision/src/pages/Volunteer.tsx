@@ -81,23 +81,23 @@ export default function Volunteer() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdf8e6] text-slate-950">
+    <div className="page-shell">
       <Navbar />
       <main className="pt-[72px] lg:pt-[132px]">
-        <section className="relative overflow-hidden bg-[#561a44] text-white">
-          <div className="absolute -right-24 -top-28 h-80 w-80 rounded-full bg-[#f146ad]/25 blur-3xl" />
-          <div className="absolute -bottom-36 left-1/3 h-96 w-96 rounded-full bg-[#39cd15]/15 blur-3xl" />
+        <section className="relative overflow-hidden page-hero">
+          <div className="absolute -right-24 -top-28 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
+          <div className="absolute -bottom-36 left-1/3 h-96 w-96 rounded-full bg-secondary/15 blur-3xl" />
           <div className="container-wide relative grid gap-12 py-16 md:py-24 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <div className="max-w-3xl">
               <Link
                 href="/"
                 data-testid="link-volunteer-home"
-                className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition-colors hover:text-[#f8d34f]"
+                className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-background/70 transition-colors hover:text-accent"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 Retour à l’accueil
               </Link>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#f8d34f]">
+              <div className="page-pill mb-6 border border-background/20 bg-background/10 text-accent">
                 <HandHeart className="h-4 w-4" aria-hidden="true" />
                 Rejoindre le mouvement
               </div>
@@ -110,7 +110,7 @@ export default function Volunteer() {
             </div>
 
             <div className="border-l border-white/20 pl-6 lg:mb-2">
-              <p className="font-display text-2xl font-semibold leading-snug text-[#f8d34f]">
+              <p className="font-display text-2xl font-semibold leading-snug text-accent">
                 « Nous créons ensemble des espaces où les voix des femmes comptent. »
               </p>
               <p className="mt-5 text-sm uppercase tracking-[0.18em] text-white/50">
@@ -126,20 +126,20 @@ export default function Volunteer() {
               <div
                 role="status"
                 data-testid="status-volunteer-success"
-                className="rounded-2xl border border-[#39cd15]/30 bg-white p-7 shadow-[0_18px_55px_rgba(86,26,68,0.08)]"
+                className="page-card p-7"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#39cd15]/15 text-[#288f10]">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20 text-secondary-foreground">
                   <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
                 </div>
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#288f10]">Candidature reçue</p>
-                <h2 className="font-display text-3xl font-bold text-[#561a44]">Merci de faire équipe avec nous.</h2>
+                <p className="page-eyebrow mb-2">Candidature reçue</p>
+                <h2 className="font-display text-3xl font-bold text-foreground">Merci de faire équipe avec nous.</h2>
                 <p className="mt-4 leading-relaxed text-slate-600">
                   Votre message est bien arrivé. L’équipe Taafé Vision reviendra vers vous prochainement pour échanger sur la meilleure manière de contribuer.
                 </p>
                 <Link
                   href="/"
                   data-testid="link-success-home"
-                  className="mt-7 inline-flex items-center gap-2 font-bold text-[#561a44] underline decoration-[#f146ad] decoration-2 underline-offset-4 hover:text-[#f146ad]"
+                  className="mt-7 inline-flex items-center gap-2 font-bold text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:text-primary"
                 >
                   Revenir à l’accueil
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -148,8 +148,8 @@ export default function Volunteer() {
             ) : (
               <>
                 <div>
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#f146ad]">Pourquoi nous rejoindre</p>
-                  <h2 className="font-display text-4xl font-bold leading-tight text-[#561a44] md:text-5xl">
+                  <p className="page-eyebrow mb-3">Pourquoi nous rejoindre</p>
+                  <h2 className="font-display text-4xl font-bold leading-tight text-foreground md:text-5xl">
                     Une énergie concrète, au service des histoires qui comptent.
                   </h2>
                   <p className="mt-5 leading-relaxed text-slate-600">
@@ -162,19 +162,19 @@ export default function Volunteer() {
                     { icon: Users, title: "Faire grandir la communauté", text: "Accueil, mobilisation et lien avec les associations et les publics." },
                     { icon: Sparkles, title: "Partager votre savoir-faire", text: "Communication, design, traduction, événementiel, administration et bien plus." },
                   ].map(({ icon: Icon, title, text }) => (
-                    <div key={title} className="flex gap-4 border-t border-[#561a44]/10 pt-5">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f146ad]/10 text-[#f146ad]">
+                    <div key={title} className="flex gap-4 border-t border-border pt-5">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <div>
-                        <h3 className="font-display text-xl font-bold text-[#561a44]">{title}</h3>
+                        <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
                         <p className="mt-1 text-sm leading-relaxed text-slate-600">{text}</p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="flex items-start gap-3 border-l-2 border-[#39cd15] pl-4 text-sm leading-relaxed text-slate-600">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#288f10]" aria-hidden="true" />
+                <div className="flex items-start gap-3 border-l-2 border-secondary pl-4 text-sm leading-relaxed text-muted-foreground">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary-foreground" aria-hidden="true" />
                   <span>Les missions sont principalement basées à Ouagadougou, avec des possibilités ponctuelles à distance ou dans d’autres localités.</span>
                 </div>
               </>
@@ -182,10 +182,10 @@ export default function Volunteer() {
           </div>
 
           {!submitted && (
-            <div className="rounded-2xl border border-[#561a44]/10 bg-white p-6 shadow-[0_22px_70px_rgba(86,26,68,0.1)] md:p-10">
+            <div className="page-form-panel">
               <div className="mb-8 border-b border-slate-200 pb-6">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f146ad]">Parlons de vous</p>
-                <h2 className="mt-2 font-display text-3xl font-bold text-[#561a44]">Devenir bénévole</h2>
+                <p className="page-eyebrow">Parlons de vous</p>
+                <h2 className="mt-2 font-display text-3xl font-bold text-foreground">Devenir bénévole</h2>
                 <p className="mt-2 text-sm leading-relaxed text-slate-500">Les champs marqués d’un astérisque sont obligatoires.</p>
               </div>
 
@@ -251,7 +251,7 @@ export default function Volunteer() {
                   )} />
 
                   <FormField control={form.control} name="consent" render={({ field }) => (
-                    <FormItem className="rounded-lg border border-slate-200 bg-[#fdf8e6]/60 p-4">
+                    <FormItem className="rounded-2xl border border-border bg-muted/40 p-4">
                       <div className="flex items-start gap-3">
                         <FormControl>
                           <Checkbox
@@ -278,11 +278,11 @@ export default function Volunteer() {
                     type="submit"
                     data-testid="button-volunteer-submit"
                     disabled={isPending}
-                    className="h-14 w-full rounded-lg bg-[#561a44] text-base font-bold text-white shadow-lg shadow-[#561a44]/15 transition-all hover:-translate-y-0.5 hover:bg-[#7a2561] disabled:translate-y-0"
+                    className="h-14 w-full rounded-full bg-primary text-base font-bold text-primary-foreground shadow-lg shadow-primary/15 transition-all hover:-translate-y-0.5 hover:bg-primary/90 disabled:translate-y-0"
                   >
                     {isPending ? (
                       <span className="flex items-center justify-center gap-3">
-                        <span className="h-4 w-4 animate-pulse rounded-full bg-[#f8d34f]" aria-hidden="true" />
+                        <span className="h-4 w-4 animate-pulse rounded-full bg-accent" aria-hidden="true" />
                         Envoi de votre candidature…
                       </span>
                     ) : (
