@@ -5,8 +5,18 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { useFestival } from "@/hooks/use-festival";
 import type { FestivalMedia } from "@/lib/api";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 const FESTIVAL_SLUG = "16-films-une-cause";
+const FESTIVAL_HD_IMAGES: Record<string, string> = {
+  "/images/festival/16films-profile.png": "/images/festival/16films-profile-hd.png",
+  "/images/festival/16films-poster-4e.png": "/images/festival/16films-poster-4e-hd.png",
+  "/images/festival/16films-poster-5e.png": "/images/festival/16films-poster-5e-hd.png",
+};
+
+function getFestivalImageSrc(src: string) {
+  return FESTIVAL_HD_IMAGES[src] ?? src;
+}
 
 function LoadingFestival() {
   return (
@@ -73,11 +83,10 @@ function GalleryCard({
       className={`group relative block w-full overflow-hidden border-2 border-[#191613] bg-[#191613] text-left ${index === 0 ? "md:row-span-2 md:min-h-[540px]" : "min-h-[250px]"}`}
       aria-label={`Voir l'image ${index + 1}${media.caption ? ` : ${media.caption}` : ""}`}
     >
-      <img
-        src={media.imageUrl}
+      <OptimizedImage
+        src={getFestivalImageSrc(media.imageUrl)}
         alt={media.altText}
-        loading={index > 1 ? "lazy" : "eager"}
-        decoding="async"
+        priority={index === 0}
         className="h-full min-h-[250px] w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100 md:min-h-0"
       />
       <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#191613]/90 via-[#191613]/20 to-transparent p-5 pt-16 text-sm font-medium text-[#fff7e8]">
@@ -103,7 +112,11 @@ export default function Festival() {
   );
   const activeIndex = activeMedia === null ? -1 : sortedMedia.findIndex((media) => media.id === activeMedia);
   const activeImage = activeIndex >= 0 ? sortedMedia[activeIndex] : null;
-  const heroImage = festival?.featuredImageUrl || sortedMedia[0]?.imageUrl;
+  const heroImage = festival?.featuredImageUrl
+    ? getFestivalImageSrc(festival.featuredImageUrl)
+    : sortedMedia[0]
+      ? getFestivalImageSrc(sortedMedia[0].imageUrl)
+      : undefined;
 
   useEffect(() => {
     const galleryIsOpen = activeImage !== null;
@@ -197,7 +210,7 @@ export default function Festival() {
                 </div>
                 <div className="relative aspect-[4/5] overflow-hidden border-2 border-[#191613] bg-[#ee5b25] shadow-[14px_14px_0_#191613] md:aspect-[5/6]">
                   {heroImage ? (
-                    <img src={heroImage} alt={festival.name} className="h-full w-full object-cover" data-testid="img-festival-featured" />
+                    <OptimizedImage src={heroImage} alt={festival.name} priority className="h-full w-full object-cover" data-testid="img-festival-featured" />
                   ) : (
                     <div className="flex h-full items-center justify-center p-8 text-center font-display text-4xl font-extrabold text-[#ffcf45]">Taafé Vision</div>
                   )}
@@ -353,7 +366,7 @@ export default function Festival() {
           onKeyDown={handleGalleryKeyDown}
         >
           <div className="relative flex h-full w-full max-w-6xl items-center justify-center" onClick={(event) => event.stopPropagation()}>
-            <img src={activeImage.imageUrl} alt={activeImage.altText} className="max-h-[82vh] max-w-full object-contain" data-testid={`img-gallery-lightbox-${activeImage.id}`} />
+            <OptimizedImage src={getFestivalImageSrc(activeImage.imageUrl)} alt={activeImage.altText} priority className="max-h-[82vh] max-w-full object-contain" data-testid={`img-gallery-lightbox-${activeImage.id}`} />
             <p className="absolute bottom-0 left-0 right-0 bg-[#191613]/80 p-4 text-center text-sm text-[#fff7e8]">{activeImage.caption}</p>
             <button type="button" ref={closeButtonRef} onClick={() => setActiveMedia(null)} data-testid="button-close-gallery" aria-label="Fermer la galerie" className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center border border-[#fff7e8]/40 text-[#fff7e8] transition-colors hover:bg-[#fff7e8] hover:text-[#191613]">
               <X className="h-5 w-5" />

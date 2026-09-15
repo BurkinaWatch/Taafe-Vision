@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { Marquee } from "@/components/Marquee";
 import { Counter } from "@/components/Counter";
 import type { Film as FilmType } from "@/lib/api";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 // ... partners import ...
 
@@ -62,12 +63,11 @@ export default function Home() {
       <section className="relative h-screen flex items-center overflow-hidden page-hero">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+           <OptimizedImage
             src="/images/hero-background.png" 
             alt="Cinema Hero" 
             className="w-full h-full object-cover opacity-85 transition-all duration-1000"
-            fetchPriority="high"
-            decoding="async"
+             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/30 to-transparent" />
         </div>
@@ -322,17 +322,11 @@ export default function Home() {
             {(films || []).slice(0, 3).map((film: FilmType) => (
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
                     alt={film.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.onerror = null;
-                      target.src = "/images/community-screening.jpg";
-                    }}
+                    fallbackSrc="/images/community-screening.jpg"
                   />
                   {/* Glassmorphism overlay for text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent opacity-70 group-hover:opacity-85 transition-opacity" />

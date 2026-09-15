@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useRoute, Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { Film } from "@/lib/types";
 import { PlayCircle, ArrowLeft, Calendar, User, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,11 +60,11 @@ export default function FilmDetail() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left: Poster */}
             <div className="relative group rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[3/4]">
-              <img 
+              <OptimizedImage
                 src={film.imageUrl} 
                 alt={film.title} 
                 className="w-full h-full object-cover"
-                decoding="async"
+                fallbackSrc="/images/community-screening.jpg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70" />
               

@@ -5,6 +5,7 @@ import { useFilms } from "@/hooks/use-films";
 import { PlayCircle } from "lucide-react";
 import { Link } from "wouter";
 import type { Film } from "@/lib/api";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export default function Films() {
   const { films, isLoading } = useFilms();
@@ -30,17 +31,11 @@ export default function Films() {
                 <Link key={film.id} href={`/films/${film.id}`}>
                   <div className="group relative bg-card rounded-3xl overflow-hidden shadow-xl hover:shadow-primary/20 transition-all duration-300 border border-border flex flex-col h-full cursor-pointer">
                      <div className="aspect-[3/4] relative overflow-hidden bg-muted">
-                      <img 
+                       <OptimizedImage
                         src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
                         alt={film.title} 
                         className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => { 
-                          const target = e.currentTarget as HTMLImageElement;
-                          target.onerror = null;
-                          target.src = "/images/community-screening.jpg";
-                        }}
+                         fallbackSrc="/images/community-screening.jpg"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-70" />
                     </div>

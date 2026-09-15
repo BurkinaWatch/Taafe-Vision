@@ -188,6 +188,14 @@
   .interactive-lift {
     @apply transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-lg;
   }
+
+  .media-image {
+    display: block;
+    max-width: 100%;
+    image-rendering: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
   
   .glass-panel {
     @apply border border-background/20 bg-card/80 shadow-xl backdrop-blur-md;

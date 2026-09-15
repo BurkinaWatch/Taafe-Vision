@@ -3,6 +3,22 @@ import { Link } from "wouter";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { usePartners } from "@/hooks/use-partners";
+import { OptimizedImage } from "@/components/OptimizedImage";
+import abcaLogo from "@/assets/partners/abca.png";
+import equiPopLogo from "@/assets/partners/equi_pop.png";
+import fdctLogo from "@/assets/partners/fdct.jpg";
+import fespacoLogo from "@/assets/partners/fespaco.jpg";
+import fjsLogo from "@/assets/partners/fjs.png";
+import ueLogo from "@/assets/partners/ue.png";
+
+const LOCAL_PARTNER_LOGOS: Record<string, string> = {
+  FESPACO: fespacoLogo,
+  "Union Européenne": ueLogo,
+  "FDCT — Fonds de Développement Culturel et Touristique": fdctLogo,
+  Equipop: equiPopLogo,
+  "Foundation for a Just Society (FJS)": fjsLogo,
+  "ABCA — Agence Burkinabè de la Cinématographie et de l'Audiovisuel": abcaLogo,
+};
 
 type PartnerCard = {
   id: number;
@@ -85,11 +101,9 @@ export default function Partners() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex min-h-16 min-w-16 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card p-2">
                       {partner.logoUrl ? (
-                        <img
-                          src={partner.logoUrl}
+                        <OptimizedImage
+                          src={LOCAL_PARTNER_LOGOS[partner.name] ?? partner.logoUrl}
                           alt=""
-                          loading="lazy"
-                          decoding="async"
                           className="max-h-12 max-w-28 object-contain"
                         />
                       ) : (

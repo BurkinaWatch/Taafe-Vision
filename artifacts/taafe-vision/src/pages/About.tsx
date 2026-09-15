@@ -39,9 +39,11 @@ const PARTNER_LOGOS: Record<string, string> = {
   FESPACO: fespacoLogo,
   "Union Européenne": ueLogo,
   "FDCT / PAIC-GC": fdctLogo,
+  "FDCT — Fonds de Développement Culturel et Touristique": fdctLogo,
   Equipop: equiPopLogo,
   "Foundation for a Just Society (FJS)": fjsLogo,
   "Agence Burkinabe de la Cinematographie et de l'Audioviseul (ABCA)": abcaLogo,
+  "ABCA — Agence Burkinabè de la Cinématographie et de l'Audiovisuel": abcaLogo,
 };
 
 const ADDITIONAL_PARTNERS = [
