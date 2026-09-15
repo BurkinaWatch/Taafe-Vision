@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Play, Award, Users, Star, Film, Sparkles, Heart, HandHeart, Gift } from "lucide-react";
+import { ArrowRight, Play, Award, Users, Star, Film, Tv, Sparkles, Heart, HandHeart, Gift } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -141,7 +141,7 @@ export default function Home() {
               <div className="h-1.5 w-16 bg-[#39cd15]" />
             </motion.div>
             
-            <div className="lg:col-span-3 grid md:grid-cols-3 gap-8">
+            <div className="lg:col-span-3 grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
               {/* Carte 1 */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -199,6 +199,26 @@ export default function Home() {
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[2]?.label ?? "Personnes sensibilisées"}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">{metrics[2]?.description ?? "Personnes touchées par nos projections et débats communautaires."}</p>
+                </div>
+              </motion.div>
+
+              {/* Carte 4 */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="relative p-8 rounded-3xl bg-white shadow-[0_20px_50px_rgba(86,26,68,0.05)] border border-[#561a44]/5 hover:border-[#561a44]/20 transition-all group overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <Tv className="w-24 h-24 text-[#561a44]" />
+                </div>
+                <div className="relative z-10">
+                  <div className="text-7xl font-display font-bold text-[#561a44] mb-4 tracking-tighter">
+                    10M+
+                  </div>
+                  <h4 className="text-slate-900 font-bold text-lg mb-2">Téléspectateurs</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">Un public de plus de 10 millions de téléspectateurs touché par nos films et nos actions.</p>
                 </div>
               </motion.div>
             </div>
