@@ -17,6 +17,7 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { usePartners } from "@/hooks/use-partners";
 import { useOrganizationProfile, useImpactMetrics, useResearchSources, useSocialLinks } from "@/hooks/use-knowledge";
 import logoImg from "@assets/WhatsApp_Image_2026-01-06_at_21.59.54_1767830805032.jpeg";
@@ -187,10 +188,11 @@ export default function About() {
       <div className="py-32 text-background relative overflow-hidden page-hero">
         {/* Artistic Logo Background */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <OptimizedImage
             src={logoImg} 
             alt="" 
             className="w-full h-full object-cover opacity-55 scale-110"
+            priority
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/40 to-slate-950/10" />
@@ -250,7 +252,7 @@ export default function About() {
             )}
           </div>
           <div className="relative">
-            <img 
+            <OptimizedImage
               src="/images/community-engagement-1.jpg" 
               alt="Association Taafé Vision" 
               className="rounded-lg shadow-2xl relative z-10 w-full"
@@ -572,12 +574,10 @@ export default function About() {
                   className="w-full h-40 bg-white rounded-2xl shadow-lg border border-border/50 flex items-center justify-center p-8 group transition-all hover:shadow-2xl"
                 >
                   <div className="text-center">
-                    <img
+                    <OptimizedImage
                       src={PARTNER_LOGOS[partner.name] ?? partner.logoUrl}
                       alt={partner.name}
                       className="h-20 object-contain mx-auto mb-3 opacity-95 group-hover:opacity-100 transition-opacity"
-                      loading="lazy"
-                      decoding="async"
                     />
                     <h3 className="font-display font-bold text-primary text-sm">{partner.name}</h3>
                     {partner.website && (

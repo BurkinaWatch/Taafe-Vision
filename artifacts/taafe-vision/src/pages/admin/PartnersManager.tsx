@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export default function PartnersManager() {
   const { toast } = useToast();
@@ -127,7 +128,7 @@ export default function PartnersManager() {
         ) : (
           partners?.map((partner) => (
             <div key={partner.id} className="bg-white p-6 rounded-xl shadow-sm border border-border flex flex-col items-center">
-              <img src={partner.logoUrl} alt={partner.name} className="h-16 w-auto object-contain mb-4" />
+              <OptimizedImage src={partner.logoUrl} alt={partner.name} className="h-16 w-auto object-contain mb-4" />
               <h3 className="font-bold text-center mb-4">{partner.name}</h3>
               <Button variant="ghost" size="icon" onClick={() => deleteMutation.mutate(partner.id)}>
                 <Trash2 className="w-4 h-4 text-destructive" />

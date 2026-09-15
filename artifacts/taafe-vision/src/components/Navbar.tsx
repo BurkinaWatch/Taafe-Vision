@@ -6,6 +6,7 @@ import { SiTiktok } from "react-icons/si";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { SearchModal } from "@/components/SearchModal";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,10 +93,11 @@ export function Navbar() {
           <Link href="/" className="flex flex-col items-center flex-1 group">
               <div className="flex items-center gap-2 lg:gap-3">
                  <span className="text-2xl lg:text-3xl font-serif font-black text-foreground tracking-tighter uppercase">TAAFÉ</span>
-                <img 
+                <OptimizedImage
                   src="/images/taafe-vision-logo-clean.png" 
                   alt="Taafé Vision Logo" 
                    className="h-8 w-8 cursor-zoom-in rounded-full border-2 border-secondary object-cover shadow-sm transition-transform group-hover:scale-105 lg:h-10 lg:w-10"
+                  priority
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLogoOpen(true); }}
                 />
                  <span className="text-2xl lg:text-3xl font-serif font-black text-foreground tracking-tighter uppercase">VISION</span>
@@ -221,10 +223,11 @@ export function Navbar() {
           onClick={() => setLogoOpen(false)}
         >
           <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <img
+            <OptimizedImage
               src="/images/taafe-vision-logo-clean.png"
               alt="Taafé Vision Logo"
               className="max-w-[80vw] max-h-[80vh] rounded-2xl shadow-2xl object-contain"
+              priority
             />
             <button
               onClick={() => setLogoOpen(false)}

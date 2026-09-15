@@ -384,7 +384,7 @@ export default function Home() {
                   key={index} 
                   className="flex items-center justify-center px-12 opacity-80 hover:opacity-100 transition-all duration-300"
                 >
-                  <img 
+                  <OptimizedImage
                     src={partner.logo} 
                     alt={partner.name} 
                     className="h-16 w-auto object-contain"
