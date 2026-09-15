@@ -63,8 +63,9 @@ export default function FilmDetail() {
                 src={film.imageUrl} 
                 alt={film.title} 
                 className="w-full h-full object-cover"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70" />
               
               {film.videoUrl && film.videoUrl !== "#" && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">

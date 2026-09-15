@@ -33,14 +33,16 @@ export default function Films() {
                       <img 
                         src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
                         alt={film.title} 
-                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
+                        className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
+                        loading="lazy"
+                        decoding="async"
                         onError={(e) => { 
                           const target = e.currentTarget as HTMLImageElement;
                           target.onerror = null;
                           target.src = "/images/community-screening.jpg";
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-950/45 via-transparent to-transparent opacity-70" />
                     </div>
                     
                     <div className="p-6 flex-1 flex flex-col">

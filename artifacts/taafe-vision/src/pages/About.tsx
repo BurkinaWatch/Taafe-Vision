@@ -87,9 +87,10 @@ export default function About() {
           <img 
             src={logoImg} 
             alt="" 
-            className="w-full h-full object-cover opacity-20 scale-110"
+            className="w-full h-full object-cover opacity-55 scale-110"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/40 to-slate-950/10" />
         </div>
 
         <div className="container-wide relative z-10">
@@ -396,7 +397,9 @@ export default function About() {
                     <img
                       src={PARTNER_LOGOS[partner.name] ?? partner.logoUrl}
                       alt={partner.name}
-                      className="h-20 object-contain mx-auto mb-3 opacity-80 group-hover:opacity-100 transition-opacity"
+                      className="h-20 object-contain mx-auto mb-3 opacity-95 group-hover:opacity-100 transition-opacity"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <h3 className="font-display font-bold text-primary text-sm">{partner.name}</h3>
                     {partner.website && (

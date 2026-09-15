@@ -101,7 +101,9 @@ export default function Projects() {
                       <img
                          src={project.imageUrl.startsWith("/images/") ? project.imageUrl : "/images/community-engagement-1.jpg"}
                         alt={project.title}
-                        className="w-full h-full object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700"
+                        loading="lazy"
+                        decoding="async"
                          onError={(e) => {
                            const target = e.currentTarget;
                            target.onerror = null;
