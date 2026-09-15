@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { ReactElement } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -44,7 +45,7 @@ const ADDITIONAL_PARTNERS = [
   },
 ];
 
-const SOCIAL_ICONS: Record<string, JSX.Element> = {
+const SOCIAL_ICONS: Record<string, ReactElement> = {
   facebook: (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
   ),
