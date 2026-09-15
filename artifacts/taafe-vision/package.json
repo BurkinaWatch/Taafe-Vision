@@ -7,7 +7,8 @@
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:images": "rm -rf .image-test-dist && tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --outDir .image-test-dist src/lib/image-url.ts && node --test test/image-url.test.mjs; status=$?; rm -rf .image-test-dist; exit $status"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -61,7 +61,7 @@ export default function FilmDetail() {
             {/* Left: Poster */}
             <div className="relative group rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[3/4]">
               <OptimizedImage
-                src={film.imageUrl} 
+                src={film.imageUrl || undefined}
                 alt={film.title} 
                 className="w-full h-full object-cover"
                 fallbackSrc="/images/community-screening.jpg"

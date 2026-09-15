@@ -67,6 +67,7 @@ export default function Home() {
             src="/images/hero-background.png" 
             alt="Cinema Hero" 
             className="w-full h-full object-cover opacity-85 transition-all duration-1000"
+             fallbackSrc="/images/films-bg.jpg"
              priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/30 to-transparent" />
@@ -323,7 +324,7 @@ export default function Home() {
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
                   <OptimizedImage
-                    src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
+                    src={film.imageUrl || undefined}
                     alt={film.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     fallbackSrc="/images/community-screening.jpg"

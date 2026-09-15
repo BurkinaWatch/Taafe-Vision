@@ -100,7 +100,7 @@ export default function Projects() {
                     {/* Image area */}
                     <div className="relative h-56 overflow-hidden" style={{ backgroundColor: bg }}>
                       <OptimizedImage
-                         src={project.imageUrl.startsWith("/images/") ? project.imageUrl : "/images/community-engagement-1.jpg"}
+                         src={project.imageUrl || undefined}
                         alt={project.title}
                         className="w-full h-full object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700"
                          fallbackSrc="/images/community-engagement-1.jpg"
