@@ -14,6 +14,7 @@ import Trainings from "./pages/Trainings";
 import News from "./pages/News";
 import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
+import Volunteer from "./pages/Volunteer";
 import NotFound from "./pages/not-found";
 
 // Admin Pages
@@ -39,6 +40,7 @@ function Router() {
       <Route path="/news" component={News} />
       <Route path="/partners" component={Partners} />
       <Route path="/contact" component={Contact} />
+      <Route path="/volunteer" component={Volunteer} />
 
       {/* Admin Routes */}
       {/* @ts-ignore wouter Route type compatibility */}

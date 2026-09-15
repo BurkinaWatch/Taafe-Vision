@@ -252,7 +252,7 @@ export default function Home() {
                 className: "bg-[#f146ad] hover:bg-[#e13a9d]",
               },
               {
-                href: "/contact?action=volunteer",
+                href: "/volunteer",
                 title: "Devenir bénévole",
                 description: "Mettez votre temps et vos talents au service de nos projets et de nos communautés.",
                 icon: HandHeart,
