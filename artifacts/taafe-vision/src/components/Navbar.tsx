@@ -71,11 +71,13 @@ export function Navbar() {
        <div className="bg-card py-1.5 lg:py-2">
         <div className="container-wide flex items-center justify-between gap-4 lg:gap-6">
           {/* Left: Mobile Menu Toggle */}
-          <button 
+          <button
+            type="button"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
             className="rounded-lg p-2 text-foreground/70 transition-colors hover:bg-muted hover:text-foreground lg:hidden"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen((open) => !open)}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -173,7 +175,10 @@ export function Navbar() {
 
       {/* Mobile Nav Menu */}
       {isOpen && (
-         <div className="lg:hidden fixed inset-0 top-[70px] lg:top-[80px] z-[60] bg-card animate-in slide-in-from-top-2 overflow-y-auto">
+         <div
+           id="mobile-navigation"
+           className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-card shadow-xl lg:hidden"
+         >
           <div className="flex flex-col p-8 space-y-6">
             {links.map((link) => (
               <Link 
