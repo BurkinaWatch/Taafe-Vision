@@ -65,9 +65,11 @@ export default function Home() {
           <img 
             src="/images/hero-background.png" 
             alt="Cinema Hero" 
-            className="w-full h-full object-cover opacity-50 transition-all duration-1000"
+            className="w-full h-full object-cover opacity-85 transition-all duration-1000"
+            fetchPriority="high"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-slate-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/25 to-transparent" />
         </div>
 
         <div className="container-wide relative z-10 text-white space-y-10">
@@ -306,6 +308,8 @@ export default function Home() {
                     src={film.imageUrl.startsWith("/images/") ? film.imageUrl : "/images/community-screening.jpg"}
                     alt={film.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       const target = e.currentTarget;
                       target.onerror = null;
@@ -313,10 +317,7 @@ export default function Home() {
                     }}
                   />
                   {/* Glassmorphism overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-                  
-                  {/* Backdrop blur effect on hover for extra "creative" touch */}
-                  <div className="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent opacity-70 group-hover:opacity-85 transition-opacity" />
                 </div>
                 
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out z-20">
