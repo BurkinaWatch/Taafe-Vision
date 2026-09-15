@@ -2,6 +2,7 @@
 buildCommand = "pnpm run build:api"
 
 [deploy]
+preDeployCommand = "corepack pnpm@9.15.9 install --frozen-lockfile --prefer-offline || { echo 'Railway lockfile check failed. Regenerate pnpm-lock.yaml with pnpm 9.15.9, the version used by Railway.' >&2; exit 1; }"
 startCommand = "pnpm start"
 healthcheckPath = "/api/projects"
 healthcheckTimeout = 120
