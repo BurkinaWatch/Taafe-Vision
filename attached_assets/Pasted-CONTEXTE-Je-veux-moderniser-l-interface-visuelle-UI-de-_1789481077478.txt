@@ -1,0 +1,47 @@
+CONTEXTE :
+Je veux moderniser l'interface visuelle (UI) de mon site Taafevision.org en m'inspirant du style visuel de equiterre.org/fr — UNIQUEMENT sur les aspects design (typographie, couleurs, boutons, icônes, cartes). Ceci est une tâche de style pur, pas de refonte fonctionnelle.
+
+RÈGLES STRICTES — À RESPECTER SANS EXCEPTION :
+1. NE JAMAIS modifier le backend, les routes API, la logique métier, les appels de base de données, ou tout fichier hors du dossier de styles/composants UI.
+2. NE JAMAIS renommer, déplacer ou supprimer des fichiers existants sans me le signaler d'abord.
+3. NE JAMAIS casser une fonctionnalité existante (formulaires, navigation, liens, authentification, etc.).
+4. Travailler UNIQUEMENT sur : CSS/SCSS, variables de thème (couleurs, typographie), composants de boutons, badges, cartes, icônes.
+5. Avant toute modification, faire un résumé des fichiers qui seront touchés et attendre ma confirmation.
+6. Implémenter progressivement, section par section (ex: d'abord la typographie et les couleurs globales, puis les boutons, puis les badges/cartes), avec un point de contrôle après chaque étape.
+7. Après chaque étape, vérifier que le site se charge sans erreur console et que toutes les pages restent fonctionnelles.
+
+DIRECTION ARTISTIQUE À APPLIQUER :
+
+Typographie :
+- Associer une police serif éditoriale (ex: Georgia, Playfair Display, ou équivalent déjà dispo) pour les GROS TITRES (h1/h2), avec possibilité de mélanger un mot en sans-serif gras dans le même titre pour créer un contraste visuel.
+- Une police sans-serif arrondie et géométrique (ex: Poppins, Quicksand, Nunito) pour le texte courant, les boutons et les badges.
+
+Couleurs :
+- Couleur d'accent principale : orange vif (#F5731A approximatif — ajuster selon la charte du site) pour les CTA et éléments d'action.
+- Fond clair : crème/ivoire (#F5F1E8 approximatif) pour les sections claires.
+- Fond sombre optionnel : noir quasi pur avec accents jaune-olive pour les sections mises en avant (statistiques, objectifs).
+- Accent secondaire : vert menthe pour les éléments flottants (ex: bouton retour en haut).
+
+Boutons & CTA :
+- Boutons principaux : blocs très arrondis (border-radius généreux, ~20-32px), fond orange plein, texte noir/foncé.
+- Bouton d'action : cercle plein blanc contenant une flèche, positionné en bas à droite du bloc CTA plutôt qu'un simple bouton texte.
+
+Badges/tags :
+- Forme pilule (border-radius complet), fond orange clair semi-transparent, texte foncé, petite taille.
+
+Icônes :
+- Icônes minimalistes à traits simples, toujours contenues dans un cercle ou carré à coins arrondis (chevrons, flèches).
+
+Cartes :
+- Coins très arrondis, blocs de couleur pleine largeur, superposition texte/image avec léger dégradé pour la lisibilité quand il y a une image de fond.
+
+LIVRABLE ATTENDU :
+Un site avec la même structure et les mêmes fonctionnalités qu'avant, mais avec cette nouvelle direction visuelle appliquée de façon cohérente sur toutes les pages.
+
+CHECKLIST DE VALIDATION AVANT DE CONSIDÉRER LA TÂCHE TERMINÉE :
+[ ] Toutes les pages se chargent sans erreur
+[ ] Tous les liens et boutons existants fonctionnent toujours
+[ ] Les formulaires (si présents) soumettent toujours correctement
+[ ] Aucun fichier backend n'a été modifié
+[ ] Le responsive (mobile/tablette) fonctionne toujours
+[ ] Comparaison avant/après des captures d'écran des pages principales
