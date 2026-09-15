@@ -4,6 +4,13 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { usePartners } from "@/hooks/use-partners";
 
+type PartnerCard = {
+  id: number;
+  name: string;
+  logoUrl: string;
+  website?: string | null;
+};
+
 function PartnerInitials({ name }: { name: string }) {
   const initials = name
     .split(/\s+/)
@@ -73,7 +80,7 @@ export default function Partners() {
             </div>
           ) : partners && partners.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {partners.map((partner) => (
+              {partners.map((partner: PartnerCard) => (
                 <article key={partner.id} className="page-card interactive-lift flex min-h-48 flex-col justify-between p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex min-h-16 min-w-16 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card p-2">

@@ -10,7 +10,7 @@ const FESTIVAL_SLUG = "16-films-une-cause";
 
 function LoadingFestival() {
   return (
-    <div className="min-h-screen bg-[#f6efe1]">
+    <div className="festival-page festival-grain min-h-screen bg-[var(--campaign-paper)] text-[var(--campaign-ink)]">
       <Navbar />
       <main className="container-wide pt-44 pb-24" aria-busy="true" aria-live="polite">
         <div className="grid min-h-[60vh] items-end gap-8 lg:grid-cols-[1.05fr_.95fr]">
@@ -32,7 +32,7 @@ function LoadingFestival() {
 
 function FestivalError({ onRetry }: { onRetry: () => void }) {
   return (
-    <div className="min-h-screen bg-[#f6efe1]">
+    <div className="festival-page festival-grain min-h-screen bg-[var(--campaign-paper)] text-[var(--campaign-ink)]">
       <Navbar />
       <main className="container-wide flex min-h-[75vh] items-center justify-center pt-36 pb-20">
         <section className="max-w-lg border-2 border-[#191613] bg-[#ffb21c] p-8 text-center shadow-[10px_10px_0_#191613] md:p-12" data-testid="status-festival-error">
