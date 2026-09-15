@@ -198,14 +198,17 @@ export default function MobileChrome({
             onPress={onBack}
             style={({ pressed }) => [
               styles.headerIconButton,
-              { opacity: pressed ? 0.65 : canGoBack ? 1 : 0.9 },
+                 {
+                   backgroundColor: colors.primary,
+                   opacity: pressed ? 0.65 : canGoBack ? 1 : 0.9,
+                 },
             ]}
             testID="mobile-back-button"
           >
             {canGoBack ? (
               <Icon
                 name="back"
-                color={colors.onPurple}
+                color={colors.foreground}
                 detailColor={colors.purpleTaafe}
                 size={24}
               />
@@ -233,11 +236,14 @@ export default function MobileChrome({
             onPress={onRefresh}
             style={({ pressed }) => [
               styles.headerIconButton,
-              { opacity: pressed ? 0.65 : 1 },
+                 {
+                   backgroundColor: colors.primary,
+                   opacity: pressed ? 0.65 : 1,
+                 },
             ]}
             testID="mobile-refresh-button"
           >
-            <Icon name="refresh" color={colors.onPurple} size={21} />
+             <Icon name="refresh" color={colors.foreground} size={21} />
           </Pressable>
         </View>
       </View>
@@ -331,9 +337,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   brandTitle: {
-    fontFamily: 'Inter_700Bold',
-    fontSize: 18,
-    letterSpacing: -0.3,
+    fontFamily: 'Georgia',
+    fontSize: 19,
+    letterSpacing: -0.2,
   },
   sectionTitle: {
     fontFamily: 'Inter_500Medium',

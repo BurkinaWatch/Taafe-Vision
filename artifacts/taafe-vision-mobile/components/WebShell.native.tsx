@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   retryButton: {
-    borderRadius: 8,
+    borderRadius: 24,
     marginTop: 24,
     paddingHorizontal: 24,
     paddingVertical: 13,

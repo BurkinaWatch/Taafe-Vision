@@ -33,24 +33,24 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-slate-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 shadow-sm border-b border-border/70 backdrop-blur-md">
       {/* Top Bar: Minimal Links + Date + Mode Toggle */}
-      <div className="bg-slate-50 border-b border-slate-200 py-1.5 hidden lg:block">
+      <div className="bg-muted/45 border-b border-border/60 py-1.5 hidden lg:block">
         <div className="container-wide flex items-center justify-between">
-          <div className="flex items-center gap-4 text-[10px] uppercase font-bold text-slate-500 tracking-widest">
-            <Link href="/about" className="hover:text-slate-900 transition-colors">À propos</Link>
-            <Link href="/contact" className="hover:text-slate-900 transition-colors">Contact</Link>
+          <div className="flex items-center gap-4 text-[10px] uppercase font-bold text-muted-foreground tracking-widest">
+            <Link href="/about" className="hover:text-foreground transition-colors">À propos</Link>
+            <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
           </div>
           <div className="flex items-center gap-6">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+              <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
               {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
             </span>
             <button 
               onClick={() => setIsDark(!isDark)}
-              className="w-10 h-5 bg-slate-200 rounded-full relative transition-colors flex items-center px-1"
+              className="w-10 h-5 bg-border rounded-full relative transition-colors flex items-center px-1"
             >
               <div className={cn(
-                "w-3.5 h-3.5 bg-white rounded-full shadow-sm flex items-center justify-center transition-transform",
+                "w-3.5 h-3.5 bg-card rounded-full shadow-sm flex items-center justify-center transition-transform",
                 isDark ? "translate-x-4.5" : "translate-x-0"
               )}>
                 {isDark ? <Moon className="w-2 h-2 text-slate-400" /> : <Sun className="w-2 h-2 text-slate-400" />}
@@ -79,17 +79,17 @@ export function Navbar() {
 
           {/* Center: Logo */}
           <Link href="/" className="flex flex-col items-center flex-1 group">
-             <div className="flex items-center gap-2 lg:gap-3">
-                <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">TAAFÉ</span>
+              <div className="flex items-center gap-2 lg:gap-3">
+                 <span className="text-2xl lg:text-3xl font-serif font-black text-foreground tracking-tighter uppercase">TAAFÉ</span>
                 <img 
                   src="/images/taafe-vision-logo-clean.png" 
                   alt="Taafé Vision Logo" 
                   className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105 cursor-zoom-in"
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLogoOpen(true); }}
                 />
-                <span className="text-2xl lg:text-3xl font-serif font-black text-slate-900 tracking-tighter uppercase">VISION</span>
+                 <span className="text-2xl lg:text-3xl font-serif font-black text-foreground tracking-tighter uppercase">VISION</span>
              </div>
-             <span className="text-[6px] lg:text-[9px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-slate-400">CINÉMA & DROITS DES FEMMES</span>
+              <span className="text-[6px] lg:text-[9px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] text-muted-foreground">CINÉMA & DROITS DES FEMMES</span>
           </Link>
 
           {/* Right: Search + Social Icons */}
@@ -110,7 +110,7 @@ export function Navbar() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#561a44] text-white w-8 h-8 flex items-center justify-center rounded-sm hover:bg-[#32cd32] hover:text-[#561a44] transition-all shadow-sm"
+                   className="bg-foreground text-background w-8 h-8 flex items-center justify-center rounded-xl hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
                   aria-label={social.label}
                 >
                   <social.icon className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export function Navbar() {
       </div>
 
       {/* Bottom Bar: Navigation Menu */}
-      <div className="bg-[#561a44] hidden lg:block border-t border-white/5">
+      <div className="bg-foreground hidden lg:block border-t border-background/10">
         <div className="container-wide flex items-center justify-between h-14">
           <div className="flex items-center h-full">
             {links.map((link) => (
@@ -140,8 +140,8 @@ export function Navbar() {
                 className={cn(
                   "px-6 h-full flex items-center text-[10px] font-black uppercase tracking-[0.2em] transition-all relative group",
                   location === link.href 
-                    ? "bg-[#7a2561] text-white" 
-                    : "text-white/80 hover:text-white"
+                     ? "bg-primary text-primary-foreground" 
+                     : "text-background/80 hover:text-background"
                 )}
               >
                 {link.label}
@@ -151,7 +151,7 @@ export function Navbar() {
           
           <Link 
             href="/contact" 
-            className="border border-white/30 px-6 py-2 rounded-sm text-white text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#561a44] transition-all flex items-center gap-2"
+               className="border border-background/35 px-6 py-2 rounded-full text-background text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all flex items-center gap-2"
           >
             <Mail className="w-3.5 h-3.5" />
             RÉSERVEZ VOTRE PLACE
@@ -163,15 +163,15 @@ export function Navbar() {
 
       {/* Mobile Nav Menu */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[70px] lg:top-[80px] z-[60] bg-white animate-in slide-in-from-top-2 overflow-y-auto">
+         <div className="lg:hidden fixed inset-0 top-[70px] lg:top-[80px] z-[60] bg-card animate-in slide-in-from-top-2 overflow-y-auto">
           <div className="flex flex-col p-8 space-y-6">
             {links.map((link) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
                 className={cn(
-                  "text-xl font-display font-black uppercase tracking-widest border-b border-slate-100 pb-4",
-                  location === link.href ? "text-secondary" : "text-slate-900"
+                   "text-xl font-display font-black uppercase tracking-widest border-b border-border pb-4",
+                   location === link.href ? "text-primary" : "text-foreground"
                 )}
                 onClick={() => setIsOpen(false)}
               >
@@ -186,13 +186,13 @@ export function Navbar() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#561a44] text-white w-12 h-12 flex items-center justify-center rounded-sm shadow-md"
+                   className="bg-foreground text-background w-12 h-12 flex items-center justify-center rounded-2xl shadow-md"
                   >
                     <social.icon className="w-6 h-6" />
                   </a>
                 ))}
               </div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+               <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em]">
                 {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
               </p>
             </div>
@@ -213,7 +213,7 @@ export function Navbar() {
             />
             <button
               onClick={() => setLogoOpen(false)}
-              className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-slate-700 hover:text-slate-900 transition-colors"
+             className="absolute -top-3 -right-3 w-8 h-8 bg-card rounded-full flex items-center justify-center shadow-lg text-foreground hover:text-primary transition-colors"
             >
               <X className="w-4 h-4" />
             </button>

@@ -3,23 +3,23 @@ import { Facebook, Instagram, Youtube, Mail, MapPin, Phone } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-slate-950 text-white">
+    <footer className="bg-foreground text-background">
       <div className="container-wide py-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
 
         {/* Brand */}
         <div className="flex flex-col gap-3">
           <div className="border-l-2 border-secondary pl-4">
             <p className="text-xl font-display font-bold text-white leading-tight">Taafé Vision</p>
-            <p className="text-secondary text-[10px] uppercase tracking-[0.25em] font-bold mt-0.5">Artivisme pour un monde plus juste</p>
+             <p className="text-secondary text-[10px] uppercase tracking-[0.25em] font-bold mt-0.5">Artivisme pour un monde plus juste</p>
           </div>
-          <p className="text-slate-500 text-xs leading-relaxed">
+           <p className="text-background/55 text-xs leading-relaxed">
             Organisation féministe utilisant le cinéma pour défendre les droits des femmes au Burkina Faso, depuis 2017.
           </p>
         </div>
 
         {/* Navigation */}
         <div className="flex flex-col gap-3">
-          <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-slate-500">Navigation</p>
+           <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-background/55">Navigation</p>
           <nav className="grid grid-cols-2 gap-x-4 gap-y-2">
             {[
               { href: "/about", label: "À propos" },
@@ -32,7 +32,7 @@ export function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 group"
+                 className="text-sm text-background/65 hover:text-background transition-colors flex items-center gap-1.5 group"
               >
                 <span className="w-1 h-1 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 {label}
@@ -43,22 +43,22 @@ export function Footer() {
 
         {/* Contact & Socials */}
         <div className="flex flex-col gap-3">
-          <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-slate-500">Contact</p>
+           <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-background/55">Contact</p>
           <div className="flex flex-col gap-2">
-            <span className="flex items-center gap-2 text-xs text-slate-400">
+             <span className="flex items-center gap-2 text-xs text-background/65">
               <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
               Ouagadougou, Burkina Faso
             </span>
             <a
               href="tel:+22678097788"
-              className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+               className="flex items-center gap-2 text-xs text-background/65 hover:text-background transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
               +226 78 09 77 88
             </a>
             <a
               href="tel:+22664141715"
-              className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+               className="flex items-center gap-2 text-xs text-background/65 hover:text-background transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-secondary shrink-0" />
               +226 64 14 17 15
@@ -66,7 +66,7 @@ export function Footer() {
             <div className="flex flex-col gap-1">
               <a
                 href="mailto:contact@taafevision.com"
-                className="flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+                 className="flex items-center gap-2 text-xs text-background/65 hover:text-background transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-secondary shrink-0" />
                 contact@taafevision.com
@@ -85,7 +85,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:border-secondary hover:text-secondary transition-all duration-200"
+                 className="w-9 h-9 rounded-xl border border-background/15 flex items-center justify-center text-background/65 hover:border-secondary hover:text-secondary transition-all duration-200"
               >
                 <Icon className="w-3.5 h-3.5" />
               </a>
@@ -94,10 +94,10 @@ export function Footer() {
         </div>
       </div>
       {/* Bottom bar */}
-      <div className="border-t border-white/5">
-        <div className="container-wide py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] text-slate-600 uppercase tracking-widest">
+       <div className="border-t border-background/10">
+         <div className="container-wide py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] text-background/40 uppercase tracking-widest">
           <span>© {new Date().getFullYear()} Taafé Vision. Tous droits réservés.</span>
-          <Link href="/admin/login" className="hover:text-slate-400 transition-colors">
+           <Link href="/admin/login" className="hover:text-background/70 transition-colors">
             Espace Administration
           </Link>
         </div>
