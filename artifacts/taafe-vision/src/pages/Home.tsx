@@ -214,9 +214,7 @@ export default function Home() {
                   <Tv className="w-24 h-24 text-[#561a44]" />
                 </div>
                 <div className="relative z-10">
-                  <div className="text-7xl font-display font-bold text-[#561a44] mb-4 tracking-tighter">
-                    10M+
-                  </div>
+                  <div className="text-7xl font-display font-bold text-[#561a44] mb-4 tracking-tighter">10.000.000+</div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">Téléspectateurs</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">Un public de plus de 10 millions de téléspectateurs touché par nos films et nos actions.</p>
                 </div>
