@@ -193,7 +193,7 @@ export default function Home() {
                 </div>
                 <div className="relative z-10">
                   <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
-                    <Counter value={metrics[2]?.value ?? 6000} suffix={metrics[2]?.suffix ?? "+"} />
+                    15.000+
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[2]?.label ?? "Personnes sensibilisées"}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">{metrics[2]?.description ?? "Personnes touchées par nos projections et débats communautaires."}</p>
