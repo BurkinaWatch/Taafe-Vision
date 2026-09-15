@@ -15,50 +15,50 @@
 const colors = {
   light: {
     // Legacy aliases (kept for backward compatibility)
-    text: '#8a0f4a',
-    tint: '#ff4794',
+    text: '#161411',
+    tint: '#F5731A',
 
     // Core surfaces
-    background: '#fffedb',
-    foreground: '#8a0f4a',
+    background: '#F5F1E8',
+    foreground: '#161411',
 
     // Cards / elevated surfaces
-    card: '#fffdeb',
-    cardForeground: '#8a0f4a',
+    card: '#FFFDF8',
+    cardForeground: '#161411',
 
     // Primary action color (buttons, links, active states)
-    primary: '#ff4794',
-    primaryForeground: '#ffffff',
+    primary: '#F5731A',
+    primaryForeground: '#161411',
 
     // Secondary / less-emphasis interactive surfaces
-    secondary: '#54e600',
-    secondaryForeground: '#ffffff',
+    secondary: '#B8E8CB',
+    secondaryForeground: '#163523',
 
     // Muted / subdued elements (dividers, timestamps, placeholders)
-    muted: '#ebebc7',
-    mutedForeground: '#a04f75',
+    muted: '#E8E1D5',
+    mutedForeground: '#6B655C',
 
     // Accent highlights (badges, selected items, focus rings)
-    accent: '#ebf7e2',
-    accentForeground: '#2f8013',
+    accent: '#FBD4B4',
+    accentForeground: '#6B2C0B',
 
     // Destructive actions (delete, error states)
     destructive: '#ef4444',
     destructiveForeground: '#ffffff',
 
     // Borders and input outlines
-    border: '#d9d49e',
-    input: '#d9d49e',
+    border: '#D7CDBD',
+    input: '#D7CDBD',
 
     // Native mobile chrome, synced with the website navigation palette
-    purpleTaafe: '#5b1b52',
-    purpleMuted: '#e8c7e1',
-    onPurple: '#fff7fc',
+    purpleTaafe: '#161411',
+    purpleMuted: '#D9CBB6',
+    onPurple: '#FFFDF8',
   },
 
   // Border radius (in px). Sync from the sibling web artifact's --radius
   // CSS variable. This value applies to cards, buttons, inputs, and modals.
-  radius: 8,
+  radius: 24,
 };
 
 export default colors;
