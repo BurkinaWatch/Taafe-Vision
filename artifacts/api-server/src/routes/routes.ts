@@ -311,6 +311,55 @@ async function seed() {
     }
   }
 
+  const festivalSlug = "16-films-une-cause";
+  const existingFestival = await storage.getFestivalBySlug(festivalSlug, true);
+  if (!existingFestival) {
+    const festival = await storage.createFestival({
+      slug: festivalSlug,
+      name: "16 films, une cause",
+      tagline: "Festival de courts métrages contre les VBG",
+      description:
+        "Un festival de courts métrages qui utilise la force des images pour ouvrir le dialogue et agir contre les violences basées sur le genre.",
+      category: "Art",
+      location: "Saaba",
+      city: "Ouagadougou",
+      phone: "66 20 49 49",
+      messenger: "16Films1Cause",
+      facebookUrl: "https://www.facebook.com/profile.php?id=61594247405472",
+      edition: "4e et 5e éditions",
+      dateRange: "Du 25 novembre au 10 décembre",
+      followers: 66,
+      following: 50,
+      featuredImageUrl: "/images/festival/16films-poster-5e.png",
+      isPublished: true,
+    });
+
+    const media = [
+      {
+        imageUrl: "/images/festival/16films-profile.png",
+        caption: "Visuel de profil du festival — 4e édition",
+        altText: "Portrait artistique avec le titre 16 Films 1 Cause",
+        displayOrder: 0,
+      },
+      {
+        imageUrl: "/images/festival/16films-poster-5e.png",
+        caption: "Affiche du festival — 5e édition",
+        altText: "Affiche orange du festival international de films contre les VBG",
+        displayOrder: 1,
+      },
+      {
+        imageUrl: "/images/festival/16films-poster-4e.png",
+        caption: "Visuel de la 4e édition",
+        altText: "Affiche jaune et orange 16 Films 1 Cause",
+        displayOrder: 2,
+      },
+    ];
+
+    for (const item of media) {
+      await storage.createFestivalMedia({ festivalId: festival.id, ...item });
+    }
+  }
+
   const films = await storage.getFilms(true);
   if (films.length === 0 || films.length <= 2) {
     console.log("Seeding films...");
