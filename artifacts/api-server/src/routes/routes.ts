@@ -312,6 +312,7 @@ async function seed() {
   }
 
   const festivalSlug = "16-films-une-cause";
+  const festivalFacebookUrl = "https://www.facebook.com/share/1HMTorN1V1/";
   const existingFestival = await storage.getFestivalBySlug(festivalSlug, true);
   if (!existingFestival) {
     const festival = await storage.createFestival({
@@ -325,7 +326,7 @@ async function seed() {
       city: "Ouagadougou",
       phone: "66 20 49 49",
       messenger: "16Films1Cause",
-      facebookUrl: "https://www.facebook.com/profile.php?id=61594247405472",
+      facebookUrl: festivalFacebookUrl,
       edition: "4e et 5e éditions",
       dateRange: "Du 25 novembre au 10 décembre",
       followers: 66,
@@ -358,6 +359,8 @@ async function seed() {
     for (const item of media) {
       await storage.createFestivalMedia({ festivalId: festival.id, ...item });
     }
+  } else if (existingFestival.facebookUrl !== festivalFacebookUrl) {
+    await storage.updateFestival(existingFestival.id, { facebookUrl: festivalFacebookUrl });
   }
 
   const films = await storage.getFilms(true);

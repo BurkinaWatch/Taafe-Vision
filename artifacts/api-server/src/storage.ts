@@ -40,6 +40,7 @@ export interface IStorage {
   // Festivals
   getFestivalBySlug(slug: string, includeUnpublished?: boolean): Promise<Festival | undefined>;
   createFestival(festival: InsertFestival): Promise<Festival>;
+  updateFestival(id: number, festival: Partial<InsertFestival>): Promise<Festival>;
   getFestivalMedia(festivalId: number): Promise<FestivalMedia[]>;
   createFestivalMedia(media: InsertFestivalMedia): Promise<FestivalMedia>;
 
@@ -167,6 +168,10 @@ export class DatabaseStorage implements IStorage {
   async createFestival(insertFestival: InsertFestival): Promise<Festival> {
     const [festival] = await db.insert(festivals).values(insertFestival).returning();
     return festival;
+  }
+  async updateFestival(id: number, festival: Partial<InsertFestival>): Promise<Festival> {
+    const [updated] = await db.update(festivals).set(festival).where(eq(festivals.id, id)).returning();
+    return updated;
   }
   async getFestivalMedia(festivalId: number): Promise<FestivalMedia[]> {
     return await db.select().from(festivalMedia).where(eq(festivalMedia.festivalId, festivalId)).orderBy(festivalMedia.displayOrder);
