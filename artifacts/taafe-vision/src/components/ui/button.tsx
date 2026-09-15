@@ -5,8 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[1.25rem] text-sm font-semibold tracking-[0.01em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0" +
-  " transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold tracking-[0.01em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0" +
+  " transition-[transform,box-shadow,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm",
   {
     variants: {
       variant: {
@@ -26,10 +26,10 @@ const buttonVariants = cva(
       // inside buttons. With a min-height they will look appropriate with small amounts of content,
       // but will expand to fit large amounts of content.
       size: {
-        default: "min-h-9 px-4 py-2",
-        sm: "min-h-9 rounded-full px-4 text-xs",
+        default: "min-h-11 px-4 py-2",
+        sm: "min-h-10 rounded-full px-4 text-xs",
         lg: "min-h-12 rounded-[1.5rem] px-8",
-        icon: "h-10 w-10 rounded-full",
+        icon: "h-11 w-11 rounded-full",
       },
     },
     defaultVariants: {

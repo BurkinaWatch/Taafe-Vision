@@ -9,7 +9,7 @@ export function Footer() {
         {/* Brand */}
         <div className="flex flex-col gap-3">
           <div className="border-l-2 border-secondary pl-4">
-            <p className="text-xl font-display font-bold text-white leading-tight">Taafé Vision</p>
+            <p className="text-xl font-display font-bold text-background leading-tight">Taafé Vision</p>
              <p className="text-secondary text-[10px] uppercase tracking-[0.25em] font-bold mt-0.5">Artivisme pour un monde plus juste</p>
           </div>
            <p className="text-background/55 text-xs leading-relaxed">

@@ -33,7 +33,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 shadow-sm border-b border-border/70 backdrop-blur-md">
+    <nav aria-label="Navigation principale" className="fixed left-0 right-0 top-0 z-50 border-b border-border/70 bg-card/95 shadow-sm backdrop-blur-md">
       {/* Top Bar: Minimal Links + Date + Mode Toggle */}
       <div className="bg-muted/45 border-b border-border/60 py-1.5 hidden lg:block">
         <div className="container-wide flex items-center justify-between">
@@ -45,15 +45,18 @@ export function Navbar() {
               <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
               {format(new Date(), "EEEE d MMMM yyyy", { locale: fr })}
             </span>
-            <button 
+              <button
+               type="button"
+               aria-label={isDark ? "Activer le thème clair" : "Activer le thème sombre"}
+               aria-pressed={isDark}
               onClick={() => setIsDark(!isDark)}
-              className="w-10 h-5 bg-border rounded-full relative transition-colors flex items-center px-1"
+               className="relative flex h-6 w-11 items-center rounded-full bg-muted px-1 transition-colors hover:bg-border"
             >
               <div className={cn(
-                "w-3.5 h-3.5 bg-card rounded-full shadow-sm flex items-center justify-center transition-transform",
-                isDark ? "translate-x-4.5" : "translate-x-0"
+                 "flex h-4 w-4 items-center justify-center rounded-full bg-card shadow-sm transition-transform",
+                 isDark ? "translate-x-5" : "translate-x-0"
               )}>
-                {isDark ? <Moon className="w-2 h-2 text-slate-400" /> : <Sun className="w-2 h-2 text-slate-400" />}
+                 {isDark ? <Moon className="h-2.5 w-2.5 text-muted-foreground" /> : <Sun className="h-2.5 w-2.5 text-muted-foreground" />}
               </div>
             </button>
           </div>
@@ -61,18 +64,20 @@ export function Navbar() {
       </div>
 
       {/* Middle Bar: Menu Toggle + Logo + Search + Social */}
-      <div className="bg-white py-1.5 lg:py-2">
+       <div className="bg-card py-1.5 lg:py-2">
         <div className="container-wide flex items-center justify-between gap-4 lg:gap-6">
           {/* Left: Mobile Menu Toggle */}
           <button 
-            className="p-2 text-slate-600 lg:hidden" 
+            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isOpen}
+            className="rounded-lg p-2 text-foreground/70 transition-colors hover:bg-muted hover:text-foreground lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
           
           <div className="hidden lg:block w-16">
-             <button className="text-slate-400 hover:text-slate-900 transition-colors">
+              <button type="button" aria-label="Afficher le menu" className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
                 <Menu className="w-5 h-5" />
              </button>
           </div>
@@ -84,7 +89,7 @@ export function Navbar() {
                 <img 
                   src="/images/taafe-vision-logo-clean.png" 
                   alt="Taafé Vision Logo" 
-                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-[#32cd32] shadow-sm transition-transform group-hover:scale-105 cursor-zoom-in"
+                   className="h-8 w-8 cursor-zoom-in rounded-full border-2 border-secondary object-cover shadow-sm transition-transform group-hover:scale-105 lg:h-10 lg:w-10"
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLogoOpen(true); }}
                 />
                  <span className="text-2xl lg:text-3xl font-serif font-black text-foreground tracking-tighter uppercase">VISION</span>
@@ -96,11 +101,11 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-8">
             <button
               onClick={() => setSearchOpen(true)}
-              className="relative group flex items-center gap-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-[10px] w-44 transition-all text-slate-400 font-bold uppercase tracking-wider"
+              className="group relative flex w-44 items-center gap-2 rounded-full border border-border bg-muted/40 px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground transition-all hover:border-primary/30 hover:bg-muted"
             >
               <Search className="w-3.5 h-3.5 shrink-0" />
               <span className="flex-1 text-left">Recherche…</span>
-              <kbd className="hidden group-hover:inline text-[8px] bg-white border border-slate-200 rounded px-1 py-0.5 font-mono text-slate-400">⌘K</kbd>
+              <kbd className="hidden rounded border border-border bg-card px-1 py-0.5 font-mono text-[8px] text-muted-foreground group-hover:inline">⌘K</kbd>
             </button>
             
             <div className="flex items-center gap-1.5">
@@ -121,7 +126,8 @@ export function Navbar() {
           
           {/* Mobile Search Icon */}
           <button
-            className="p-2 text-slate-600 lg:hidden"
+             aria-label="Rechercher"
+             className="rounded-lg p-2 text-foreground/70 transition-colors hover:bg-muted hover:text-foreground lg:hidden"
             onClick={() => setSearchOpen(true)}
           >
             <Search className="w-6 h-6" />
