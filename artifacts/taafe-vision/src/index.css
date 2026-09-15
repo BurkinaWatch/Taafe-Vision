@@ -1,55 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,800&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 
-  /* Jaune Lumineux (Fond) */
-  --background: 55 100% 93%;
-  --foreground: 330 80% 30%;
-
-  /* Rose Taafé (Accent Primaire) */
-  --primary: 330 100% 64%; 
-  --primary-foreground: 0 0% 100%;
-
-  /* Vert Vision (Accent Secondaire) */
-  --secondary: 104 100% 45%;
-  --secondary-foreground: 0 0% 100%;
-
-  /* Violet Taafé (Barre de navigation) */
+  --background: 40 55% 96%;
+  --foreground: 24 20% 10%;
+  --primary: 24 91% 52%;
+  --primary-foreground: 24 20% 10%;
+  --secondary: 49 96% 58%;
+  --secondary-foreground: 24 20% 10%;
   --purple-taafe: 317 55% 23%;
   --purple-taafe-accent: 317 55% 31%;
-
-  --card: 55 100% 95%;
-  --card-foreground: 330 80% 30%;
-  
-  --popover: 55 100% 95%;
-  --popover-foreground: 330 80% 30%;
-
-  --muted: 55 50% 85%;
-  --muted-foreground: 330 30% 45%;
-
-  --accent: 95 80% 90%;
-  --accent-foreground: 95 100% 25%;
+  --card: 40 55% 98%;
+  --card-foreground: 24 20% 10%;
+  --popover: 40 55% 98%;
+  --popover-foreground: 24 20% 10%;
+  --muted: 39 30% 88%;
+  --muted-foreground: 24 12% 40%;
+  --accent: 49 96% 58%;
+  --accent-foreground: 24 20% 10%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 55 50% 80%;
-  --input: 55 50% 80%;
-  --ring: 330 81% 60%;
+  --border: 34 26% 78%;
+  --input: 34 26% 78%;
+  --ring: 24 91% 52%;
+  --card-border: 34 26% 78%;
+  --popover-border: 34 26% 78%;
+  --primary-border: hsl(24 91% 52%);
+  --secondary-border: hsl(49 96% 58%);
+  --muted-border: hsl(34 26% 78%);
+  --accent-border: hsl(49 96% 58%);
+  --destructive-border: hsl(0 70% 50%);
+  --sidebar: 24 20% 10%;
+  --sidebar-foreground: 40 55% 96%;
+  --sidebar-border: 24 15% 20%;
+  --sidebar-ring: 24 91% 52%;
+  --sidebar-primary: 24 91% 52%;
+  --sidebar-primary-foreground: 24 20% 10%;
+  --sidebar-primary-border: hsl(24 91% 52%);
+  --sidebar-accent: 49 96% 58%;
+  --sidebar-accent-foreground: 24 20% 10%;
+  --sidebar-accent-border: hsl(49 96% 58%);
 
   --radius: 0.5rem;
+}
+
+.dark {
+  --background: 24 20% 10%;
+  --foreground: 40 55% 96%;
+  --primary: 24 91% 58%;
+  --primary-foreground: 24 20% 10%;
+  --secondary: 49 96% 58%;
+  --secondary-foreground: 24 20% 10%;
+  --card: 24 18% 14%;
+  --card-foreground: 40 55% 96%;
+  --popover: 24 18% 14%;
+  --popover-foreground: 40 55% 96%;
+  --muted: 24 15% 22%;
+  --muted-foreground: 39 18% 70%;
+  --accent: 49 96% 58%;
+  --accent-foreground: 24 20% 10%;
+  --border: 24 15% 28%;
+  --input: 24 15% 28%;
+  --ring: 24 91% 58%;
 }
 
 @layer base {
   body {
     @apply bg-background text-foreground antialiased selection:bg-secondary/30;
     font-family: var(--font-body);
+    background-image: radial-gradient(hsl(24 20% 10% / 0.05) 0.7px, transparent 0.7px);
+    background-size: 7px 7px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -78,5 +109,25 @@
   
   .nav-link:hover::after {
     @apply w-full;
+  }
+
+  .festival-grain {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .festival-grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  }
+
+  .festival-rule {
+    height: 1px;
+    background: hsl(24 20% 10% / 0.2);
   }
 }
