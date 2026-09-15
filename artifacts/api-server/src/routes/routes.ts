@@ -496,12 +496,12 @@ async function seedOrganizationKnowledge() {
         sourceName: "Taafé Vision — site officiel", sourceUrl: "https://taafevision.org/", sourceDate: "2026", displayOrder: 1,
       },
       {
-        label: "Productions", value: 10, suffix: "+",
+        label: "Productions", value: 15, suffix: "+",
         description: "Documentaires et fictions engagés pour le changement social et l'égalité.",
         sourceName: "Taafé Vision — site officiel", sourceUrl: "https://taafevision.org/", sourceDate: "2026", displayOrder: 2,
       },
       {
-        label: "Personnes sensibilisées", value: 6000, suffix: "+",
+        label: "Personnes sensibilisées", value: 15000, suffix: "+",
         description: "Public touché par les projections et débats communautaires.",
         sourceName: "Taafé Vision — site officiel", sourceUrl: "https://taafevision.org/", sourceDate: "2026", displayOrder: 3,
       },

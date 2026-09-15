@@ -6,14 +6,20 @@ interface CounterProps {
   value: number;
   suffix?: string;
   duration?: number;
+  animate?: boolean;
 }
 
-export function Counter({ value, suffix = "", duration = 2 }: CounterProps) {
-  const [count, setCount] = useState(0);
+export function Counter({ value, suffix = "", duration = 2, animate = true }: CounterProps) {
+  const [count, setCount] = useState(animate ? 0 : value);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
+    if (!animate) {
+      setCount(value);
+      return undefined;
+    }
+
     if (isInView) {
       let start = 0;
       const end = value;
@@ -34,7 +40,7 @@ export function Counter({ value, suffix = "", duration = 2 }: CounterProps) {
     }
 
     return undefined;
-  }, [value, duration, isInView]);
+  }, [value, duration, isInView, animate]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return <span ref={ref}>{count.toLocaleString("de-DE")}{suffix}</span>;
 }

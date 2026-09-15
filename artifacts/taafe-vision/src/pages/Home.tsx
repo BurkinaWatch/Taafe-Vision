@@ -173,7 +173,7 @@ export default function Home() {
                 </div>
                 <div className="relative z-10">
                   <div className="text-7xl font-display font-bold text-[#39cd15] mb-4 tracking-tighter">
-                    <Counter value={metrics[1]?.value ?? 10} suffix={metrics[1]?.suffix ?? "+"} />
+                    <Counter value={15} suffix={metrics[1]?.suffix ?? "+"} />
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[1]?.label ?? "Films produits"}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">{metrics[1]?.description ?? "Documentaires et fictions engagés pour le changement social et l'égalité."}</p>
@@ -193,7 +193,7 @@ export default function Home() {
                 </div>
                 <div className="relative z-10">
                   <div className="text-7xl font-display font-bold text-[#f146ad] mb-4 tracking-tighter">
-                    15.000+
+                    <Counter value={15000} suffix={metrics[2]?.suffix ?? "+"} animate={false} />
                   </div>
                   <h4 className="text-slate-900 font-bold text-lg mb-2">{metrics[2]?.label ?? "Personnes sensibilisées"}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">{metrics[2]?.description ?? "Personnes touchées par nos projections et débats communautaires."}</p>
