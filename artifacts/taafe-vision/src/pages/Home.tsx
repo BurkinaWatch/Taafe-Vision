@@ -28,6 +28,8 @@ import filmsDuDromadaireLogo from "@/assets/partners/films-du-dromadaire.jpg";
 import isisSeLogo from "@/assets/partners/isis-se.jpg";
 import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.jpg";
 import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.jpg";
+import francophonieLogo from "@/assets/partners/organisation-internationale-francophonie.png";
+import cooperationSuisseLogo from "@/assets/partners/cooperation-suisse.png";
 
 const PARTNERS = [
   { name: "ABCA", logo: abcaLogo },
@@ -44,6 +46,8 @@ const PARTNERS = [
   { name: "ISIS/SE", logo: isisSeLogo },
   { name: "Faso Films Fonds", logo: fasoFilmsFondsLogo },
   { name: "Ministère de la Communication, de la Culture, des Arts et du Tourisme", logo: ministereCommunicationLogo },
+  { name: "Organisation internationale de la Francophonie", logo: francophonieLogo },
+  { name: "Coopération suisse", logo: cooperationSuisseLogo },
 ];
 
 export default function Home() {

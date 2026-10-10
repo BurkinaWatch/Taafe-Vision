@@ -10,6 +10,8 @@ import fdctLogo from "@/assets/partners/fdct.jpg";
 import fespacoLogo from "@/assets/partners/fespaco.jpg";
 import fjsLogo from "@/assets/partners/fjs.png";
 import ueLogo from "@/assets/partners/ue.png";
+import francophonieLogo from "@/assets/partners/organisation-internationale-francophonie.png";
+import cooperationSuisseLogo from "@/assets/partners/cooperation-suisse.png";
 
 const LOCAL_PARTNER_LOGOS: Record<string, string> = {
   FESPACO: fespacoLogo,
@@ -18,14 +20,33 @@ const LOCAL_PARTNER_LOGOS: Record<string, string> = {
   Equipop: equiPopLogo,
   "Foundation for a Just Society (FJS)": fjsLogo,
   "ABCA — Agence Burkinabè de la Cinématographie et de l'Audiovisuel": abcaLogo,
+  "Organisation internationale de la Francophonie": francophonieLogo,
+  "Coopération suisse": cooperationSuisseLogo,
 };
 
 type PartnerCard = {
-  id: number;
+  id: number | string;
   name: string;
   logoUrl: string;
   website?: string | null;
 };
+
+const ADDITIONAL_PARTNERS: PartnerCard[] = [
+  {
+    id: "organisation-internationale-francophonie",
+    name: "Organisation internationale de la Francophonie",
+    logoUrl: francophonieLogo,
+  },
+  {
+    id: "cooperation-suisse",
+    name: "Coopération suisse",
+    logoUrl: cooperationSuisseLogo,
+  },
+];
+
+function normalizedName(name: string) {
+  return name.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
+}
 
 function PartnerInitials({ name }: { name: string }) {
   const initials = name
@@ -45,6 +66,14 @@ function PartnerInitials({ name }: { name: string }) {
 
 export default function Partners() {
   const { partners, isLoading, isError } = usePartners();
+  const displayedPartners = Array.from(
+    new Map(
+      [...ADDITIONAL_PARTNERS, ...(partners ?? [])].map((partner) => [
+        normalizedName(partner.name),
+        partner,
+      ]),
+    ).values(),
+  );
 
   return (
     <div className="page-shell">
@@ -94,9 +123,9 @@ export default function Partners() {
               <p className="font-display text-2xl font-bold text-foreground">Les partenaires ne peuvent pas être chargés pour le moment.</p>
               <p className="mt-2 text-muted-foreground">Réessayez dans quelques instants.</p>
             </div>
-          ) : partners && partners.length > 0 ? (
+          ) : displayedPartners.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {partners.map((partner: PartnerCard) => (
+              {displayedPartners.map((partner: PartnerCard) => (
                 <article key={partner.id} className="page-card interactive-lift flex min-h-48 flex-col justify-between p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex min-h-16 min-w-16 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card p-2">

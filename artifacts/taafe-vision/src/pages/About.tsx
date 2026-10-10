@@ -35,6 +35,8 @@ import filmsDuDromadaireLogo from "@/assets/partners/films-du-dromadaire.jpg";
 import isisSeLogo from "@/assets/partners/isis-se.jpg";
 import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.jpg";
 import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.jpg";
+import francophonieLogo from "@/assets/partners/organisation-internationale-francophonie.png";
+import cooperationSuisseLogo from "@/assets/partners/cooperation-suisse.png";
 
 const PARTNER_LOGOS: Record<string, string> = {
   FESPACO: fespacoLogo,
@@ -45,6 +47,8 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Foundation for a Just Society (FJS)": fjsLogo,
   "Agence Burkinabe de la Cinematographie et de l'Audioviseul (ABCA)": abcaLogo,
   "ABCA — Agence Burkinabè de la Cinématographie et de l'Audiovisuel": abcaLogo,
+  "Organisation internationale de la Francophonie": francophonieLogo,
+  "Coopération suisse": cooperationSuisseLogo,
 };
 
 const ADDITIONAL_PARTNERS = [
@@ -60,7 +64,21 @@ const ADDITIONAL_PARTNERS = [
     name: "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
     logoUrl: ministereCommunicationLogo,
   },
+  {
+    id: "organisation-internationale-francophonie",
+    name: "Organisation internationale de la Francophonie",
+    logoUrl: francophonieLogo,
+  },
+  {
+    id: "cooperation-suisse",
+    name: "Coopération suisse",
+    logoUrl: cooperationSuisseLogo,
+  },
 ];
+
+function normalizedPartnerName(name: string) {
+  return name.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
+}
 
 const JOURNEY_MILESTONES = [
   {
@@ -162,7 +180,14 @@ const SOCIAL_ICONS: Record<string, ReactElement> = {
 
 export default function About() {
   const { partners } = usePartners();
-  const displayedPartners = [...(partners ?? []), ...ADDITIONAL_PARTNERS];
+  const displayedPartners = Array.from(
+    new Map(
+      [...ADDITIONAL_PARTNERS, ...(partners ?? [])].map((partner) => [
+        normalizedPartnerName(partner.name),
+        partner,
+      ]),
+    ).values(),
+  );
   const { profile } = useOrganizationProfile();
   const { metrics } = useImpactMetrics();
   const { sources } = useResearchSources();
