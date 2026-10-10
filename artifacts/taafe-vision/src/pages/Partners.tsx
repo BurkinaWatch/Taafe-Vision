@@ -12,6 +12,7 @@ import fjsLogo from "@/assets/partners/fjs.png";
 import ueLogo from "@/assets/partners/ue.png";
 import francophonieLogo from "@/assets/partners/organisation-internationale-francophonie.png";
 import cooperationSuisseLogo from "@/assets/partners/cooperation-suisse.png";
+import oxfamLogo from "@/assets/partners/oxfam.png";
 
 const LOCAL_PARTNER_LOGOS: Record<string, string> = {
   FESPACO: fespacoLogo,
@@ -22,6 +23,7 @@ const LOCAL_PARTNER_LOGOS: Record<string, string> = {
   "ABCA — Agence Burkinabè de la Cinématographie et de l'Audiovisuel": abcaLogo,
   "Organisation internationale de la Francophonie": francophonieLogo,
   "Coopération suisse": cooperationSuisseLogo,
+  Oxfam: oxfamLogo,
 };
 
 type PartnerCard = {
@@ -41,6 +43,11 @@ const ADDITIONAL_PARTNERS: PartnerCard[] = [
     id: "cooperation-suisse",
     name: "Coopération suisse",
     logoUrl: cooperationSuisseLogo,
+  },
+  {
+    id: "oxfam",
+    name: "Oxfam",
+    logoUrl: oxfamLogo,
   },
 ];
 

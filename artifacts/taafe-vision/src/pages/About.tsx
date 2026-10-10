@@ -37,6 +37,7 @@ import fasoFilmsFondsLogo from "@/assets/partners/faso-films-fonds.jpg";
 import ministereCommunicationLogo from "@/assets/partners/ministere-communication-culture-tourisme.jpg";
 import francophonieLogo from "@/assets/partners/organisation-internationale-francophonie.png";
 import cooperationSuisseLogo from "@/assets/partners/cooperation-suisse.png";
+import oxfamLogo from "@/assets/partners/oxfam.png";
 
 const PARTNER_LOGOS: Record<string, string> = {
   FESPACO: fespacoLogo,
@@ -49,6 +50,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "ABCA — Agence Burkinabè de la Cinématographie et de l'Audiovisuel": abcaLogo,
   "Organisation internationale de la Francophonie": francophonieLogo,
   "Coopération suisse": cooperationSuisseLogo,
+  Oxfam: oxfamLogo,
 };
 
 const ADDITIONAL_PARTNERS = [
@@ -74,6 +76,7 @@ const ADDITIONAL_PARTNERS = [
     name: "Coopération suisse",
     logoUrl: cooperationSuisseLogo,
   },
+  { id: "oxfam", name: "Oxfam", logoUrl: oxfamLogo },
 ];
 
 function normalizedPartnerName(name: string) {
