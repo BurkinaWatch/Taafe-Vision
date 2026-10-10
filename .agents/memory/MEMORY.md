@@ -2,3 +2,4 @@
 - [Expo Android release builds](expo-android-release-builds.md) — use OpenJDK 17 and an explicit local Android SDK for Gradle release builds in this workspace.
 - [GitHub pushes with generated SDKs](github-push-generated-artifacts.md) — keep generated Android toolchains out of Git history; GitHub rejects individual blobs over 100 MB.
 - [pnpm runtime compatibility](pnpm-runtime-compat.md) — keep the Railway-compatible lockfile without pinning `packageManager` in the root workspace.
+- [Replit preview routing](replit-preview-routing.md) — treat blank Replit previews as artifact/workflow routing issues, separate from Railway.
