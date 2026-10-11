@@ -10,6 +10,7 @@ import { Marquee } from "@/components/Marquee";
 import { Counter } from "@/components/Counter";
 import type { Film as FilmType } from "@/lib/api";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { getFilmCoverImage } from "@/lib/film-images";
 
 // ... partners import ...
 
@@ -330,7 +331,7 @@ export default function Home() {
               <div key={film.id} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[3/4] overflow-hidden">
                   <OptimizedImage
-                    src={film.imageUrl || undefined}
+                    src={getFilmCoverImage(film)}
                     alt={film.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     fallbackSrc="/images/community-screening.jpg"

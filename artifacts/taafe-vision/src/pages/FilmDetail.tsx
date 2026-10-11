@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { Film } from "@/lib/types";
+import { getFilmCoverImage } from "@/lib/film-images";
 import { PlayCircle, ArrowLeft, Calendar, User, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -61,7 +62,7 @@ export default function FilmDetail() {
             {/* Left: Poster */}
             <div className="relative group rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[3/4]">
               <OptimizedImage
-                src={film.imageUrl || undefined}
+                src={getFilmCoverImage(film)}
                 alt={film.title} 
                 className="w-full h-full object-cover"
                 fallbackSrc="/images/community-screening.jpg"
