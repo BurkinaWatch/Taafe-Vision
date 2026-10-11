@@ -16,6 +16,9 @@ import awardImg from "@assets/prix_1767877554431.jpg";
 import productionsImg from "@assets/Productions_de_court_métrage_1767878670665.png";
 import projectionCommImg from "@assets/projection_comm_1767878904008.jpg";
 import ideaToShortImg from "@assets/de_l'idée_au_court_1767879252663.jpg";
+import activismScreeningImg from "@assets/WhatsApp_Image_2025-12-19_at_15.52.15_1766159719274.jpeg";
+import trainingGroupImg from "@assets/image_1767874839597.png";
+import trainingDiscussionImg from "@assets/WhatsApp_Image_2025-12-19_at_15.53.24_1766159710486.jpeg";
 
 export default function News() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -34,9 +37,21 @@ export default function News() {
     if (title.includes("communautaires")) return projectionCommImg;
     if (title.includes("idée au court")) return ideaToShortImg;
     if (title.includes("primés") || title.includes("prix")) return awardImg;
-    if (title.includes("productions")) return productionsImg;
-    
-    return projectionImg; // Default fallback
+    if (title.includes("productions") || title.includes("pitch")) return productionsImg;
+    if (title.includes("16 jours") || title.includes("activisme") || title.includes("ziniaré")) {
+      return activismScreeningImg;
+    }
+    if (title.includes("formation") || title.includes("cinéastes")) return trainingGroupImg;
+    if (article.category.toLowerCase() === "training") return trainingDiscussionImg;
+
+    const fallbackImages = [
+      productionsImg,
+      activismScreeningImg,
+      trainingGroupImg,
+      trainingDiscussionImg,
+      projectionCommImg,
+    ];
+    return fallbackImages[Math.abs(article.id) % fallbackImages.length];
   };
 
   const categories = [
