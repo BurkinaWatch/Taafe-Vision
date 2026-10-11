@@ -6,6 +6,39 @@ import { PlayCircle } from "lucide-react";
 import { Link } from "wouter";
 import type { Film } from "@/lib/api";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import productionCrewImage from "@assets/Productions_de_court_métrage_1767878670665.png";
+
+const FILM_COVER_OVERRIDES: Record<string, string> = {
+  "a tout prix": "/images/films-bg.jpg",
+  "le poids du deshonneur": "/images/community-engagement-1.jpg",
+  kanu: productionCrewImage,
+  "les inseparables": "/images/community-screening.jpg",
+};
+
+const LOCAL_FILM_PHOTOS = [
+  "/images/films-bg.jpg",
+  "/images/community-engagement-1.jpg",
+  productionCrewImage,
+  "/images/community-screening.jpg",
+];
+
+function getFilmCoverImage(film: Film) {
+  const normalizedTitle = film.title
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  const specificCover = FILM_COVER_OVERRIDES[normalizedTitle];
+
+  if (specificCover) return specificCover;
+
+  // Avoid repeating generic stock clapboard photos if a future record uses them.
+  if (film.imageUrl?.startsWith("https://images.unsplash.com/")) {
+    return LOCAL_FILM_PHOTOS[Math.abs(film.id) % LOCAL_FILM_PHOTOS.length];
+  }
+
+  return film.imageUrl || undefined;
+}
 
 export default function Films() {
   const { films, isLoading } = useFilms();
@@ -32,7 +65,7 @@ export default function Films() {
                   <div className="group relative bg-card rounded-3xl overflow-hidden shadow-xl hover:shadow-primary/20 transition-all duration-300 border border-border flex flex-col h-full cursor-pointer">
                      <div className="aspect-[3/4] relative overflow-hidden bg-muted">
                        <OptimizedImage
-                         src={film.imageUrl || undefined}
+                          src={getFilmCoverImage(film)}
                         alt={film.title} 
                         className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
                          fallbackSrc="/images/community-screening.jpg"
